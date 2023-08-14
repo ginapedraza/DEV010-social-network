@@ -14,12 +14,12 @@ import error from './error.js';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyBZcFUeT__RAymtnLG7k1RsQLb8I1UlRUI',
-  authDomain: 'social-network-f2550.firebaseapp.com',
-  projectId: 'social-network-f2550',
-  storageBucket: 'social-network-f2550.appspot.com',
-  messagingSenderId: '259171374910',
-  appId: '1:259171374910:web:0c8a0b1b3999119268fe6f',
+  apiKey: 'AIzaSyBUtyyJeNqJZJnKy227Bdyp7l65-K07C4o',
+  authDomain: 'social-network-f3bfb.firebaseapp.com',
+  projectId: 'social-network-f3bfb',
+  storageBucket: 'social-network-f3bfb.appspot.com',
+  messagingSenderId: '80088957819',
+  appId: '1:80088957819:web:733c0e10cdc09d284e73de',
 };
 
 // Initialize Firebase
