@@ -1,7 +1,7 @@
-function home (navigateTo) {
-    const section = document.createElement('section');
-    const title = document.createElement('h2');
-    const button = document.createElement('button');
+function home(navigateTo) {
+  const section = document.createElement('section');
+  const title = document.createElement('h2');
+  const button = document.createElement('button');
 
   button.textContent = 'Inicia sesión';
   button.addEventListener('click', () => {
