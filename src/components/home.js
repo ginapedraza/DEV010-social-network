@@ -2,18 +2,28 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 function home(navigateTo) {
   const section = document.createElement('section');
-  section.addClassList = 'homeContainer';
+  section.addClassList = 'homeSection';
   const titleLogin = document.createElement('h2');
   const emailButton = document.createElement('button');
   emailButton.addClassList = 'loginButton';
   const googleButton = document.createElement('button');
   googleButton.addClassList = 'loginButton';
+  const titleRegister = document.createElement('h3');
+  const registerButton = document.createElement('button');
+  registerButton.addClassList = 'registerButton';
 
   emailButton.textContent = 'Correo electrónico';
   googleButton.textContent = 'Google';
+  titleLogin.textContent = 'Inicia sesión';
+  titleRegister.textContent = 'Si no tienes cuenta';
+  registerButton.textContent = 'Regístrate';
 
   emailButton.addEventListener('click', () => {
     navigateTo('/login');
+  });
+
+  registerButton.addEventListener('click', () => {
+    navigateTo('/register');
   });
 
   googleButton.addEventListener('click', () => {
@@ -39,9 +49,8 @@ function home(navigateTo) {
         // ...
       });
   });
-  titleLogin.textContent = 'Inicia sesión';
 
-  section.append(titleLogin, emailButton, googleButton);
+  section.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
   return section;
 }
 

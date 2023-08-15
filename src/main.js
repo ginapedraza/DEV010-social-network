@@ -7,6 +7,7 @@ import { myFunction } from './lib/index.js';
 import home from './components/home.js';
 import login from './components/login.js';
 import error from './components/error.js';
+import register from './components/register.js';
 
 // Import the functions you need from the SDKs you need
 
@@ -29,6 +30,7 @@ const routes = [
   { path: '/', component: home },
   { path: '/login', component: login },
   { path: '/error', component: error },
+  { path: '/register', component: register },
 ];
 
 const defaultRoute = '/';

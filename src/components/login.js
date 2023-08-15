@@ -1,5 +1,6 @@
 function login(navigateTo) {
   const section = document.createElement('section');
+  section.addClassList = 'loginSection';
   const title = document.createElement('h2');
   const buttonReturn = document.createElement('button');
   const form = document.createElement('form');
