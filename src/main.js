@@ -4,9 +4,10 @@
 // Este es el punto de entrada de tu aplicacion
 import { initializeApp } from 'firebase/app';
 import { myFunction } from './lib/index.js';
-import home from './home.js';
-import login from './login.js';
-import error from './error.js';
+import home from './components/home.js';
+import login from './components/login.js';
+import error from './components/error.js';
+
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
