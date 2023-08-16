@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { sendEmailLink } from '../firebase.js';
 
 function register() {
   const sectionRegister = document.createElement('section');
@@ -6,41 +6,56 @@ function register() {
   const emailRegister = document.createElement('h4');
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('id', 'email');
-  const userRegister = document.createElement('h4');
-  const inputUser = document.createElement('input');
-  inputUser.setAttribute('id', 'user');
-  const passRegister = document.createElement('h4');
-  const inputPass = document.createElement('input');
-  inputPass.setAttribute('id', 'pass');
-  const repeatPassRegister = document.createElement('h4');
-  const inputRepeatPass = document.createElement('input');
-  inputRepeatPass.setAttribute('id', 'repeated');
-  const registeredButton = document.createElement('button');
-  registeredButton.classList.add('registeredButton');
+  // const passRegister = document.createElement('h4');
+  // const inputPass = document.createElement('input');
+  // inputPass.setAttribute('id', 'pass');
+  // const repeatPassRegister = document.createElement('h4');
+  // const inputRepeatPass = document.createElement('input');
+  // inputRepeatPass.setAttribute('id', 'repeated');
+
+  const sendEmailButton = document.createElement('button');
+  sendEmailButton.classList.add('sendEmail');
 
   emailRegister.textContent = 'Correo electrónico';
-  passRegister.textContent = 'Contraseña';
-  repeatPassRegister.textContent = 'Repite la contraseña';
-  registeredButton.textContent = 'Regístrate';
+  // passRegister.textContent = 'Contraseña';
+  // repeatPassRegister.textContent = 'Repite la contraseña';
+  sendEmailButton.textContent = 'Enviar correo electrónico';
+  /* function isValidEmail(email) {
+    // Expresión regular para validar el formato del correo electrónico
+    const emailPattern = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+    return emailPattern.test(email);
+  } */
+
+  sendEmailButton.addEventListener('click', () => {
+    const email = inputEmail.value;
+    sendEmailLink(email);
+  });
+
+  // Validación del correo electrónico
+  /* if (!isValidEmail(email)) {
+      alert('Correo electrónico no válido');
+      // Muestra un mensaje de error al usuario
+      // Puedes usar una alerta, mostrar un mensaje en el DOM, etc.
+    }
+  });
+  /* const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log('Usuario registrado:', user);
+        // ...
+
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // Handle errors
+          });
+      }); */
 
   // eslint-disable-next-line max-len
-  sectionRegister.append(emailRegister, inputEmail, userRegister, inputUser, passRegister, inputPass, repeatPassRegister, inputRepeatPass, registeredButton);
-
-
+  sectionRegister.append(emailRegister, inputEmail, sendEmailButton);
 
   return sectionRegister;
 }
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
-
 export default register;
