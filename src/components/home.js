@@ -1,4 +1,5 @@
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { app } from '../firebase';
 
 function home(navigateTo) {
   const section = document.createElement('section');
@@ -28,7 +29,7 @@ function home(navigateTo) {
 
   googleButton.addEventListener('click', () => {
     const provider = new GoogleAuthProvider();
-    const auth = getAuth();
+    const auth = getAuth(app);
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
