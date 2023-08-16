@@ -2,7 +2,7 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 function register() {
   const sectionRegister = document.createElement('section');
-  sectionRegister.addClassList = 'registerSection';
+  sectionRegister.classList.add('registerSection');
   const emailRegister = document.createElement('h4');
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('id', 'email');
@@ -16,16 +16,17 @@ function register() {
   const inputRepeatPass = document.createElement('input');
   inputRepeatPass.setAttribute('id', 'repeated');
   const registeredButton = document.createElement('button');
-  registeredButton.addClassList = 'registeredButton';
+  registeredButton.classList.add('registeredButton');
 
   emailRegister.textContent = 'Correo electrónico';
-  userRegister.textContent = 'Nombre de usuario';
   passRegister.textContent = 'Contraseña';
   repeatPassRegister.textContent = 'Repite la contraseña';
   registeredButton.textContent = 'Regístrate';
 
   // eslint-disable-next-line max-len
   sectionRegister.append(emailRegister, inputEmail, userRegister, inputUser, passRegister, inputPass, repeatPassRegister, inputRepeatPass, registeredButton);
+
+
 
   return sectionRegister;
 }

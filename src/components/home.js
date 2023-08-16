@@ -3,15 +3,15 @@ import { app } from '../firebase';
 
 function home(navigateTo) {
   const section = document.createElement('section');
-  section.addClassList = 'homeSection';
+  section.classList.add('homeSection');
   const titleLogin = document.createElement('h2');
   const emailButton = document.createElement('button');
-  emailButton.addClassList = 'loginButton';
+  emailButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
-  googleButton.addClassList = 'loginButton';
+  googleButton.classList.add('loginButton');
   const titleRegister = document.createElement('h3');
   const registerButton = document.createElement('button');
-  registerButton.addClassList = 'registerButton';
+  registerButton.classList.add('registerButton');
 
   emailButton.textContent = 'Correo electrónico';
   googleButton.textContent = 'Google';
