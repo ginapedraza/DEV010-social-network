@@ -43,26 +43,26 @@ export const loginWithGoogle = () => {
 };
 
 // Instrucciones para construir el vínculo al correo electrónico
-const actionCodeSettings = {
-  // URL you want to redirect back to. The domain (www.example.com) for this
-  // URL must be in the authorized domains list in the Firebase Console.
-  url: 'https://social-network-f3bfb.firebaseapp.com',
-  // This must be true.
-  handleCodeInApp: true,
-  iOS: {
-    bundleId: 'com.example.ios',
-  },
-  android: {
-    packageName: 'com.example.android',
-    installApp: true,
-    minimumVersion: '12',
-  },
-  /*dynamicLinkDomain: 'example.page.link',*/
-};
+// const actionCodeSettings = {
+//   // URL you want to redirect back to. The domain (www.example.com) for this
+//   // URL must be in the authorized domains list in the Firebase Console.
+//   url: 'https://social-network-f3bfb.firebaseapp.com',
+//   // This must be true.
+//   handleCodeInApp: true,
+//   iOS: {
+//     bundleId: 'com.example.ios',
+//   },
+//   android: {
+//     packageName: 'com.example.android',
+//     installApp: true,
+//     minimumVersion: '12',
+//   },
+//   /*dynamicLinkDomain: 'example.page.link',*/
+// };
 const auth = getAuth();
 
 // Función que envia link al correo electrónico
-export const createUser = (email) => createUserWithEmailAndPassword(auth, email, actionCodeSettings)
+export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then(() => {
     sendEmailVerification(auth.currentUser)
       .then(() => {

@@ -1,3 +1,6 @@
+import { signIn } from "../firebase";
+import home from "./home";
+
 function login(navigateTo) {
   const section = document.createElement('section');
   section.classList.add('loginSection');
@@ -17,6 +20,16 @@ function login(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
+
+  buttonLogin.addEventListener('click', (e) => {
+    // console.log(e);
+    e.preventDefault()
+    console.log('ok');
+    signIn(inputEmail.value, inputPass.value)
+      .then( () => {
+        navigateTo('/');
+      })
+  })
 
   form.append(inputEmail, inputPass, buttonLogin);
   section.append(title, form, buttonReturn);
