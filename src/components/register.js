@@ -8,6 +8,7 @@ function register() {
   inputEmail.setAttribute('id', 'email');
   const passRegister = document.createElement('h4');
   const inputPass = document.createElement('input');
+  inputPass.type = 'password';
   inputPass.setAttribute('id', 'pass');
   // const repeatPassRegister = document.createElement('h4');
   // const inputRepeatPass = document.createElement('input');

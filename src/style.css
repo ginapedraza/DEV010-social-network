@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.homeSection {
+    background-image: url("images/BACKGROUNDPICTURE1.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.loginSection {
+    background-image: url("images/background-picture-2.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.registerSection {
+    background-image: url("images/backgroundpicture-3.png");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}

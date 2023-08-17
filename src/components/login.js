@@ -1,5 +1,4 @@
-import { signIn } from "../firebase";
-import home from "./home";
+import { signIn } from '../firebase';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -9,9 +8,12 @@ function login(navigateTo) {
   const form = document.createElement('form');
   const inputEmail = document.createElement('input');
   const inputPass = document.createElement('input');
+  inputPass.type = 'password';
   const buttonLogin = document.createElement('button');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
+  const getEmail = inputEmail.value;
+  const getPass = inputPass.value;
 
   title.textContent = 'Inicia sesión';
   buttonLogin.textContent = 'Ingresar';
@@ -23,13 +25,13 @@ function login(navigateTo) {
 
   buttonLogin.addEventListener('click', (e) => {
     // console.log(e);
-    e.preventDefault()
-    console.log('ok');
-    signIn(inputEmail.value, inputPass.value)
-      .then( () => {
-        navigateTo('/');
-      })
-  })
+    e.preventDefault();
+    // console.log('ok');
+    signIn(getEmail, getPass)
+      .then(() => {
+        navigateTo('/feed');
+      });
+  });
 
   form.append(inputEmail, inputPass, buttonLogin);
   section.append(title, form, buttonReturn);

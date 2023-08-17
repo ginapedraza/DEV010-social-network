@@ -71,13 +71,22 @@ export const createUser = (email, password) => createUserWithEmailAndPassword(au
       .then(() => {
         // Email verification sent!
         // ...
-        console.log('enviadooooo');
+        alert('Hemos enviado el link de verificación a tu correo.');
       });
     // ...
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    if (errorCode === 'auth/email-already-in-use') {
+      alert('La dirección de correo electrónico proporcionada ya esta en uso.');
+    }
+    if (password.length < 6) {
+      alert('La contraseña debe tener al menos 6 caracteres');
+    } else {
+      alert(errorMessage);
+    }
+
     // ..
   });
 
@@ -86,13 +95,17 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
   .then((userCredential) => {
     console.log(userCredential.user.emailVerified);
     if (userCredential.user.emailVerified === true) {
-      console.log('bienvenido al muro');
+      // console.log('bienvenido al muro');
+      //navigateTo('/feed');
     } else {
-      console.log('Aun no verifcas tu email');
+      alert('Aun no verificas tu email');
     }
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    console.log(errorMessage);
+    //if (errorCode === 'auth/invalid-email-verified') {
+      //alert('Correo electrónico no existe');
+    //}
+    // console.log(errorMessage);
   });

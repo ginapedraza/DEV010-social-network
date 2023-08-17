@@ -3,6 +3,10 @@ import { loginWithGoogle } from '../firebase.js';
 function home(navigateTo) {
   const section = document.createElement('section');
   section.classList.add('homeSection');
+  const sectionLogo = document.createElement('section');
+  sectionLogo.classList.add('logo-section');
+  const sectionGeneral = document.createElement('section');
+  sectionGeneral.classList.add('general');
   const titleLogin = document.createElement('h2');
   const emailButton = document.createElement('button');
   emailButton.classList.add('loginButton');
@@ -30,7 +34,8 @@ function home(navigateTo) {
     loginWithGoogle();
   });
 
-  section.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
+  sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
+  section.append(sectionLogo, sectionGeneral);
   return section;
 }
 
