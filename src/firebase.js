@@ -46,7 +46,7 @@ export const loginWithGoogle = () => {
 const actionCodeSettings = {
   // URL you want to redirect back to. The domain (www.example.com) for this
   // URL must be in the authorized domains list in the Firebase Console.
-  url: 'https://social-network-f3bfb.firebaseapp.com/__/auth/action',
+  url: 'https://social-network-f3bfb.firebaseapp.com',
   // This must be true.
   handleCodeInApp: true,
   iOS: {
@@ -57,7 +57,7 @@ const actionCodeSettings = {
     installApp: true,
     minimumVersion: '12',
   },
-  dynamicLinkDomain: 'example.page.link',
+  /*dynamicLinkDomain: 'example.page.link',*/
 };
 const auth = getAuth();
 
@@ -94,7 +94,7 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
     console.log(errorMessage);
   });
 
-/* export const sendEmailLink = async (email) => {
+/*export const sendEmailLink = async (email) => {
   try {
     const auth = getAuth();
     await sendSignInLinkToEmail(auth, email, actionCodeSettings);
@@ -108,4 +108,4 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
     const errorMessage = error.message;
     // Maneja el error...
   }
-}; */
+};*/

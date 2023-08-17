@@ -1,4 +1,4 @@
-import { createUser } from '../firebase.js';
+import { createUser, sendEmailLink  } from '../firebase.js';
 
 function register() {
   const sectionRegister = document.createElement('section');
@@ -30,6 +30,7 @@ function register() {
     const email = inputEmail.value;
     // const password = inputPass.value;
     createUser(email);
+    sendEmailLink(email);
   });
 
   // Validación del correo electrónico
