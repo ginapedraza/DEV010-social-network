@@ -1,4 +1,4 @@
-import { sendEmailLink } from '../firebase.js';
+import { createUser } from '../firebase.js';
 
 function register() {
   const sectionRegister = document.createElement('section');
@@ -6,9 +6,9 @@ function register() {
   const emailRegister = document.createElement('h4');
   const inputEmail = document.createElement('input');
   inputEmail.setAttribute('id', 'email');
-  // const passRegister = document.createElement('h4');
-  // const inputPass = document.createElement('input');
-  // inputPass.setAttribute('id', 'pass');
+  const passRegister = document.createElement('h4');
+  const inputPass = document.createElement('input');
+  inputPass.setAttribute('id', 'pass');
   // const repeatPassRegister = document.createElement('h4');
   // const inputRepeatPass = document.createElement('input');
   // inputRepeatPass.setAttribute('id', 'repeated');
@@ -17,7 +17,7 @@ function register() {
   sendEmailButton.classList.add('sendEmail');
 
   emailRegister.textContent = 'Correo electrónico';
-  // passRegister.textContent = 'Contraseña';
+  passRegister.textContent = 'Contraseña';
   // repeatPassRegister.textContent = 'Repite la contraseña';
   sendEmailButton.textContent = 'Enviar correo electrónico';
   /* function isValidEmail(email) {
@@ -28,7 +28,8 @@ function register() {
 
   sendEmailButton.addEventListener('click', () => {
     const email = inputEmail.value;
-    sendEmailLink(email);
+    // const password = inputPass.value;
+    createUser(email);
   });
 
   // Validación del correo electrónico
@@ -54,7 +55,7 @@ function register() {
       }); */
 
   // eslint-disable-next-line max-len
-  sectionRegister.append(emailRegister, inputEmail, sendEmailButton);
+  sectionRegister.append(emailRegister, inputEmail, passRegister, inputPass, sendEmailButton);
 
   return sectionRegister;
 }

@@ -1,7 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import {
-  getAuth, signInWithPopup, GoogleAuthProvider, sendSignInLinkToEmail,
-} from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -25,22 +23,22 @@ export const loginWithGoogle = () => {
   const auth = getAuth(app);
   signInWithPopup(auth, provider)
     .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
+      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       // The signed-in user info.
       const user = result.user;
-    // IdP data available using getAdditionalUserInfo(result)
-    // ...
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
     }).catch((error) => {
-    // Handle Errors here.
+      // Handle Errors here.
       const errorCode = error.code;
       const errorMessage = error.message;
       // The email of the user's account used.
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
+      // ...
     });
 };
 
@@ -61,9 +59,42 @@ const actionCodeSettings = {
   },
   dynamicLinkDomain: 'example.page.link',
 };
+const auth = getAuth();
 
 // Función que envia link al correo electrónico
-export const sendEmailLink = async () => {
+export const createUser = (email) => createUserWithEmailAndPassword(auth, email, actionCodeSettings)
+  .then(() => {
+    sendEmailVerification(auth.currentUser)
+      .then(() => {
+        // Email verification sent!
+        // ...
+        console.log('enviadooooo');
+      });
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
+
+  .then((userCredential) => {
+    console.log(userCredential.user.emailVerified);
+    if (userCredential.user.emailVerified === true) {
+      console.log('bienvenido al muro');
+    } else {
+      console.log('Aun no verifcas tu email');
+    }
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage);
+  });
+
+/* export const sendEmailLink = async (email) => {
   try {
     const auth = getAuth();
     await sendSignInLinkToEmail(auth, email, actionCodeSettings);
@@ -77,4 +108,4 @@ export const sendEmailLink = async () => {
     const errorMessage = error.message;
     // Maneja el error...
   }
-};
+}; */
