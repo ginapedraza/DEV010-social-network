@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
+  sendEmailVerification, signInWithEmailAndPassword,
+} from 'firebase/auth';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -93,19 +96,3 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
     const errorMessage = error.message;
     console.log(errorMessage);
   });
-
-/*export const sendEmailLink = async (email) => {
-  try {
-    const auth = getAuth();
-    await sendSignInLinkToEmail(auth, email, actionCodeSettings);
-    // El vínculo se envió exitosamente. Informa al usuario.
-    // Guarda el correo electrónico localmente para no pedírselo nuevamente
-    // si abren el vínculo en el mismo dispositivo.
-    window.localStorage.setItem('emailForSignIn', email);
-    // ...
-  } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // Maneja el error...
-  }
-};*/
