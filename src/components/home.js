@@ -5,6 +5,10 @@ function home(navigateTo) {
   section.classList.add('homeSection');
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
+  const imageLogo = document.createElement('img');
+  imageLogo.src = 'images/logo-home.png';
+  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.classList.add('logoImg');
   const sectionGeneral = document.createElement('section');
   sectionGeneral.classList.add('general');
   const titleLogin = document.createElement('h2');
@@ -33,7 +37,7 @@ function home(navigateTo) {
   googleButton.addEventListener('click', () => {
     loginWithGoogle();
   });
-
+  sectionLogo.append(imageLogo);
   sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
   section.append(sectionLogo, sectionGeneral);
   return section;

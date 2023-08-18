@@ -9,6 +9,24 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column; /* Alinear elementos verticalmente */
+    justify-content: flex-end; /* Justificar hacia la parte inferior */
+    align-items: center; /* Centrar horizontalmente */
+}
+
+.logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+}
+
+.logoImg {
+   width: 250px;
+   height: 250px;
+
 }
 
 .loginSection {
@@ -17,6 +35,10 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column; /* Alinear elementos verticalmente */
+    justify-content: flex-end; /* Justificar hacia la parte inferior */
+    align-items: center; /* Centrar horizontalmente */
 }
 
 .registerSection {
@@ -25,4 +47,52 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
+    display: flex;
+    flex-direction: column; /* Alinear elementos verticalmente */
+    justify-content: flex-end; /* Justificar hacia la parte inferior */
+    align-items: center; /* Centrar horizontalmente */
+}
+
+.general {
+    background-color: #FFF;
+    height: auto;
+    width: auto;
+    padding: 10% 20%;
+    margin: auto; /* Cambiado para ajustar el margen inferior */
+    border: none;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #151618;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.loginButton, .registerButton {
+    border-radius: 10px;
+    background: #011640;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    padding: 7%;
+}
+
+.generalLogin {
+    background-color: #011640;
+    height: auto;
+    width: auto;
+    padding: 10% 20%;
+    margin: auto; /* Cambiado para ajustar el margen inferior */
+    border: none;
+    border-radius: 5%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
