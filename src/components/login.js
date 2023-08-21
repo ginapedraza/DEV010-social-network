@@ -13,13 +13,15 @@ function login(navigateTo) {
   const sectionGeneral = document.createElement('section');
   sectionGeneral.classList.add('generalLogin');
   const title = document.createElement('h2');
-  const buttonReturn = document.createElement('button');
-  const form = document.createElement('form');
-  form.classList.add('formStyle');
   const inputEmail = document.createElement('input');
+  inputEmail.classList.add('input-login');
   const inputPass = document.createElement('input');
+  inputPass.classList.add('input-login');
   inputPass.type = 'password';
   const buttonLogin = document.createElement('button');
+  buttonLogin.classList.add('login-button');
+  const buttonReturn = document.createElement('button');
+  buttonReturn.classList.add('button-return');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
   // const getEmail = inputEmail.value;
@@ -64,8 +66,7 @@ function login(navigateTo) {
   });
 
   sectionLogo.append(imageLogo);
-  sectionGeneral.append(title, form, buttonReturn);
-  form.append(inputEmail, inputPass, buttonLogin);
+  sectionGeneral.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
   section.append(sectionLogo, sectionGeneral);
 
   return section;

@@ -1,26 +1,37 @@
 import { createUser } from '../firebase.js';
 
-function register() {
+function register(navigateTo) {
   const sectionRegister = document.createElement('section');
   sectionRegister.classList.add('registerSection');
-  const emailRegister = document.createElement('h4');
+  const sectionLogo = document.createElement('section');
+  sectionLogo.classList.add('logo-section');
+  const imageLogo = document.createElement('img');
+  imageLogo.src = 'images/logo-login.png';
+  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.classList.add('logoImg');
+  const generalRegister = document.createElement('section');
+  generalRegister.classList.add('generalRegister');
+  const titleRegister = document.createElement('h2');
   const inputEmail = document.createElement('input');
-  inputEmail.setAttribute('id', 'email');
-  const passRegister = document.createElement('h4');
+  inputEmail.classList.add('input-register');
   const inputPass = document.createElement('input');
+  inputPass.classList.add('input-register');
   inputPass.type = 'password';
-  inputPass.setAttribute('id', 'pass');
-  // const repeatPassRegister = document.createElement('h4');
-  // const inputRepeatPass = document.createElement('input');
-  // inputRepeatPass.setAttribute('id', 'repeated');
-
   const sendEmailButton = document.createElement('button');
   sendEmailButton.classList.add('sendEmail');
+  const buttonReturn = document.createElement('button');
+  buttonReturn.classList.add('button-return');
 
-  emailRegister.textContent = 'Correo electrónico';
-  passRegister.textContent = 'Contraseña';
-  // repeatPassRegister.textContent = 'Repite la contraseña';
-  sendEmailButton.textContent = 'Enviar correo electrónico';
+  titleRegister.textContent = 'Regístrate';
+  inputEmail.placeholder = 'Correo electrónico';
+  inputPass.placeholder = 'Contraseña';
+  buttonReturn.textContent = 'Volver atrás';
+
+  sendEmailButton.textContent = 'Enviar';
+
+  buttonReturn.addEventListener('click', () => {
+    navigateTo('/');
+  });
 
   sendEmailButton.addEventListener('click', () => {
     const email = inputEmail.value;
@@ -29,8 +40,9 @@ function register() {
   });
 
   // eslint-disable-next-line max-len
-  sectionRegister.append(emailRegister, inputEmail, passRegister, inputPass, sendEmailButton);
-
+  sectionRegister.append(sectionLogo, generalRegister);
+  sectionLogo.append(imageLogo);
+  generalRegister.append(titleRegister, inputEmail, inputPass, sendEmailButton, buttonReturn);
   return sectionRegister;
 }
 export default register;
