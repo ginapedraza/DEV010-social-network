@@ -35,7 +35,9 @@ function home(navigateTo) {
   });
 
   googleButton.addEventListener('click', () => {
-    loginWithGoogle();
+    loginWithGoogle().then(() => {
+      navigateTo('/feed');
+    });
   });
   sectionLogo.append(imageLogo);
   sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);

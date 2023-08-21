@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { initializeApp } from 'firebase/app';
 import {
   getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
@@ -24,44 +25,30 @@ const app = initializeApp(firebaseConfig);
 export const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
-  signInWithPopup(auth, provider)
-    .then((result) => {
+  return signInWithPopup(auth, provider)
+    .then((result) =>
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential.accessToken;
+      // permite extraer las credenciales de Google de un objeto UserCredential
+      // const credential = GoogleAuthProvider.credentialFromResult(result);
+      // const token = credential.accessToken;
       // The signed-in user info.
-      const user = result.user;
+      // const user = result.user;
       // IdP data available using getAdditionalUserInfo(result)
       // ...
-    }).catch((error) => {
+      // eslint-disable-next-line implicit-arrow-linebreak
+      result).catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorCode = error.code;
+      // const errorMessage = error.message;
       // The email of the user's account used.
-      const email = error.customData.email;
+      // const email = error.customData.email;
       // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
+      // const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
+      throw error;
     });
 };
 
-// Instrucciones para construir el vínculo al correo electrónico
-// const actionCodeSettings = {
-//   // URL you want to redirect back to. The domain (www.example.com) for this
-//   // URL must be in the authorized domains list in the Firebase Console.
-//   url: 'https://social-network-f3bfb.firebaseapp.com',
-//   // This must be true.
-//   handleCodeInApp: true,
-//   iOS: {
-//     bundleId: 'com.example.ios',
-//   },
-//   android: {
-//     packageName: 'com.example.android',
-//     installApp: true,
-//     minimumVersion: '12',
-//   },
-//   /*dynamicLinkDomain: 'example.page.link',*/
-// };
 const auth = getAuth();
 
 // Función que envia link al correo electrónico
@@ -91,21 +78,3 @@ export const createUser = (email, password) => createUserWithEmailAndPassword(au
   });
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
-/* .then((userCredential) => {
-    console.log(userCredential.user.emailVerified);
-    if (userCredential.user.emailVerified === true) {
-      console.log('bienvenido al muro');
-      //navigateTo('/feed');
-    } else {
-      alert('Aun no verificas tu email');
-    }
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    //if (errorCode === 'auth/invalid-email-verified') {
-      //alert('Correo electrónico no existe');
-    //}
-    // console.log(errorMessage);
-  }); */

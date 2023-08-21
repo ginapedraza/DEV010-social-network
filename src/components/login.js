@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { signIn } from '../firebase';
 
 function login(navigateTo) {
@@ -62,15 +63,6 @@ function login(navigateTo) {
     }
   });
 
-  /* buttonLogin.addEventListener('click', (e) => {
-    // console.log(e);
-    e.preventDefault();
-    // console.log('ok');
-    signIn(getEmail, getPass)
-      .then(() => {
-        navigateTo('/feed');
-      });
-  }); */
   sectionLogo.append(imageLogo);
   sectionGeneral.append(title, form, buttonReturn);
   form.append(inputEmail, inputPass, buttonLogin);
