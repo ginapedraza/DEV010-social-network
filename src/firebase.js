@@ -90,12 +90,12 @@ export const createUser = (email, password) => createUserWithEmailAndPassword(au
     // ..
   });
 
-export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password)
+export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-  .then((userCredential) => {
+/* .then((userCredential) => {
     console.log(userCredential.user.emailVerified);
     if (userCredential.user.emailVerified === true) {
-      // console.log('bienvenido al muro');
+      console.log('bienvenido al muro');
       //navigateTo('/feed');
     } else {
       alert('Aun no verificas tu email');
@@ -108,4 +108,4 @@ export const signIn = (email, password) => signInWithEmailAndPassword(auth, emai
       //alert('Correo electrónico no existe');
     //}
     // console.log(errorMessage);
-  });
+  }); */
