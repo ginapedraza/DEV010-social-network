@@ -24,6 +24,8 @@ function login(navigateTo) {
   buttonLogin.classList.add('login-button');
   const buttonReturn = document.createElement('button');
   buttonReturn.classList.add('button-return');
+  const errorAlert = document.createElement('p');
+  errorAlert.classList.add('error');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
   // const getEmail = inputEmail.value;
@@ -42,6 +44,7 @@ function login(navigateTo) {
     e.preventDefault();
     const getEmail = inputEmail.value;
     const getPass = inputPass.value;
+    const error1 = document.querySelector('.error');
 
     try {
       const userCredential = await signIn(getEmail, getPass);
@@ -54,21 +57,26 @@ function login(navigateTo) {
     } catch (error) {
       // Manejar el error de autenticación o verificación de correo aquí.
       if (error.code === 'auth/user-not-found') {
-        alert('Usuario no encontrado. Verifica tus credenciales.');
+        error1.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
+        // alert('Usuario no encontrado. Verifica tus credenciales.');
       } else if (error.code === 'auth/wrong-password') {
-        alert('Contraseña incorrecta. Verifica tus credenciales.');
+        error1.textContent = 'Contraseña incorrecta. Verifica tus credenciales.';
+        // alert('Contraseña incorrecta. Verifica tus credenciales.');
       } else if (error.code === 'auth/user-disabled') {
-        alert('Tu cuenta ha sido deshabilitada. Contacta al soporte.');
+        error1.textContent = 'Tu cuenta ha sido deshabilitada.';
+        // alert('Tu cuenta ha sido deshabilitada. Contacta al soporte.');
       } else if (error.code === 'auth/user-mismatch') {
-        alert('Hay un problema con tu cuenta. Contacta al soporte.');
+        error1.textContent = 'Hay un problema con tu cuenta.';
+        // alert('Hay un problema con tu cuenta. Contacta al soporte.');
       } else {
-        alert('Ocurrió un error. Por favor, intenta nuevamente.');
+        error1.textContent = 'Ocurrió un error. Por favor, intenta nuevamente.';
+        // alert('Ocurrió un error. Por favor, intenta nuevamente.');
       }
     }
   });
 
   sectionLogo.append(imageLogo);
-  sectionGeneral.append(title, inputEmail, inputPass, buttonLogin, buttonReturn);
+  sectionGeneral.append(title, inputEmail, inputPass, errorAlert, buttonLogin, buttonReturn);
   section.append(sectionLogo, sectionGeneral);
 
   return section;

@@ -1,8 +1,7 @@
 /* eslint-disable no-alert */
 import { initializeApp } from 'firebase/app';
 import {
-  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword,
-  sendEmailVerification, signInWithEmailAndPassword,
+  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
 // Import the functions you need from the SDKs you need
 
@@ -52,8 +51,8 @@ export const loginWithGoogle = () => {
 const auth = getAuth();
 
 // Función que envia link al correo electrónico
-export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password)
-  .then(() => {
+export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+/* .then(() => {
     sendEmailVerification(auth.currentUser)
       .then(() => {
         // Email verification sent!
@@ -75,6 +74,6 @@ export const createUser = (email, password) => createUserWithEmailAndPassword(au
     }
 
     // ..
-  });
+  }); */
 
 export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);

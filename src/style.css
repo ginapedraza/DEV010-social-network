@@ -108,12 +108,18 @@ body {
     margin: 15px;
 }
 
+.error {
+    color: white;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
 
 .generalLogin, .generalRegister{
     background-color: #011640;
     height: auto;
     width: auto;
-    padding: 15px 50px;
+    padding: 15px 38px;
     margin: auto; 
     border: none;
     border-radius: 5%;
