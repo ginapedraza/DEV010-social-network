@@ -15,8 +15,10 @@ function register(navigateTo) {
   const titleRegister = document.createElement('h2');
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('input-register');
+  inputEmail.setAttribute('id', 'inputEmail');
   const inputPass = document.createElement('input');
   inputPass.classList.add('input-register');
+  inputPass.setAttribute('id', 'inputPass');
   inputPass.type = 'password';
   const sendEmailButton = document.createElement('button');
   sendEmailButton.classList.add('sendEmail');
@@ -56,8 +58,8 @@ function register(navigateTo) {
       const errorCode = error.code;
       const errorMessage = error.message;
       if (errorCode === 'auth/email-already-in-use') {
-        messageAlert.textContent = 'La dirección de correo proporcionada ya esta en uso.';
-        // alert('La dirección de correo proporcionada ya esta en uso.');
+        messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
+        // alert('El correo proporcionado ya esta en uso.');
       } else if (password.length < 6) {
         messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');

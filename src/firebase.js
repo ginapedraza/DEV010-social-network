@@ -1,6 +1,7 @@
 /* eslint-disable no-alert */
 import { initializeApp } from 'firebase/app';
 import {
+  // eslint-disable-next-line max-len
   getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
 // Import the functions you need from the SDKs you need
@@ -51,6 +52,7 @@ export const loginWithGoogle = () => {
 const auth = getAuth();
 
 // Función que envia link al correo electrónico
+// eslint-disable-next-line max-len
 export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 /* .then(() => {
     sendEmailVerification(auth.currentUser)

@@ -60,7 +60,7 @@ function login(navigateTo) {
         error1.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
         // alert('Usuario no encontrado. Verifica tus credenciales.');
       } else if (error.code === 'auth/wrong-password') {
-        error1.textContent = 'Contraseña incorrecta. Verifica tus credenciales.';
+        error1.textContent = 'Contraseña incorrecta. Verifica tus datos.';
         // alert('Contraseña incorrecta. Verifica tus credenciales.');
       } else if (error.code === 'auth/user-disabled') {
         error1.textContent = 'Tu cuenta ha sido deshabilitada.';
@@ -69,8 +69,8 @@ function login(navigateTo) {
         error1.textContent = 'Hay un problema con tu cuenta.';
         // alert('Hay un problema con tu cuenta. Contacta al soporte.');
       } else {
-        error1.textContent = 'Ocurrió un error. Por favor, intenta nuevamente.';
-        // alert('Ocurrió un error. Por favor, intenta nuevamente.');
+        // error1.textContent = 'Ocurrió un error. Intenta nuevamente.';
+        alert('Ocurrió un error. Por favor, intenta nuevamente.');
       }
     }
   });
