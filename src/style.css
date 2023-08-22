@@ -21,12 +21,13 @@ body {
     justify-content: center;
     align-items: center;
     margin: auto;
+    flex-direction: column;
 
 }
 
 .logoImg {
    width: 250px;
-   height: 250px;
+   height: 150px;
 
 }
 
@@ -42,6 +43,12 @@ body {
     flex-direction: column; /* Alinear elementos verticalmente */
     justify-content: flex-end; /* Justificar hacia la parte inferior */
     align-items: center; /* Centrar horizontalmente */
+}
+
+.slogan-style {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: white;
 }
 
 .general {

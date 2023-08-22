@@ -9,6 +9,8 @@ function home(navigateTo) {
   imageLogo.src = 'images/logo-home.png';
   imageLogo.alt = 'Logo TweetFit';
   imageLogo.classList.add('logoImg');
+  const slogan = document.createElement('h2');
+  slogan.classList.add('slogan-style');
   const sectionGeneral = document.createElement('section');
   sectionGeneral.classList.add('general');
   const titleLogin = document.createElement('h2');
@@ -20,6 +22,7 @@ function home(navigateTo) {
   const registerButton = document.createElement('button');
   registerButton.classList.add('registerButton');
 
+  slogan.textContent = '¡Comparte tus éxitos, inspira tu Fitness!';
   emailButton.textContent = 'Correo electrónico';
   googleButton.textContent = 'Google';
   titleLogin.textContent = 'Inicia sesión';
@@ -39,7 +42,7 @@ function home(navigateTo) {
       navigateTo('/feed');
     });
   });
-  sectionLogo.append(imageLogo);
+  sectionLogo.append(imageLogo, slogan);
   sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
   section.append(sectionLogo, sectionGeneral);
   return section;
