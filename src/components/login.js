@@ -15,8 +15,10 @@ function login(navigateTo) {
   const title = document.createElement('h2');
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('input-login');
+  inputEmail.setAttribute('id', 'inputEmail');
   const inputPass = document.createElement('input');
   inputPass.classList.add('input-login');
+  inputPass.setAttribute('id', 'inputPass');
   inputPass.type = 'password';
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('login-button');
