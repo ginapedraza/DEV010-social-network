@@ -2,7 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import {
   // eslint-disable-next-line max-len
-  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
 } from 'firebase/auth';
 // Import the functions you need from the SDKs you need
 
@@ -56,4 +56,8 @@ const createUser = (email, password) => createUserWithEmailAndPassword(auth, ema
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-export { loginWithGoogle, createUser, signIn };
+const verifyEmail = (user) => sendEmailVerification(user);
+
+export {
+  loginWithGoogle, createUser, signIn, verifyEmail, auth,
+};

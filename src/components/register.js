@@ -1,5 +1,5 @@
-import { getAuth, sendEmailVerification } from 'firebase/auth';
-import { createUser } from '../firebase.js';
+// import { getAuth } from 'firebase/auth';
+import { createUser, verifyEmail, auth } from '../firebase.js';
 
 function register(navigateTo) {
   const sectionRegister = document.createElement('section');
@@ -34,7 +34,6 @@ function register(navigateTo) {
 
   sendEmailButton.textContent = 'Enviar';
 
-  const auth = getAuth();
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
@@ -45,27 +44,32 @@ function register(navigateTo) {
     const password = inputPass.value;
     const messageAlert = document.querySelector('.error');
     try {
-      await createUser(email, password);
-      sendEmailVerification(auth.currentUser)
-        .then(() => {
-          // Email verification sent!
-          // ...
-          messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
-          // alert('Hemos enviado el link de verificación a tu correo.');
-        });
+      const resUser = await createUser(email, password);
+      console.info({ resUser });
+      // sendEmailVerification(auth.currentUser)
+      //   .then(() => {
+      //     // Email verification sent!
+      //     // ...
+      //     messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+      //     // alert('Hemos enviado el link de verificación a tu correo.');
+      //   });
+      const resSend = await verifyEmail(auth.currentUser);
+      console.info({ resSend });
+      messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
       // ...
     } catch (error) {
+      console.error('Error register: ', error);
       const errorCode = error.code;
-      const errorMessage = error.message;
+      // const errorMessage = error.message;
       if (errorCode === 'auth/email-already-in-use') {
         messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
         // alert('El correo proporcionado ya esta en uso.');
       } else if (password.length < 6) {
         messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
-      } else {
-        messageAlert.textContent = errorMessage;
-        // alert(errorMessage);
+      // } else {
+      //   messageAlert.textContent = errorMessage;
+      //   // alert(errorMessage);
       }
 
       // ..

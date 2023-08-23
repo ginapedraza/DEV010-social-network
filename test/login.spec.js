@@ -2,7 +2,6 @@
 // import { sendEmailVerification } from 'firebase/auth';
 import * as auth from '../src/firebase.js';
 import login from '../src/components/login.js';
-// import register from '../src/components/register.js';
 
 describe('Testing Login function', () => {
   beforeEach(() => {
