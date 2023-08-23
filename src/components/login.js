@@ -68,10 +68,10 @@ function login(navigateTo) {
       } else if (error.code === 'auth/user-mismatch') {
         error1.textContent = 'Hay un problema con tu cuenta.';
         // alert('Hay un problema con tu cuenta. Contacta al soporte.');
-      } else {
+      } /* else {
         // error1.textContent = 'Ocurrió un error. Intenta nuevamente.';
         alert('Ocurrió un error. Por favor, intenta nuevamente.');
-      }
+      } */
     }
   });
 

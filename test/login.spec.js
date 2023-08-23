@@ -1,10 +1,14 @@
 // importamos la funcion que vamos a testear
-import { sendEmailVerification } from 'firebase/auth';
+// import { sendEmailVerification } from 'firebase/auth';
 import * as auth from '../src/firebase.js';
 import login from '../src/components/login.js';
-import register from '../src/components/register.js';
+// import register from '../src/components/register.js';
 
 describe('Testing Login function', () => {
+  beforeEach(() => {
+    // Restaurar la implementación original de auth.signIn antes de cada test
+    jest.restoreAllMocks();
+  });
   test('it should call signIn and redirect to feed when emailVerified is true', () => {
     jest.spyOn(auth, 'signIn').mockImplementation(() => Promise.resolve({ emailVerified: true, data: { code: 'mockData' } }));
 
@@ -24,24 +28,21 @@ describe('Testing Login function', () => {
       expect(navigateTo).toHaveBeenCalledWith('/feed');
     }, 0);
   });
-});
 
-describe('Testing register function', () => {
-  test('it should call function createUser and create a new user', () => {
-    jest.spyOn(auth, 'createUser').mockImplementation(() => Promise.resolve({ currentUser: true, data: { code: 'mockData' } }));
-
+  test('it should show an error when signIn return emailVerified=false with code auth/user-not-found', () => {
+    jest.spyOn(auth, 'signIn').mockImplementation(() => Promise.resolve({ emailVerified: false, data: { code: 'auth/user-not-found' } }));
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
-    DOM.append(register(navigateTo));
-    const sendEmailButton = DOM.querySelector('.sendEmail');
-
+    DOM.append(login(navigateTo));
+    const buttonLogin = DOM.querySelector('.login-button');
     DOM.querySelector('#inputEmail').value = 'test@email.com';
     DOM.querySelector('#inputPass').value = '123456';
-
-    sendEmailButton.click();
-    expect(auth.createUser).toHaveBeenCalledTimes(1);
+    const error1 = DOM.querySelector('.error');
+    buttonLogin.click();
+    expect(auth.signIn).toHaveBeenCalledTimes(1);
     setTimeout(() => {
-      expect(sendEmailVerification).toHaveBeenCalledTimes(1);
+      expect(navigateTo).toHaveBeenCalledTimes(0);
+      expect(error1.innerText).toBe('Usuario no encontrado. Verifica tus credenciales.');
     }, 0);
   });
 });

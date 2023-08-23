@@ -22,7 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-export const loginWithGoogle = () => {
+const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
   return signInWithPopup(auth, provider)
@@ -50,32 +50,10 @@ export const loginWithGoogle = () => {
 };
 
 const auth = getAuth();
-
-// Función que envia link al correo electrónico
+// Función que envia link al correo electrónico para crear usuario
 // eslint-disable-next-line max-len
-export const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
-/* .then(() => {
-    sendEmailVerification(auth.currentUser)
-      .then(() => {
-        // Email verification sent!
-        // ...
-        alert('Hemos enviado el link de verificación a tu correo.');
-      });
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    if (errorCode === 'auth/email-already-in-use') {
-      alert('La dirección de correo electrónico proporcionada ya esta en uso.');
-    }
-    if (password.length < 6) {
-      alert('La contraseña debe tener al menos 6 caracteres');
-    } else {
-      alert(errorMessage);
-    }
+const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+// Función que inicia sesión con email y password
+const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
-    // ..
-  }); */
-
-export const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
+export { loginWithGoogle, createUser, signIn };

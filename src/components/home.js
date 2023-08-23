@@ -17,7 +17,7 @@ function home(navigateTo) {
   const emailButton = document.createElement('button');
   emailButton.classList.add('loginButton');
   const googleButton = document.createElement('button');
-  googleButton.classList.add('loginButton');
+  googleButton.classList.add('googleButton');
   const titleRegister = document.createElement('h3');
   const registerButton = document.createElement('button');
   registerButton.classList.add('registerButton');
