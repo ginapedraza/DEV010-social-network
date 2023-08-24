@@ -1,5 +1,5 @@
 // import { sendEmailVerification } from 'firebase/auth';
-import * as auth from '../src/firebase.js';
+// import { verifyEmail } from '../src/firebase.js';
 // import { verifyEmail, createUser } from '../src/firebase.js';
 import register from '../src/components/register.js';
 
@@ -9,8 +9,8 @@ const objectAuth = {
 
 jest.mock('../src/firebase.js', () => (
   {
-    verifyEmail: jest.fn(() => Promise.resolve()),
-    createUser: jest.fn(() => Promise.resolve()),
+    verifyEmail: jest.fn(),
+    createUser: jest.fn(() => Promise.resolve({ response: { test: 'test' } })),
     auth: jest.fn(() => objectAuth),
   }
 ));
@@ -24,12 +24,16 @@ describe('Testing register function', () => {
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(register(navigateTo));
+
     const sendEmailButton = DOM.querySelector('.sendEmail');
 
     DOM.querySelector('#inputEmail').value = 'test@email.com';
     DOM.querySelector('#inputPass').value = '123456';
 
+    const verifyEmail = jest.fn();
+
     sendEmailButton.click();
-    expect(auth.verifyEmail).toHaveBeenCalledTimes(1);
+
+    expect(verifyEmail).toHaveBeenCalledTimes(1);
   });
 });

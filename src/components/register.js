@@ -53,9 +53,8 @@ function register(navigateTo) {
       //     messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
       //     // alert('Hemos enviado el link de verificación a tu correo.');
       //   });
-      const resSend = await verifyEmail(auth.currentUser);
-      console.info({ resSend });
-      messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+      await verifyEmail(auth.currentUser);
+      // messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
       // ...
     } catch (error) {
       console.error('Error register: ', error);

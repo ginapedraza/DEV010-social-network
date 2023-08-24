@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: rgb(242, 242, 242);
 }
 
 .registerButton {
@@ -202,4 +203,64 @@ body {
     justify-content: flex-end; /* Justificar hacia la parte inferior */
     align-items: center; /* Centrar horizontalmente */
 }
+/* Feed */
 
+.headerClass {
+  background-color: #011640;
+  height: 18vh;
+  text-align:right;
+  padding:15px
+}
+.logoImgFeed {
+  width: 25vh;
+  height: 15vh;
+}
+.button-logout {
+  border-radius: 10px;
+  background: none;
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #FFF;
+  border: none;
+  margin:0 5%
+  
+}
+.textAreaSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 50px;
+  margin: auto;
+  background-color: #F2F2F2;
+}
+@media (min-width: 700px) {
+.textAreaSection {
+    width: 80%;
+    
+}
+}
+.sendPost-button{
+  border-radius: 10px;
+  background: #F26938;
+  text-align: center;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #FFF;
+  padding: 10px;
+  border: none;
+  margin: 15px 0px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+  align-self: flex-end;
+}
+.text-area{
+  margin: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 15px;
+  padding: 2rem 1rem;
+  width: 100%;
+  height: auto;
+  resize: none;
+}

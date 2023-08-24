@@ -36,15 +36,8 @@ const loginWithGoogle = () => {
       // IdP data available using getAdditionalUserInfo(result)
       // ...
       // eslint-disable-next-line implicit-arrow-linebreak
-      result).catch((error) => {
-      // Handle Errors here.
-      // const errorCode = error.code;
-      // const errorMessage = error.message;
-      // The email of the user's account used.
-      // const email = error.customData.email;
-      // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
+      result)
+    .catch((error) => {
       throw error;
     });
 };
@@ -52,7 +45,9 @@ const loginWithGoogle = () => {
 const auth = getAuth();
 // Función que envia link al correo electrónico para crear usuario
 // eslint-disable-next-line max-len
-const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+const createUser = (email, password) => {
+  createUserWithEmailAndPassword(auth, email, password);
+};
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 

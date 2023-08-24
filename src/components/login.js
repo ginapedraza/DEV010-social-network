@@ -52,7 +52,7 @@ function login(navigateTo) {
         // El usuario está autenticado y su correo está verificado.
         navigateTo('/feed');
       } else {
-        alert('Aun no verificas tu email');
+        error1.textContent = 'Aun no verificas tu email';
       }
     } catch (error) {
       // Manejar el error de autenticación o verificación de correo aquí.
