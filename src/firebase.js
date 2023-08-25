@@ -23,10 +23,18 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Guardamos en auth la función de firebase getAuth para la autenticación
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+db.collection('todos').getDocs();
+// const todosCol = collection(db, 'todos');
+// const snapshot = getDocs(todosCol);
+
 // Función que inicia sesión con google
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
-  const auth = getAuth(app);
+  // const auth = getAuth(app);
   return signInWithPopup(auth, provider)
     .then((result) =>
       // This gives you a Google Access Token. You can use it to access the Google API.
@@ -44,8 +52,6 @@ const loginWithGoogle = () => {
     });
 };
 
-// Guardamos en auth la función de firebase getAuth para la autenticación
-const auth = getAuth();
 // Función que crea el usuario con correo y contraseña
 const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
@@ -64,7 +70,6 @@ const signIn = (email, password) => signInWithEmailAndPassword(auth, email, pass
     correo: valCorreo,
   });
 } */
-const db = getFirestore(app);
 
 const savePost = (post) => {
   try {
