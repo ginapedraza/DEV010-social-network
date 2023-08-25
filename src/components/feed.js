@@ -1,3 +1,5 @@
+// import { savePost } from '../firebase.js';
+
 function feed() {
   const generalFeed = document.createElement('section');
   const sectionHeader = document.createElement('header');
@@ -18,6 +20,12 @@ function feed() {
   const sendPostButton = document.createElement('button');
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
+
+  /* sendPostButton.addEventListener('click', () => {
+    const post = textArea.value;
+    savePost(post);
+    console.log(post);
+  }); */
 
   generalFeed.append(sectionHeader, textAreaSection);
   sectionHeader.append(sectionLogo, buttonLogout);

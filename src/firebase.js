@@ -4,6 +4,8 @@ import {
   // eslint-disable-next-line max-len
   getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
 } from 'firebase/auth';
+// import { firebase } from 'firebase/firestore';
+// import { getFirestore, collection, addDoc } from 'firebase/firestore';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,7 +23,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
+// Función que inicia sesión con google
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   const auth = getAuth(app);
@@ -42,16 +44,65 @@ const loginWithGoogle = () => {
     });
 };
 
+// Guardamos en auth la función de firebase getAuth para la autenticación
 const auth = getAuth();
-// Función que envia link al correo electrónico para crear usuario
-// eslint-disable-next-line max-len
+// Función que crea el usuario con correo y contraseña
 const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
+  const UserCredential = createUserWithEmailAndPassword(auth, email, password);
+  return UserCredential.user;
 };
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
+//  Función que envía email con link de verificación
 const verifyEmail = (user) => sendEmailVerification(user);
+
+// Probando crear colecciones para almacenar datos en firestore
+// Initialize Cloud Firestore and get a reference to the service
+
+// const db = getFirestore(app);
+
+/* function guardarCorreo(valCorreo) {
+  return db.collection('correos').add({
+    correo: valCorreo,
+  });
+} */
+/* const db = getFirestore(app);
+
+const savePost = (post) => {
+  try {
+    const docRef = addDoc(collection(db, 'posts'), {
+      userPost: post,
+
+    });
+    console.log('Document written with ID: ', docRef.id);
+  } catch (e) {
+    console.error('Error adding document: ', e);
+  }
+}; */
+
+/* const saveUser = (email) => {
+  db.collection('emails').add({
+    emailUser: email,
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
+    .catch((error) => {
+      console.error('Error adding document: ', error);
+    });
+}; */
+
+/* const saveUser = async (email) => {
+  try {
+    // Obtiene una referencia a la colección 'emails'
+    const emailsCollection = collection(db, 'emails');
+    // Agrega el documento con el correo electrónico
+    await addDoc(emailsCollection, { emailUser: email });
+    console.log('Email saved successfully.');
+  } catch (error) {
+    console.error('Error adding email: ', error);
+  }
+}; */
 
 export {
   loginWithGoogle, createUser, signIn, verifyEmail, auth,

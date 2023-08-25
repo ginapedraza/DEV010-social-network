@@ -1,5 +1,7 @@
 // import { getAuth } from 'firebase/auth';
-import { createUser, verifyEmail, auth } from '../firebase.js';
+import {
+  createUser, verifyEmail, auth,
+} from '../firebase.js';
 
 function register(navigateTo) {
   const sectionRegister = document.createElement('section');
@@ -44,8 +46,8 @@ function register(navigateTo) {
     const password = inputPass.value;
     const messageAlert = document.querySelector('.error');
     try {
-      const resUser = await createUser(email, password);
-      console.info({ resUser });
+      await createUser(email, password);
+      // console.info({ user });
       // sendEmailVerification(auth.currentUser)
       //   .then(() => {
       //     // Email verification sent!
@@ -54,8 +56,10 @@ function register(navigateTo) {
       //     // alert('Hemos enviado el link de verificación a tu correo.');
       //   });
       await verifyEmail(auth.currentUser);
-      // messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+      messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
       // ...
+      // await saveUser(email);
+      // console.info({ email });
     } catch (error) {
       console.error('Error register: ', error);
       const errorCode = error.code;
@@ -66,11 +70,10 @@ function register(navigateTo) {
       } else if (password.length < 6) {
         messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
-      // } else {
-      //   messageAlert.textContent = errorMessage;
-      //   // alert(errorMessage);
-      }
-
+      } // else {
+      // messageAlert.textContent = errorMessage;
+      // alert(errorMessage);
+      // }
       // ..
     }
   });
