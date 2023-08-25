@@ -2,10 +2,10 @@
 import { initializeApp } from 'firebase/app';
 import {
   // eslint-disable-next-line max-len
-  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
+  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
 // import { firebase } from 'firebase/firestore';
-// import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -47,14 +47,12 @@ const loginWithGoogle = () => {
 // Guardamos en auth la función de firebase getAuth para la autenticación
 const auth = getAuth();
 // Función que crea el usuario con correo y contraseña
-const createUser = (email, password) => {
-  const UserCredential = createUserWithEmailAndPassword(auth, email, password);
-  return UserCredential.user;
-};
+const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 //  Función que envía email con link de verificación
-const verifyEmail = (user) => sendEmailVerification(user);
+// const verifyEmail = (user) => sendEmailVerification(user);
 
 // Probando crear colecciones para almacenar datos en firestore
 // Initialize Cloud Firestore and get a reference to the service
@@ -66,7 +64,7 @@ const verifyEmail = (user) => sendEmailVerification(user);
     correo: valCorreo,
   });
 } */
-/* const db = getFirestore(app);
+const db = getFirestore(app);
 
 const savePost = (post) => {
   try {
@@ -78,7 +76,7 @@ const savePost = (post) => {
   } catch (e) {
     console.error('Error adding document: ', e);
   }
-}; */
+};
 
 /* const saveUser = (email) => {
   db.collection('emails').add({
@@ -105,5 +103,5 @@ const savePost = (post) => {
 }; */
 
 export {
-  loginWithGoogle, createUser, signIn, verifyEmail, auth,
+  loginWithGoogle, createUser, signIn, auth, savePost,
 };

@@ -1,6 +1,7 @@
 // import { getAuth } from 'firebase/auth';
+import { sendEmailVerification } from 'firebase/auth';
 import {
-  createUser, verifyEmail, auth,
+  createUser, auth,
 } from '../firebase.js';
 
 function register(navigateTo) {
@@ -47,25 +48,17 @@ function register(navigateTo) {
     const messageAlert = document.querySelector('.error');
     try {
       await createUser(email, password);
-      // console.info({ user });
-      // sendEmailVerification(auth.currentUser)
-      //   .then(() => {
-      //     // Email verification sent!
-      //     // ...
-      //     messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
-      //     // alert('Hemos enviado el link de verificación a tu correo.');
-      //   });
-      await verifyEmail(auth.currentUser);
-      messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
-      // ...
-      // await saveUser(email);
-      // console.info({ email });
+      sendEmailVerification(auth.currentUser)
+        .then(() => {
+          //     // Email verification sent!
+          messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+        });
     } catch (error) {
-      console.error('Error register: ', error);
       const errorCode = error.code;
       // const errorMessage = error.message;
       if (errorCode === 'auth/email-already-in-use') {
         messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
+        // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
       } else if (password.length < 6) {
         messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';

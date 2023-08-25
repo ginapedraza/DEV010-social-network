@@ -1,4 +1,4 @@
-// import { savePost } from '../firebase.js';
+import { savePost } from '../firebase.js';
 
 function feed() {
   const generalFeed = document.createElement('section');
@@ -21,11 +21,11 @@ function feed() {
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
 
-  /* sendPostButton.addEventListener('click', () => {
+  sendPostButton.addEventListener('click', () => {
     const post = textArea.value;
     savePost(post);
-    console.log(post);
-  }); */
+    console.log(savePost);
+  });
 
   generalFeed.append(sectionHeader, textAreaSection);
   sectionHeader.append(sectionLogo, buttonLogout);
