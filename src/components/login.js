@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { signIn } from '../lib/index';
+import { signIn } from '../lib/index.js';
 
 function login(navigateTo) {
   const section = document.createElement('section');

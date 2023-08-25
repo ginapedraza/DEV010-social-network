@@ -1,6 +1,6 @@
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from '../firebase.js';
-import { savePost } from '../lib/index.js';
+// import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
+import { addPost, showPosts } from '../lib/index.js';
 
 function feed() {
   const generalFeed = document.createElement('section');
@@ -23,10 +23,27 @@ function feed() {
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
 
+  // Sección para mostrar los posts
+  // const postsSection = document.createElement('section');
+  // postsSection.classList.add('posts-section');
+  // const individualPost = document.createElement('article');
+  // individualPost.classList.add('individual-post');
+  // const postNameUser = document.createElement('h4');
+  // postNameUser.textContent = doc.data().email;
+
   sendPostButton.addEventListener('click', () => {
     const post = textArea.value;
-    savePost(post);
-    console.log(savePost);
+    const email = auth.currentUser.email;
+    if (post !== '') {
+      addPost(email, post).then(() => {
+        showPosts();
+        const getPostSection = document.getElementById('post-section');
+        generalFeed.append(getPostSection);
+        textArea.value = '';
+      });
+    } else {
+      alert('Please write something');
+    }
   });
 
   generalFeed.append(sectionHeader, textAreaSection);

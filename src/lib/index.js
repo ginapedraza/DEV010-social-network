@@ -2,24 +2,16 @@ import {
   // eslint-disable-next-line max-len
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+  addDoc, collection, getDocs,
+} from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
 // Función que inicia sesión con google
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   // const auth = getAuth(app);
   return signInWithPopup(auth, provider)
-    .then((result) =>
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // permite extraer las credenciales de Google de un objeto UserCredential
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      // The signed-in user info.
-      // const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-      // eslint-disable-next-line implicit-arrow-linebreak
-      result)
+    .then((result) => result)
     .catch((error) => {
       throw error;
     });
@@ -44,17 +36,46 @@ const signIn = (email, password) => signInWithEmailAndPassword(auth, email, pass
   });
 } */
 
-const savePost = (post) => {
-  try {
-    const docRef = getDocs(collection(db, 'posts'), {
-      userPost: post,
-
-    });
-    console.log('Document written with ID: ', docRef.id);
-  } catch (e) {
-    console.error('Error adding document: ', e);
-  }
+// Función para crear un post
+const addPost = async (email, post) => {
+  const postsCollection = collection(db, 'posts');
+  await addDoc(postsCollection, {
+    email,
+    post,
+  });
 };
+// Función para mostrar los posts
+const showPosts = async () => {
+  const postsSection = document.createElement('section');
+  postsSection.setAttribute('id', 'post-section');
+  const individualPost = document.createElement('article');
+  // individualPost.classList.add('individual-post');
+  const querySnapshot = await getDocs(collection(db, 'posts'));
+  console.log(querySnapshot);
+  // const posts = setUpPosts(querySnapshot.docs)
+  querySnapshot.forEach((doc) => {
+    // const post = doc.data();
+    const postNameUser = document.createElement('h4');
+    const postContent = document.createElement('p');
+    postNameUser.textContent = doc.data().email;
+    postContent.textContent = doc.data().post;
+
+    individualPost.append(postNameUser, postContent);
+  });
+  postsSection.append(individualPost);
+};
+
+/* const showPosts = async (data) => {
+  const postsQuery = query(collection(db, 'posts'));
+  const postsSnapshot = await getDocs(postsQuery);
+  postsSnapshot.forEach((doc) => {
+    const post = doc.data();
+    console.log(post);
+    const userPost = document.createElement('article');
+    userPost.classList.add('user-post');
+  });
+}; */
+
 export {
-  loginWithGoogle, createUser, signIn, savePost,
+  loginWithGoogle, createUser, signIn, addPost, showPosts,
 };
