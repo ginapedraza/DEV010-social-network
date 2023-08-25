@@ -1,5 +1,9 @@
 // import { getAuth } from 'firebase/auth';
-import { createUser, verifyEmail, auth } from '../firebase.js';
+import { sendEmailVerification } from 'firebase/auth';
+import {
+  createUser,
+} from '../lib/index';
+import { auth } from '../firebase.js';
 
 function register(navigateTo) {
   const sectionRegister = document.createElement('section');
@@ -44,33 +48,26 @@ function register(navigateTo) {
     const password = inputPass.value;
     const messageAlert = document.querySelector('.error');
     try {
-      const resUser = await createUser(email, password);
-      console.info({ resUser });
-      // sendEmailVerification(auth.currentUser)
-      //   .then(() => {
-      //     // Email verification sent!
-      //     // ...
-      //     messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
-      //     // alert('Hemos enviado el link de verificación a tu correo.');
-      //   });
-      await verifyEmail(auth.currentUser);
-      // messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
-      // ...
+      await createUser(email, password);
+      sendEmailVerification(auth.currentUser)
+        .then(() => {
+          //     // Email verification sent!
+          messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+        });
     } catch (error) {
-      console.error('Error register: ', error);
       const errorCode = error.code;
       // const errorMessage = error.message;
       if (errorCode === 'auth/email-already-in-use') {
         messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
+        // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
       } else if (password.length < 6) {
         messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
-      // } else {
-      //   messageAlert.textContent = errorMessage;
-      //   // alert(errorMessage);
-      }
-
+      } // else {
+      // messageAlert.textContent = errorMessage;
+      // alert(errorMessage);
+      // }
       // ..
     }
   });

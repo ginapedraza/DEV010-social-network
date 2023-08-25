@@ -2,8 +2,10 @@
 import { initializeApp } from 'firebase/app';
 import {
   // eslint-disable-next-line max-len
-  getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification,
+  getAuth,
 } from 'firebase/auth';
+// import { firebase } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 // Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -21,38 +23,38 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// Guardamos en auth la función de firebase getAuth para la autenticación
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-const loginWithGoogle = () => {
-  const provider = new GoogleAuthProvider();
-  const auth = getAuth(app);
-  return signInWithPopup(auth, provider)
-    .then((result) =>
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // permite extraer las credenciales de Google de un objeto UserCredential
-      // const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
-      // The signed-in user info.
-      // const user = result.user;
-      // IdP data available using getAdditionalUserInfo(result)
-      // ...
-      // eslint-disable-next-line implicit-arrow-linebreak
-      result)
+/* db.collection('todos').getDocs(); */
+// const todosCol = collection(db, 'todos');
+// const snapshot = getDocs(todosCol);
+
+/* const saveUser = (email) => {
+  db.collection('emails').add({
+    emailUser: email,
+  })
+    .then((docRef) => {
+      console.log('Document written with ID: ', docRef.id);
+    })
     .catch((error) => {
-      throw error;
+      console.error('Error adding document: ', error);
     });
-};
+}; */
 
-const auth = getAuth();
-// Función que envia link al correo electrónico para crear usuario
-// eslint-disable-next-line max-len
-const createUser = (email, password) => {
-  createUserWithEmailAndPassword(auth, email, password);
-};
-// Función que inicia sesión con email y password
-const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
-
-const verifyEmail = (user) => sendEmailVerification(user);
+/* const saveUser = async (email) => {
+  try {
+    // Obtiene una referencia a la colección 'emails'
+    const emailsCollection = collection(db, 'emails');
+    // Agrega el documento con el correo electrónico
+    await addDoc(emailsCollection, { emailUser: email });
+    console.log('Email saved successfully.');
+  } catch (error) {
+    console.error('Error adding email: ', error);
+  }
+}; */
 
 export {
-  loginWithGoogle, createUser, signIn, verifyEmail, auth,
+  auth, db,
 };

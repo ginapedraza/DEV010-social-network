@@ -1,3 +1,7 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from '../firebase.js';
+import { savePost } from '../lib/index.js';
+
 function feed() {
   const generalFeed = document.createElement('section');
   const sectionHeader = document.createElement('header');
@@ -18,6 +22,12 @@ function feed() {
   const sendPostButton = document.createElement('button');
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
+
+  sendPostButton.addEventListener('click', () => {
+    const post = textArea.value;
+    savePost(post);
+    console.log(savePost);
+  });
 
   generalFeed.append(sectionHeader, textAreaSection);
   sectionHeader.append(sectionLogo, buttonLogout);
