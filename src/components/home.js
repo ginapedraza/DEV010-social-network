@@ -1,4 +1,4 @@
-import { loginWithGoogle } from '../firebase.js';
+import { loginWithGoogle } from '../lib/index';
 
 function home(navigateTo) {
   const section = document.createElement('section');

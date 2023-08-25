@@ -1,5 +1,5 @@
 /* eslint-disable no-alert */
-import { signIn } from '../firebase';
+import { signIn } from '../lib/index';
 
 function login(navigateTo) {
   const section = document.createElement('section');

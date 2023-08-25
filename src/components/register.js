@@ -1,8 +1,9 @@
 // import { getAuth } from 'firebase/auth';
 import { sendEmailVerification } from 'firebase/auth';
 import {
-  createUser, auth,
-} from '../firebase.js';
+  createUser,
+} from '../lib/index';
+import { auth } from '../firebase.js';
 
 function register(navigateTo) {
   const sectionRegister = document.createElement('section');

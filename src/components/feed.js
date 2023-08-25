@@ -1,4 +1,6 @@
-import { savePost } from '../firebase.js';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth, db } from '../firebase.js';
+import { savePost } from '../lib/index.js';
 
 function feed() {
   const generalFeed = document.createElement('section');
