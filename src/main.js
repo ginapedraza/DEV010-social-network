@@ -10,6 +10,7 @@ import error from './components/error.js';
 import register from './components/register.js';
 import feed from './components/feed.js';
 import noFeed from './components/noFeed.js';
+import resetPassword from './components/resetPassword.js';
 
 const routes = [
   { path: '/', component: home },
@@ -18,6 +19,7 @@ const routes = [
   { path: '/register', component: register },
   { path: '/feed', component: feed },
   { path: '/noFeed', component: noFeed },
+  { path: '/resetPassword', component: resetPassword },
 ];
 
 const defaultRoute = '/';

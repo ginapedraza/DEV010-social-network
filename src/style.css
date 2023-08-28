@@ -205,6 +205,9 @@ body {
     margin: 15px;
     cursor: pointer;
 }
+.restorePassA {
+  cursor: pointer;
+}
 
 
 /*Register*/

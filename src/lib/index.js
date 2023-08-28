@@ -1,6 +1,6 @@
 import {
   // eslint-disable-next-line max-len
-  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
+  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
   addDoc, collection, getDocs, orderBy, query,
@@ -66,8 +66,15 @@ const logOut = async () => {
   await signOut(auth);
 };
 
-// Función para mostrar el post del usuario
+const restorePassword = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+    return true;
+  } catch (error) {
+    return error;
+  }
+};
 
 export {
-  loginWithGoogle, createUser, signIn, addPost, showPosts, logOut,
+  loginWithGoogle, createUser, signIn, addPost, showPosts, logOut, restorePassword,
 };

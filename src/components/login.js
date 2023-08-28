@@ -28,11 +28,18 @@ function login(navigateTo) {
   buttonReturn.classList.add('button-return');
   const errorAlert = document.createElement('p');
   errorAlert.classList.add('error');
+  const resetpassSection = document.createElement('section');
+  resetpassSection.classList.add('resetpass-section');
+  const restorePass = document.createElement('p');
+  restorePass.classList.add('restorePassP');
+  const resetPass = document.createElement('a');
+  resetPass.classList.add('restorePassA');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
   // const getEmail = inputEmail.value;
   // const getPass = inputPass.value;
-
+  resetPass.textContent = '¿Olvidaste tu contraseña?';
+  restorePass.textContent = 'Recuperala aquí';
   title.textContent = 'Inicia sesión';
   buttonLogin.textContent = 'Ingresar';
 
@@ -42,7 +49,9 @@ function login(navigateTo) {
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
-
+  restorePass.addEventListener('click', () => {
+    navigateTo('/resetPassword');
+  });
   buttonLogin.addEventListener('click', async (e) => {
     e.preventDefault();
     const getEmail = inputEmail.value;
@@ -80,8 +89,10 @@ function login(navigateTo) {
   });
 
   sectionLogo.append(imageLogo, slogan);
-  sectionGeneral.append(title, inputEmail, inputPass, errorAlert, buttonLogin, buttonReturn);
+  // eslint-disable-next-line max-len
+  sectionGeneral.append(title, inputEmail, inputPass, errorAlert, buttonLogin, buttonReturn, resetpassSection);
   section.append(sectionLogo, sectionGeneral);
+  resetpassSection.append(resetPass, restorePass);
 
   return section;
 }
