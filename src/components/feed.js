@@ -22,6 +22,8 @@ function feed() {
   const sendPostButton = document.createElement('button');
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
+  const postsSection = document.createElement('section');
+  postsSection.setAttribute('id', 'post-section');
 
   // Sección para mostrar los posts
   // const postsSection = document.createElement('section');
@@ -37,8 +39,6 @@ function feed() {
     if (post !== '') {
       addPost(email, post).then(() => {
         showPosts();
-        const getPostSection = document.getElementById('post-section');
-        generalFeed.append(getPostSection);
         textArea.value = '';
       });
     } else {
@@ -46,7 +46,7 @@ function feed() {
     }
   });
 
-  generalFeed.append(sectionHeader, textAreaSection);
+  generalFeed.append(sectionHeader, textAreaSection, postsSection);
   sectionHeader.append(sectionLogo, buttonLogout);
   sectionLogo.append(imageLogo);
   textAreaSection.append(textArea, sendPostButton);

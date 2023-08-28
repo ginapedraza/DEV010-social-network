@@ -46,23 +46,23 @@ const addPost = async (email, post) => {
 };
 // Función para mostrar los posts
 const showPosts = async () => {
-  const postsSection = document.createElement('section');
-  postsSection.setAttribute('id', 'post-section');
-  const individualPost = document.createElement('article');
-  // individualPost.classList.add('individual-post');
   const querySnapshot = await getDocs(collection(db, 'posts'));
-  console.log(querySnapshot);
+
+  // individualPost.classList.add('individual-post');
   // const posts = setUpPosts(querySnapshot.docs)
   querySnapshot.forEach((doc) => {
+    const getPostSection = document.getElementById('post-section');
+    const individualPost = document.createElement('article');
     // const post = doc.data();
+    individualPost.classList.add('individual-post');
     const postNameUser = document.createElement('h4');
     const postContent = document.createElement('p');
     postNameUser.textContent = doc.data().email;
     postContent.textContent = doc.data().post;
 
+    getPostSection.append(individualPost);
     individualPost.append(postNameUser, postContent);
   });
-  postsSection.append(individualPost);
 };
 
 /* const showPosts = async (data) => {
