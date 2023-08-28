@@ -48,6 +48,7 @@ function login(navigateTo) {
 
     try {
       const userCredential = await signIn(getEmail, getPass);
+      console.log(userCredential);
       if (userCredential.user.emailVerified) {
         // El usuario está autenticado y su correo está verificado.
         navigateTo('/feed');

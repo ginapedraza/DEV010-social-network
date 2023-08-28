@@ -27,34 +27,6 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-/* db.collection('todos').getDocs(); */
-// const todosCol = collection(db, 'todos');
-// const snapshot = getDocs(todosCol);
-
-/* const saveUser = (email) => {
-  db.collection('emails').add({
-    emailUser: email,
-  })
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef.id);
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
-}; */
-
-/* const saveUser = async (email) => {
-  try {
-    // Obtiene una referencia a la colección 'emails'
-    const emailsCollection = collection(db, 'emails');
-    // Agrega el documento con el correo electrónico
-    await addDoc(emailsCollection, { emailUser: email });
-    console.log('Email saved successfully.');
-  } catch (error) {
-    console.error('Error adding email: ', error);
-  }
-}; */
-
 export {
   auth, db,
 };

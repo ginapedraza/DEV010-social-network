@@ -18,39 +18,47 @@ const loginWithGoogle = () => {
 };
 
 // Función que crea el usuario con correo y contraseña
-const createUser = (email, user, password) => createUserWithEmailAndPassword(auth, email, password);
+// eslint-disable-next-line max-len
+const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Función para crear un post
-const addPost = async (user, post) => {
+const addPost = async (name, post, date) => {
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
-    user,
+    name,
     post,
+    date,
   });
 };
 
-// Función para mostrar los posts
+// Función para mostrar todos los posts
 const showPosts = async () => {
   const querySnapshot = await getDocs(collection(db, 'posts'));
+  const getPostSection = document.getElementById('post-section');
+  getPostSection.innerHTML = '';
   querySnapshot.forEach((doc) => {
-    const getPostSection = document.getElementById('post-section');
     const individualPost = document.createElement('article');
     individualPost.setAttribute('id', 'individual-post');
     individualPost.classList.add('individual-post');
     const post = doc.data();
     const postNameUser = document.createElement('h4');
     const postContent = document.createElement('p');
-    postNameUser.textContent = post.email;
+    const postDate = document.createElement('p');
+    postDate.textContent = post.date;
+    postNameUser.textContent = post.name;
     postContent.textContent = post.post;
+
     // const getLikeSection = document.querySelector('.section-like');
 
     getPostSection.append(individualPost);
-    individualPost.append(postNameUser, postContent);
+    individualPost.append(postNameUser, postContent, postDate);
   });
 };
+
+// Función para mostrar el post del usuario
 
 export {
   loginWithGoogle, createUser, signIn, addPost, showPosts,

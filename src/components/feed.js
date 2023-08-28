@@ -1,5 +1,6 @@
 // import { onAuthStateChanged } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
+import { Timestamp } from 'firebase/firestore';
 import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
 import { addPost, showPosts } from '../lib/index.js';
 
@@ -35,23 +36,28 @@ function feed() {
   // individualPost.classList.add('individual-post');
   // const postNameUser = document.createElement('h4');
   // postNameUser.textContent = doc.data().email;
-
+  let name = '';
   // Manejador para detectar el estado de autenticación
   onAuthStateChanged(auth, async (user) => {
-    console.log(`inside promise: ${user.displayName}`);
+    // console.log(`inside promise: ${user.displayName}`);
     if (user) {
       // Mostrar los posts del usuario autenticado
-      console.log(user.displayName);
-      console.log(user);
-      await showPosts(user.displayName, postsSection);
+      // console.log(user.displayName);
+      // console.log(user);
+      name = user.displayName;
+      await showPosts(name, postsSection);
     }
   });
 
   sendPostButton.addEventListener('click', () => {
+    // console.log(user);
+
     const post = textArea.value;
-    const email = auth.currentUser.email;
+    name = auth.currentUser.displayName;
+    const date = Timestamp.now();
+    // const userName = user.displayName;
     if (post !== '') {
-      addPost(email, post).then(() => {
+      addPost(name, post, date).then(() => {
         showPosts();
         textArea.value = '';
       });

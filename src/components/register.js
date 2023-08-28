@@ -1,5 +1,5 @@
 // import { getAuth } from 'firebase/auth';
-import { sendEmailVerification } from 'firebase/auth';
+import { sendEmailVerification, updateProfile } from 'firebase/auth';
 import {
   createUser,
 } from '../lib/index';
@@ -48,14 +48,17 @@ function register(navigateTo) {
   sendEmailButton.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
-    const user = inputUser.value;
+    const name = inputUser.value;
     const password = inputPass.value;
     const messageAlert = document.querySelector('.error');
     try {
-      await createUser(email, user, password);
-      sendEmailVerification(auth.currentUser)
+      const result = await createUser(email, password);
+      console.log(name);
+      await sendEmailVerification(auth.currentUser);
+      console.log(result);
+      await updateProfile(result.user, { displayName: name })
         .then(() => {
-          //     // Email verification sent!
+        //     // Email verification sent!
           messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
         });
     } catch (error) {
