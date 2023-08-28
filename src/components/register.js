@@ -20,6 +20,8 @@ function register(navigateTo) {
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('input-register');
   inputEmail.setAttribute('id', 'inputEmail');
+  const inputUser = document.createElement('input');
+  inputUser.classList.add('input-register');
   const inputPass = document.createElement('input');
   inputPass.classList.add('input-register');
   inputPass.setAttribute('id', 'inputPass');
@@ -33,6 +35,7 @@ function register(navigateTo) {
 
   titleRegister.textContent = 'Regístrate';
   inputEmail.placeholder = 'Correo electrónico';
+  inputUser.placeholder = 'Nombre de usuario';
   inputPass.placeholder = 'Contraseña';
   buttonReturn.textContent = 'Volver atrás';
 
@@ -45,10 +48,11 @@ function register(navigateTo) {
   sendEmailButton.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
+    const user = inputUser.value;
     const password = inputPass.value;
     const messageAlert = document.querySelector('.error');
     try {
-      await createUser(email, password);
+      await createUser(email, user, password);
       sendEmailVerification(auth.currentUser)
         .then(() => {
           //     // Email verification sent!
@@ -76,7 +80,7 @@ function register(navigateTo) {
   sectionRegister.append(sectionLogo, generalRegister);
   sectionLogo.append(imageLogo);
   // eslint-disable-next-line max-len
-  generalRegister.append(titleRegister, inputEmail, inputPass, errorAlert, sendEmailButton, buttonReturn);
+  generalRegister.append(titleRegister, inputEmail, inputUser, inputPass, errorAlert, sendEmailButton, buttonReturn);
   return sectionRegister;
 }
 export default register;

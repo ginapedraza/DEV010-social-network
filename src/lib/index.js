@@ -18,62 +18,39 @@ const loginWithGoogle = () => {
 };
 
 // Función que crea el usuario con correo y contraseña
-const createUser = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+const createUser = (email, user, password) => createUserWithEmailAndPassword(auth, email, password);
 
 // Función que inicia sesión con email y password
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
-//  Función que envía email con link de verificación
-// const verifyEmail = (user) => sendEmailVerification(user);
-
-// Probando crear colecciones para almacenar datos en firestore
-// Initialize Cloud Firestore and get a reference to the service
-
-// const db = getFirestore(app);
-
-/* function guardarCorreo(valCorreo) {
-  return db.collection('correos').add({
-    correo: valCorreo,
-  });
-} */
 
 // Función para crear un post
-const addPost = async (email, post) => {
+const addPost = async (user, post) => {
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
-    email,
+    user,
     post,
   });
 };
+
 // Función para mostrar los posts
 const showPosts = async () => {
   const querySnapshot = await getDocs(collection(db, 'posts'));
-
-  // individualPost.classList.add('individual-post');
-  // const posts = setUpPosts(querySnapshot.docs);
   querySnapshot.forEach((doc) => {
     const getPostSection = document.getElementById('post-section');
-    const getIndividualPost = document.getElementById('individual-post');
+    const individualPost = document.createElement('article');
+    individualPost.setAttribute('id', 'individual-post');
+    individualPost.classList.add('individual-post');
     const post = doc.data();
     const postNameUser = document.createElement('h4');
     const postContent = document.createElement('p');
     postNameUser.textContent = post.email;
     postContent.textContent = post.post;
+    // const getLikeSection = document.querySelector('.section-like');
 
-    getPostSection.append(getIndividualPost);
-    getIndividualPost.append(postNameUser, postContent);
+    getPostSection.append(individualPost);
+    individualPost.append(postNameUser, postContent);
   });
 };
-
-/* const showPosts = async (data) => {
-  const postsQuery = query(collection(db, 'posts'));
-  const postsSnapshot = await getDocs(postsQuery);
-  postsSnapshot.forEach((doc) => {
-    const post = doc.data();
-    console.log(post);
-    const userPost = document.createElement('article');
-    userPost.classList.add('user-post');
-  });
-}; */
 
 export {
   loginWithGoogle, createUser, signIn, addPost, showPosts,
