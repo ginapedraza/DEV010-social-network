@@ -3,7 +3,7 @@ import {
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
 } from 'firebase/auth';
 import {
-  addDoc, collection, getDocs,
+  addDoc, collection, getDocs, orderBy,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
 // Función que inicia sesión con google
@@ -36,7 +36,7 @@ const addPost = async (name, post, date) => {
 
 // Función para mostrar todos los posts
 const showPosts = async () => {
-  const querySnapshot = await getDocs(collection(db, 'posts'));
+  const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date', 'desc'));
   const getPostSection = document.getElementById('post-section');
   getPostSection.innerHTML = '';
   querySnapshot.forEach((doc) => {
@@ -47,7 +47,7 @@ const showPosts = async () => {
     const postNameUser = document.createElement('h4');
     const postContent = document.createElement('p');
     const postDate = document.createElement('p');
-    postDate.textContent = post.date;
+    postDate.textContent = post.date.toDate().toLocaleDateString();
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
 
