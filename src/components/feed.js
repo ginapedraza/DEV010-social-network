@@ -2,9 +2,9 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { Timestamp } from 'firebase/firestore';
 import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
-import { addPost, showPosts } from '../lib/index.js';
+import { addPost, logOut, showPosts } from '../lib/index.js';
 
-function feed() {
+function feed(navigateTo) {
   const generalFeed = document.createElement('section');
   const sectionHeader = document.createElement('header');
   sectionHeader.classList.add('headerClass');
@@ -46,6 +46,8 @@ function feed() {
       // console.log(user);
       name = user.displayName;
       await showPosts(name, postsSection);
+    } else {
+      navigateTo('/noFeed');
     }
   });
 
@@ -64,6 +66,11 @@ function feed() {
     } else {
       alert('Please write something');
     }
+  });
+  // logOut es nuestra funcion que hicimos en index.js
+  buttonLogout.addEventListener('click', () => {
+    logOut();
+    navigateTo('/');
   });
 
   generalFeed.append(sectionHeader, textAreaSection, postsSection);

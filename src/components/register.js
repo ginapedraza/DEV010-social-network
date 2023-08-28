@@ -14,6 +14,8 @@ function register(navigateTo) {
   imageLogo.src = 'images/logo-login.png';
   imageLogo.alt = 'Logo TweetFit';
   imageLogo.classList.add('logoImg');
+  const slogan = document.createElement('h7');
+  slogan.classList.add('sloganstyle');
   const generalRegister = document.createElement('section');
   generalRegister.classList.add('generalRegister');
   const titleRegister = document.createElement('h2');
@@ -39,6 +41,7 @@ function register(navigateTo) {
   inputPass.placeholder = 'Contraseña';
   buttonReturn.textContent = 'Volver atrás';
 
+  slogan.textContent = '¡Bienvenido/a a la aventura fit!';
   sendEmailButton.textContent = 'Enviar';
 
   buttonReturn.addEventListener('click', () => {
@@ -53,9 +56,8 @@ function register(navigateTo) {
     const messageAlert = document.querySelector('.error');
     try {
       const result = await createUser(email, password);
-      console.log(name);
       await sendEmailVerification(auth.currentUser);
-      console.log(result);
+
       await updateProfile(result.user, { displayName: name })
         .then(() => {
         //     // Email verification sent!
@@ -81,7 +83,7 @@ function register(navigateTo) {
 
   // eslint-disable-next-line max-len
   sectionRegister.append(sectionLogo, generalRegister);
-  sectionLogo.append(imageLogo);
+  sectionLogo.append(imageLogo, slogan);
   // eslint-disable-next-line max-len
   generalRegister.append(titleRegister, inputEmail, inputUser, inputPass, errorAlert, sendEmailButton, buttonReturn);
   return sectionRegister;

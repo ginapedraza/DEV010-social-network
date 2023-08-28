@@ -10,6 +10,8 @@ function login(navigateTo) {
   imageLogo.src = 'images/logo-login.png';
   imageLogo.alt = 'Logo TweetFit';
   imageLogo.classList.add('logoImg');
+  const slogan = document.createElement('h7');
+  slogan.classList.add('sloganstyle');
   const sectionGeneral = document.createElement('section');
   sectionGeneral.classList.add('generalLogin');
   const title = document.createElement('h2');
@@ -34,6 +36,7 @@ function login(navigateTo) {
   title.textContent = 'Inicia sesión';
   buttonLogin.textContent = 'Ingresar';
 
+  slogan.textContent = '¡Juntos podemos lograr grandes resultados!';
   buttonReturn.textContent = 'Volver atrás';
 
   buttonReturn.addEventListener('click', () => {
@@ -48,7 +51,7 @@ function login(navigateTo) {
 
     try {
       const userCredential = await signIn(getEmail, getPass);
-      console.log(userCredential);
+
       if (userCredential.user.emailVerified) {
         // El usuario está autenticado y su correo está verificado.
         navigateTo('/feed');
@@ -76,7 +79,7 @@ function login(navigateTo) {
     }
   });
 
-  sectionLogo.append(imageLogo);
+  sectionLogo.append(imageLogo, slogan);
   sectionGeneral.append(title, inputEmail, inputPass, errorAlert, buttonLogin, buttonReturn);
   section.append(sectionLogo, sectionGeneral);
 

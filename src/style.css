@@ -16,6 +16,7 @@ body {
     border: none;
     margin: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
 }
 
 .logo-section {
@@ -45,6 +46,12 @@ body {
     flex-direction: column; /* Alinear elementos verticalmente */
     justify-content: flex-end; /* Justificar hacia la parte inferior */
     align-items: center; /* Centrar horizontalmente */
+}
+@media (min-width: 700px){
+  .homeSection {
+    background-image: url("images/BACKGROUNDPICTURE1.png");
+    background-size: contain;
+  }
 }
 
 .slogan-style {
@@ -83,6 +90,7 @@ body {
     border: none;
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
 }
 
 .googleButton {
@@ -100,6 +108,7 @@ body {
     border-style: solid;
     background: #011640;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
 }
 
 .googleButton:before {
@@ -114,6 +123,7 @@ body {
     box-sizing: border-box;
     background-size: 20px 20px;
     background-position: center center;
+    cursor: pointer;
 }
 /*Login*/
 
@@ -128,6 +138,11 @@ body {
     justify-content: flex-end; /* Justificar hacia la parte inferior */
     align-items: center; /* Centrar horizontalmente */
 }
+@media (min-width: 700px){
+  .loginSection{
+    background-size: contain;
+  }
+}
 
 .login-button, .sendEmail {
     border-radius: 10px;
@@ -141,6 +156,7 @@ body {
     border: none;
     margin: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
 }
 
 .error {
@@ -187,6 +203,7 @@ body {
     padding: 4px;
     border: white;
     margin: 15px;
+    cursor: pointer;
 }
 
 
@@ -202,6 +219,11 @@ body {
     flex-direction: column; /* Alinear elementos verticalmente */
     justify-content: flex-end; /* Justificar hacia la parte inferior */
     align-items: center; /* Centrar horizontalmente */
+}
+@media (min-width: 700px){
+  .registerSection {
+    background-size: contain;
+  }
 }
 /* Feed */
 
@@ -223,7 +245,8 @@ body {
   font-size: 12px;
   color: #FFF;
   border: none;
-  margin:0 5%
+  margin:0 5%;
+  cursor: pointer;
   
 }
 .textAreaSection {
@@ -252,6 +275,7 @@ body {
   margin: 15px 0px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   align-self: flex-end;
+  cursor: pointer;
 }
 .text-area{
   margin: 15px;
@@ -321,4 +345,39 @@ p {
     box-sizing: border-box;
     background-size: 20px 20px;
     background-position: center center;
+}
+
+/* noFeed */
+.message-section{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: auto;
+  margin: auto;
+}
+h5 {
+  text-align: center;
+  font-size: 20px;
+}
+.button-home {
+  border-radius: 10px;
+    background: #F26938;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    width: 120px;
+    color: #FFF;
+    padding: 7px;
+    border: none;
+    margin:auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    cursor: pointer;
+}
+
+.sloganstyle {
+  color: #011640;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+
 }

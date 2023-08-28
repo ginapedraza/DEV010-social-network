@@ -1,9 +1,9 @@
 import {
   // eslint-disable-next-line max-len
-  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword,
+  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 import {
-  addDoc, collection, getDocs, orderBy,
+  addDoc, collection, getDocs, orderBy, query,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
 // Función que inicia sesión con google
@@ -36,10 +36,13 @@ const addPost = async (name, post, date) => {
 
 // Función para mostrar todos los posts
 const showPosts = async () => {
-  const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date', 'desc'));
+  // Aquí hice cambios con query
+  const querySnapshot = query(collection(db, 'posts'), orderBy('date', 'desc'));
+  const postsSnapshot = await getDocs(querySnapshot);
+  // const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date', 'desc'));
   const getPostSection = document.getElementById('post-section');
   getPostSection.innerHTML = '';
-  querySnapshot.forEach((doc) => {
+  postsSnapshot.forEach((doc) => {
     const individualPost = document.createElement('article');
     individualPost.setAttribute('id', 'individual-post');
     individualPost.classList.add('individual-post');
@@ -57,9 +60,14 @@ const showPosts = async () => {
     individualPost.append(postNameUser, postContent, postDate);
   });
 };
+// acá llamamo a signOut que es de firebase y nos permite cerrar sesión, exportamos
+// a feed.js para utilizarla con el boton
+const logOut = async () => {
+  await signOut(auth);
+};
 
 // Función para mostrar el post del usuario
 
 export {
-  loginWithGoogle, createUser, signIn, addPost, showPosts,
+  loginWithGoogle, createUser, signIn, addPost, showPosts, logOut,
 };
