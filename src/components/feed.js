@@ -24,6 +24,9 @@ function feed() {
   sendPostButton.textContent = 'Publicar';
   const postsSection = document.createElement('section');
   postsSection.setAttribute('id', 'post-section');
+  const individualPost = document.createElement('article');
+  individualPost.setAttribute('id', 'individual-post');
+  individualPost.classList.add('individual-post');
 
   // Sección para mostrar los posts
   // const postsSection = document.createElement('section');
@@ -50,6 +53,7 @@ function feed() {
   sectionHeader.append(sectionLogo, buttonLogout);
   sectionLogo.append(imageLogo);
   textAreaSection.append(textArea, sendPostButton);
+  postsSection.append(individualPost);
   return generalFeed;
 }
 

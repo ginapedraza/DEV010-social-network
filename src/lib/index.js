@@ -49,19 +49,18 @@ const showPosts = async () => {
   const querySnapshot = await getDocs(collection(db, 'posts'));
 
   // individualPost.classList.add('individual-post');
-  // const posts = setUpPosts(querySnapshot.docs)
+  // const posts = setUpPosts(querySnapshot.docs);
   querySnapshot.forEach((doc) => {
     const getPostSection = document.getElementById('post-section');
-    const individualPost = document.createElement('article');
-    // const post = doc.data();
-    individualPost.classList.add('individual-post');
+    const getIndividualPost = document.getElementById('individual-post');
+    const post = doc.data();
     const postNameUser = document.createElement('h4');
     const postContent = document.createElement('p');
-    postNameUser.textContent = doc.data().email;
-    postContent.textContent = doc.data().post;
+    postNameUser.textContent = post.email;
+    postContent.textContent = post.post;
 
-    getPostSection.append(individualPost);
-    individualPost.append(postNameUser, postContent);
+    getPostSection.append(getIndividualPost);
+    getIndividualPost.append(postNameUser, postContent);
   });
 };
 
