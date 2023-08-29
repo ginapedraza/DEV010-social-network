@@ -6,6 +6,7 @@ import { addPost, logOut, showPosts } from '../lib/index.js';
 
 function feed(navigateTo) {
   const generalFeed = document.createElement('section');
+  generalFeed.setAttribute('id', 'general-section');
   const sectionHeader = document.createElement('header');
   sectionHeader.classList.add('headerClass');
   const sectionLogo = document.createElement('section');

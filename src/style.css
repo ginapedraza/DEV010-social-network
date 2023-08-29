@@ -327,7 +327,7 @@ body {
 
 h4 {
     font-size: 18px;
-    margin: 0px 20px 10px 20px
+    margin: 10px 20px 10px 20px
 
 }
 
@@ -365,12 +365,84 @@ color: #ffba57;
   background-position: center center;
 }
 
-.edit-button {
+.close-icon {
+  display: flex;
+  margin: 0% 0% 0% 90%;
+  /* background-repeat: no-repeat;*/ 
+  box-sizing: border-box;
+  background-position: center center;
+}
+.edit-button, .close-edit {
   width: 30px;
   height: 30px;
-  margin-left: -20px;
+  align-self: flex-end;
+  cursor: pointer;
 }
 
+.popUp-edit {
+      border: none;
+      box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      background-color: rgb(242, 242, 242);
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 30px 0px 30px;
+      
+     
+  }
+
+
+  @media (min-width: 700px) {
+    .popUp-edit{ 
+      height: 300px;
+      width: 500px;
+    }
+
+  }
+
+  .popUp-edit::-webkit-scrollbar {
+    display: none;
+}
+  .textarea-edit {
+    margin: 20px 20px 30px 20px;
+    align-self: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+    padding: 2rem 1rem;
+    width: 90%;
+    height: auto;
+    resize: none;
+  }
+  .textarea-edit::-webkit-scrollbar {
+    display: none;
+}
+  .edit-description {
+  
+      font-size: 18px;
+      margin: 0px 20px 30px 20px;
+      color: black;
+      font-family:Arial, Helvetica, sans-serif;
+
+  }
+
+  .save-button {
+    border-radius: 10px;
+    background: #F2522E;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    padding: 10px;
+    border: none;
+    margin: 15px 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    align-self: center;
+    cursor: pointer;
+  }
 /* noFeed */
 .message-section{
   display: flex;

@@ -62,43 +62,56 @@ const showPosts = async () => {
     likeImage.alt = 'Icono de Like';
     likeImage.classList.add('likeImgFeed');
     // Sección botones editar y borrar
-    const sectionButtons = document.createElement('section');
-    sectionButtons.classList.add('section-buttons-post');
-    const editButton = document.createElement('img');
-    editButton.classList.add('edit-button');
-    editButton.src = '/images/editar.png';
-    editButton.alt = 'Icono de editar';
+    const isCurrentUserPost = post.name === auth.currentUser.displayName;
+    if (isCurrentUserPost) {
+      const sectionButtons = document.createElement('section');
+      sectionButtons.classList.add('section-buttons-post');
+      const editButton = document.createElement('img');
+      editButton.classList.add('edit-button');
+      editButton.src = '/images/editar.png';
+      editButton.alt = 'Icono de editar';
+      individualPost.append(sectionButtons);
+      sectionButtons.append(editButton);
 
-    editButton.addEventListener('click', () => {
-      const isCurrentUserPost = post.name === auth.currentUser.displayName;
-      if (isCurrentUserPost) {
-        const popUp = document.createElement('dialog');
-        popUp.setAttribute('id', 'popUp');
-        popUp.classList.add('popUp-edit');
+      if (editButton) {
+        editButton.addEventListener('click', () => {
+          const popUp = document.createElement('dialog');
+          popUp.setAttribute('id', 'popUp');
+          popUp.classList.add('popUp-edit');
+          console.log(popUp);
+          const generalSection = document.getElementById('general-section');
+          generalSection.appendChild(popUp);
+          const editDescription = document.createElement('h4');
+          editDescription.classList.add('edit-description');
+          editDescription.textContent = 'Edita tu publicación';
+          const textareaEdit = document.createElement('textarea');
+          textareaEdit.classList.add('textarea-edit');
+          // textareaEdit.setAttribute('id', 'edit-textarea');
+          // const editTextArea = document.getElementById('edit-textarea');
+          textareaEdit.value = post.post;
+          console.log(textareaEdit.value);
+          const saveButton = document.createElement('button');
+          saveButton.classList.add('save-button');
+          saveButton.textContent = 'Guardar';
+          const closeIconSection = document.createElement('section');
+          closeIconSection.classList.add('close-icon');
+          const closeEdit = document.createElement('img');
+          closeEdit.src = '/images/close-edit.png';
+          closeEdit.alt = 'Cerrar';
+          closeEdit.classList.add('close-edit');
+          popUp.showModal();
+          closeIconSection.append(closeEdit);
+          popUp.append(closeIconSection, editDescription, textareaEdit, saveButton);
 
-        getPostSection.appendChild(popUp);
-        const editDescription = document.createElement('h4');
-        editDescription.classList.add('edit-descrption');
-        const textareaEdit = document.createElement('textarea');
-        textareaEdit.classList.add('textarea-edit');
-        textareaEdit.setAttribute('id', 'edit-textarea');
-        const editTextArea = document.getElementById('edit-textarea');
-        editTextArea.value = post.post;
-        const saveButton = document.createElement('button');
-        saveButton.classList.add('save-button');
-        saveButton.textContent = 'Guardar';
-        const closeEdit = document.createElement('img');
-        closeEdit.src = '/images/close-edit.png';
-        closeEdit.alt = 'Cerrar';
-        closeEdit.classList.add('close-edit');
-
-        popUp.append(closeEdit, editDescription, textareaEdit, saveButton);
+          closeEdit.addEventListener('click', () => {
+            popUp.close();
+          });
+        });
       }
-    });
+    }
     getPostSection.append(individualPost);
-    individualPost.append(sectionButtons, postNameUser, postContent, postDate, sectionLike);
+    individualPost.append(postNameUser, postContent, postDate, sectionLike);
     sectionLike.append(likeImage);
-    sectionButtons.append(editButton);
   });
 };
 // acá llamamos a signOut que es de firebase y nos permite cerrar sesión, exportamos
