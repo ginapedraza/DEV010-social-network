@@ -54,13 +54,21 @@ const showPosts = async () => {
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
 
+    const sectionLike = document.createElement('section');
+    sectionLike.classList.add('section-like');
+    const likeImage = document.createElement('img');
+    likeImage.src = '/images/icono-brazo-like.png';
+    likeImage.alt = 'Icono de Like';
+    likeImage.classList.add('likeImgFeed');
+
     // const getLikeSection = document.querySelector('.section-like');
 
     getPostSection.append(individualPost);
-    individualPost.append(postNameUser, postContent, postDate);
+    individualPost.append(postNameUser, postContent, postDate, sectionLike);
+    sectionLike.append(likeImage);
   });
 };
-// acá llamamo a signOut que es de firebase y nos permite cerrar sesión, exportamos
+// acá llamamos a signOut que es de firebase y nos permite cerrar sesión, exportamos
 // a feed.js para utilizarla con el boton
 const logOut = async () => {
   await signOut(auth);

@@ -26,16 +26,7 @@ function feed(navigateTo) {
   sendPostButton.textContent = 'Publicar';
   const postsSection = document.createElement('section');
   postsSection.setAttribute('id', 'post-section');
-  const sectionLike = document.createElement('section');
-  sectionLike.classList.add('section-like');
 
-  // Sección para mostrar los posts
-  // const postsSection = document.createElement('section');
-  // postsSection.classList.add('posts-section');
-  // const individualPost = document.createElement('article');
-  // individualPost.classList.add('individual-post');
-  // const postNameUser = document.createElement('h4');
-  // postNameUser.textContent = doc.data().email;
   let name = '';
   // Manejador para detectar el estado de autenticación
   onAuthStateChanged(auth, async (user) => {
@@ -57,7 +48,7 @@ function feed(navigateTo) {
     const post = textArea.value;
     name = auth.currentUser.displayName;
     const date = Timestamp.now();
-    // const userName = user.displayName;
+
     if (post !== '') {
       addPost(name, post, date).then(() => {
         showPosts();
@@ -70,7 +61,6 @@ function feed(navigateTo) {
   // logOut es nuestra funcion que hicimos en index.js
   buttonLogout.addEventListener('click', () => {
     logOut();
-    navigateTo('/');
   });
 
   generalFeed.append(sectionHeader, textAreaSection, postsSection);

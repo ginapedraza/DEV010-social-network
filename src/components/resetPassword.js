@@ -2,6 +2,7 @@ import { restorePassword } from '../lib/index';
 
 function resetPassword(navigateTo) {
   const resetPasswordSection = document.createElement('section');
+  resetPasswordSection.classList.add('resetPassSection');
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
@@ -10,7 +11,7 @@ function resetPassword(navigateTo) {
   imageLogo.classList.add('logoImg');
   const inputSection = document.createElement('section');
   inputSection.classList.add('input-section');
-  const title = document.createElement('h2');
+  const title = document.createElement('h3');
   const inputResetPass = document.createElement('input');
   inputResetPass.classList.add('input-resetpass');
   inputResetPass.setAttribute('id', 'inputresetpass');
@@ -23,6 +24,10 @@ function resetPassword(navigateTo) {
   title.textContent = '¿Olvidaste tu contraseña?';
   buttonResetPass.textContent = 'Ingresar';
   buttonReturn.textContent = 'Volver';
+
+  buttonReturn.addEventListener('click', () => {
+    navigateTo('/login');
+  });
 
   buttonResetPass.addEventListener('click', async (e) => {
     e.preventDefault();

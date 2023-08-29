@@ -36,8 +36,7 @@ function login(navigateTo) {
   resetPass.classList.add('restorePassA');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
-  // const getEmail = inputEmail.value;
-  // const getPass = inputPass.value;
+
   resetPass.textContent = '¿Olvidaste tu contraseña?';
   restorePass.textContent = 'Recuperala aquí';
   title.textContent = 'Inicia sesión';

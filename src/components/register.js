@@ -61,7 +61,7 @@ function register(navigateTo) {
       await updateProfile(result.user, { displayName: name })
         .then(() => {
         //     // Email verification sent!
-          messageAlert.textContent = 'Hemos enviado el link de verificación a tu correo.';
+          navigateTo('/mailVerification');
         });
     } catch (error) {
       const errorCode = error.code;

@@ -127,7 +127,7 @@ body {
 }
 /*Login*/
 
-.loginSection {
+.loginSection, .resetPassSection {
     background-image: url("images/background-picture-2.png");
     background-size: cover;
     width: 100%;
@@ -144,7 +144,7 @@ body {
   }
 }
 
-.login-button, .sendEmail {
+.login-button, .sendEmail, .resetpass-button {
     border-radius: 10px;
     background: #F26938;
     text-align: center;
@@ -166,7 +166,7 @@ body {
     font-size: 12px;
 }
 
-.generalLogin, .generalRegister{
+.generalLogin, .generalRegister, .input-section{
     background-color: #011640;
     height: auto;
     width: auto;
@@ -183,7 +183,7 @@ body {
     font-size: 15px;
 }
 
-.input-login, .input-register {
+.input-login, .input-register, .input-resetpass {
     margin: 15px;
     border: 1px solid #ccc;
     border-radius: 6px;
@@ -205,7 +205,7 @@ body {
     margin: 15px;
     cursor: pointer;
 }
-.restorePassA {
+.restorePassP {
   cursor: pointer;
 }
 
@@ -318,7 +318,7 @@ body {
     width: 100%;
     height: auto;
     resize: none;
-    margin: 10px;
+    margin: 10px 10px 5px 10px;
     display: flex;
     flex-direction: column;
     font-family:Arial, Helvetica, sans-serif;
@@ -333,30 +333,35 @@ h4 {
 
 p {
     font-size: 15px;
-  margin: 10px 20px 20px 20px
+  margin: 10px 20px 10px 20px
 }
 
 .section-like {
-    background-image: url("/images/icono-brazo-like.png");
     content: '';
-    width: 15px;
-    height: 15px;
     display: flex;
-    margin-right: 25px;
-    background-repeat: no-repeat;
-    margin-left: 35px;
+    margin: 0% 0% 4% 90%;
+    /* background-repeat: no-repeat;*/ 
     box-sizing: border-box;
-    background-size: 20px 20px;
     background-position: center center;
 }
 
+.likeImgFeed {
+  width: 30px;
+  height: 30px;
+  margin-left: -20px;
+}
+
+
 /* noFeed */
 .message-section{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: auto;
-  margin: auto;
+  margin: 30px;
+  font-family:Arial, Helvetica, sans-serif;
+
 }
 h5 {
   text-align: center;
@@ -382,5 +387,11 @@ h5 {
   font-family:Arial, Helvetica, sans-serif;
   font-size: 15px;
   font-weight: bold;
+
+}
+
+.logoWarning {
+  width: 100px;
+  height: 100px;
 
 }
