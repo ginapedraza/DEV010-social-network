@@ -58,7 +58,7 @@ function feed(navigateTo) {
       alert('Please write something');
     }
   });
-  // logOut es nuestra funcion que hicimos en index.js
+  // logOut es nuestra funcion que hicimos en index.js para cerrar sesión
   buttonLogout.addEventListener('click', () => {
     logOut();
   });
