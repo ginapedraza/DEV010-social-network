@@ -38,7 +38,7 @@ function login(navigateTo) {
   inputPass.placeholder = 'Contraseña';
 
   resetPass.textContent = '¿Olvidaste tu contraseña?';
-  restorePass.textContent = 'Recuperala aquí';
+  restorePass.textContent = 'Recupérala aquí';
   title.textContent = 'Inicia sesión';
   buttonLogin.textContent = 'Ingresar';
 

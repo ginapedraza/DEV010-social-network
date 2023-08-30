@@ -41,7 +41,7 @@ function register(navigateTo) {
   inputPass.placeholder = 'Contraseña';
   buttonReturn.textContent = 'Volver atrás';
 
-  slogan.textContent = '¡Bienvenido/a a la aventura fit!';
+  slogan.textContent = '¡Bienvenido a la aventura fit!';
   sendEmailButton.textContent = 'Enviar';
 
   buttonReturn.addEventListener('click', () => {
