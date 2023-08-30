@@ -49,8 +49,8 @@ body {
 }
 @media (min-width: 700px){
   .homeSection {
-    background-image: url("images/BACKGROUNDPICTURE1.png");
-    background-size: contain;
+    background-image: url("images/2workout.png");
+    background-size: cover;
   }
 }
 
@@ -140,7 +140,8 @@ body {
 }
 @media (min-width: 700px){
   .loginSection{
-    background-size: contain;
+    background-image: url("images/1workout.png");
+    background-size: cover;
   }
 }
 
@@ -225,7 +226,8 @@ body {
 }
 @media (min-width: 700px){
   .registerSection {
-    background-size: contain;
+    background-image: url("images/4workout.png");
+    background-size: cover;
   }
 }
 /* Feed */
@@ -245,7 +247,7 @@ body {
   display: flex;
   /* background-repeat: no-repeat;*/ 
   box-sizing: border-box;
-  padding-left: 75%;
+  padding-left: 70%;
   height: 30px;
 }
 @media (min-width: 700px) {
@@ -371,6 +373,7 @@ body {
 @media (min-width: 700px) {
     #post-section {
         width: 80%;
+
     }
     }
 .individual-post {
@@ -383,6 +386,7 @@ body {
     width: 100%;
     height: auto;
     resize: none;
+    padding-top: 10px;
     margin: 10px 10px 5px 10px;
     display: flex;
     flex-direction: column;
@@ -418,7 +422,7 @@ color: #ffba57;
 @media (min-width: 850px) {
 .section-like {
   display: flex;
-  margin: 0% 0% 4% 93%;
+  margin: 0% 0% 2% 93%;
   /* background-repeat: no-repeat;*/ 
   padding: auto;
   box-sizing: border-box;
@@ -435,7 +439,7 @@ color: #ffba57;
 
 .section-buttons-post {
   display: flex;
-  margin: 4% 0% 0% 84%;
+  margin: 0% 0% 0% 84%;
   /* background-repeat: no-repeat;*/ 
   box-sizing: border-box;
   background-position: center center;
@@ -443,7 +447,7 @@ color: #ffba57;
 @media (min-width: 850px) {
   .section-buttons-post {
     display: flex;
-    margin: 4% 0% 0% 91%;
+    margin: 0% 0% 0% 91%;
     /* background-repeat: no-repeat;*/ 
     padding: auto;
     box-sizing: border-box;
@@ -503,6 +507,7 @@ color: #ffba57;
     height: auto;
     resize: none;
     font-family:Arial, Helvetica, sans-serif;
+    
   }
   .textarea-edit::-webkit-scrollbar {
     display: none;
@@ -510,12 +515,20 @@ color: #ffba57;
   .edit-description {
   
       font-size: 18px;
-      margin: 5px 20px 30px 20px;
+      margin: 5px 20px 20px 20px;
       color: black;
       font-family:Arial, Helvetica, sans-serif;
 
   }
-  
+  .line {
+    border-top: 1px solid black;
+    height: 1px;
+    max-width: 890%;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   
+  }
 
   .save-button {
     border-radius: 10px;
@@ -534,7 +547,8 @@ color: #ffba57;
   .button-section {
     flex-direction: row;
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-evenly;
+
   }
   .popUp-delete {
     border: 1px solid #ccc;
@@ -561,7 +575,7 @@ color: #ffba57;
   }
   .cancel-button{
     border-radius: 10px;
-    background: #F2522E;
+    background: #011640;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
     font-size: 15px;

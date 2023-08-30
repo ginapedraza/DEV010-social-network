@@ -85,6 +85,8 @@ const showPosts = async () => {
           console.log(popUp);
           const generalSection = document.getElementById('general-section');
           generalSection.appendChild(popUp);
+          const line = document.createElement('section');
+          line.classList.add('line');
           const editDescription = document.createElement('h4');
           editDescription.classList.add('edit-description');
           editDescription.textContent = 'Edita tu publicación';
@@ -105,7 +107,7 @@ const showPosts = async () => {
           closeEdit.classList.add('close-edit');
           popUp.showModal();
           closeIconSection.append(closeEdit);
-          popUp.append(closeIconSection, editDescription, textareaEdit, saveButton);
+          popUp.append(closeIconSection, editDescription, line, textareaEdit, saveButton);
           saveButton.addEventListener('click', async () => {
             const editedPost = textareaEdit.value;
             await updateDoc(doc.ref, { post: editedPost });
