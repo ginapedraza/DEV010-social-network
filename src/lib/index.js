@@ -3,7 +3,7 @@ import {
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail,
 } from 'firebase/auth';
 import {
-  addDoc, collection, getDocs, orderBy, query,
+  addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
 // Función que inicia sesión con google
@@ -70,8 +70,12 @@ const showPosts = async () => {
       editButton.classList.add('edit-button');
       editButton.src = '/images/editar.png';
       editButton.alt = 'Icono de editar';
+      const deleteButton = document.createElement('img');
+      deleteButton.classList.add('delete-button');
+      deleteButton.src = '/images/trash.png';
+      deleteButton.alt = 'Icono de eliminar';
       individualPost.append(sectionButtons);
-      sectionButtons.append(editButton);
+      sectionButtons.append(editButton, deleteButton);
 
       if (editButton) {
         editButton.addEventListener('click', () => {
@@ -102,13 +106,58 @@ const showPosts = async () => {
           popUp.showModal();
           closeIconSection.append(closeEdit);
           popUp.append(closeIconSection, editDescription, textareaEdit, saveButton);
-
+          saveButton.addEventListener('click', async () => {
+            const editedPost = textareaEdit.value;
+            await updateDoc(doc.ref, { post: editedPost });
+            post.post = editedPost;
+            postContent.textContent = editedPost;
+            popUp.remove();
+          });
           closeEdit.addEventListener('click', () => {
             popUp.close();
           });
         });
       }
+      // fin de if (editButton)
+      if (deleteButton) {
+        deleteButton.addEventListener('click', () => {
+          const popUpDelete = document.createElement('dialog');
+          popUpDelete.setAttribute('id', 'popUp-delete');
+          popUpDelete.classList.add('popUp-delete');
+          const generalSection = document.getElementById('general-section');
+          generalSection.appendChild(popUpDelete);
+          const editDescription = document.createElement('h4');
+          editDescription.classList.add('delete-description');
+          editDescription.textContent = '¿Estás seguro que quieres eliminar tu publicación?';
+          const buttonSection = document.createElement('section');
+          buttonSection.classList.add('button-section');
+          const acceptButton = document.createElement('button');
+          acceptButton.classList.add('accept-button');
+          acceptButton.textContent = 'Eliminar';
+          const cancelButton = document.createElement('button');
+          cancelButton.classList.add('cancel-button');
+          cancelButton.textContent = 'Cancelar';
+          popUpDelete.showModal();
+          popUpDelete.append(editDescription, buttonSection);
+          buttonSection.append(acceptButton, cancelButton);
+          acceptButton.addEventListener('click', async () => {
+            try {
+              await deleteDoc(doc.ref);
+              individualPost.remove();
+            } catch (error) {
+              console.error('error deleting the post:', error);
+            } finally {
+              popUpDelete.close();
+            }
+          });
+          cancelButton.addEventListener('click', () => {
+            popUpDelete.close();
+          });
+        });
+      }
+      // fin de if(deleteButton)
     }
+    // if (currentUser)
     getPostSection.append(individualPost);
     individualPost.append(postNameUser, postContent, postDate, sectionLike);
     sectionLike.append(likeImage);

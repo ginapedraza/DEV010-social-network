@@ -245,7 +245,7 @@ body {
   display: flex;
   /* background-repeat: no-repeat;*/ 
   box-sizing: border-box;
-  padding-left: 80%;
+  padding-left: 75%;
   height: 30px;
 }
 @media (min-width: 700px) {
@@ -297,6 +297,7 @@ body {
   height: 30px;
   display: flex;
   margin-right: 0px;
+  margin-left: 10px;
   background-repeat: no-repeat;
   box-sizing: border-box;
   background-size: 30px 30px;
@@ -414,6 +415,16 @@ color: #ffba57;
     box-sizing: border-box;
     background-position: center center;
 }
+@media (min-width: 850px) {
+.section-like {
+  display: flex;
+  margin: 0% 0% 4% 93%;
+  /* background-repeat: no-repeat;*/ 
+  padding: auto;
+  box-sizing: border-box;
+  background-position: center center;
+}
+}
 
 .likeImgFeed {
   width: 30px;
@@ -424,11 +435,21 @@ color: #ffba57;
 
 .section-buttons-post {
   display: flex;
-  margin: 4% 0% 0% 87%;
+  margin: 4% 0% 0% 84%;
   /* background-repeat: no-repeat;*/ 
   box-sizing: border-box;
   background-position: center center;
 }
+@media (min-width: 850px) {
+  .section-buttons-post {
+    display: flex;
+    margin: 4% 0% 0% 91%;
+    /* background-repeat: no-repeat;*/ 
+    padding: auto;
+    box-sizing: border-box;
+    background-position: center center;
+  }
+  }
 
 .close-icon {
   display: flex;
@@ -437,7 +458,7 @@ color: #ffba57;
   box-sizing: border-box;
   background-position: center center;
 }
-.edit-button, .close-edit {
+.edit-button, .close-edit, .delete-button {
   width: 25px;
   height: 25px;
   align-self: flex-end;
@@ -494,6 +515,7 @@ color: #ffba57;
       font-family:Arial, Helvetica, sans-serif;
 
   }
+  
 
   .save-button {
     border-radius: 10px;
@@ -509,6 +531,63 @@ color: #ffba57;
     align-self: center;
     cursor: pointer;
   }
+  .button-section {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-evenly
+  }
+  .popUp-delete {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    flex-direction: column;;
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
+    background-color: rgb(242, 242, 242);
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    padding: 20px 10px 20px 10px;
+  }
+  @media (min-width: 700px) {
+    .popUp-delete{ 
+      height: 300px;
+      width: 500px;
+    }
+  }
+  .delete-description{
+        font-size: 18px;
+    margin: 5px 5px 30px 5px;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  .cancel-button{
+    border-radius: 10px;
+    background: #F2522E;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    padding: 10px;
+    border: none;
+    margin: 15px 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    align-self: center;
+    cursor: pointer;
+  }
+  .accept-button{
+    border-radius: 10px;
+    background: #F2522E;
+    text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    padding: 10px;
+    border: none;
+    margin: 15px 0px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    align-self: center;
+    cursor: pointer;
+  }
+
 /* noFeed */
 .message-section{
   display: flex;
@@ -557,4 +636,17 @@ header {
     position: -webkit-sticky; /* Safari */
     top: -110px;
     z-index: 10
+}
+body::-webkit-scrollbar {
+  width: 12px;              
+}
+
+body::-webkit-scrollbar-track {
+  background:  #011640;       
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #F2F2F2;    
+  border-radius: 20px;       
+  border: 3px solid   #011640; 
 }
