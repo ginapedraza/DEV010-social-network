@@ -94,7 +94,7 @@ body {
 }
 
 .googleButton {
-    height: 40px;
+  height: 40px;
     font-family:Arial, Helvetica, sans-serif;
     display: flex;
     align-items: center;
@@ -241,25 +241,91 @@ body {
   width: 25vh;
   height: 15vh;
 }
+.section-logout {
+  display: flex;
+  /* background-repeat: no-repeat;*/ 
+  box-sizing: border-box;
+  padding-left: 80%;
+  height: 30px;
+}
+@media (min-width: 700px) {
+.section-logout {
+  display: flex;
+  /* background-repeat: no-repeat;*/ 
+  box-sizing: border-box;
+  padding-left: 80% ;
+}
+}
 .button-logout {
-  border-radius: 10px;
-  background: none;
-  text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    padding: 0px 3px 0px 0px;
+    font-size: 15px;
+    color: transparent;
+    border-radius: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    flex-direction:row;
+    margin:0 0%;
+}
+@media (min-width: 700px) {
+.button-logout {
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 12px;
-  color: #FFF;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 200px;
+  padding: 0px 3px 0px 0px;
+  font-size: 15px;
+  color: white;
+  border-radius: 10px;
   border: none;
-  margin:0 5%;
+  background: none;
   cursor: pointer;
-  
+  flex-direction:row;
+  margin:0 5%;
+}
+}
+.button-logout::after {
+  background-image: url("/images/log-out.png");
+  content: '';
+  width: 40px;
+  height: 30px;
+  display: flex;
+  margin-right: 0px;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-size: 30px 30px;
+  background-position: center center;
+  cursor: pointer;
+}
+@media (min-width: 700px) {
+.button-logout::after {
+  background-image: url("/images/log-out.png");
+  content: '';
+  width: 15px;
+  height: 15px;
+  display: flex;
+  margin-right: 10px;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  background-size: 20px 20px;
+  background-position: center center;
+  cursor: pointer;
+}
 }
 .textAreaSection {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 50px;
-  margin: 25px auto;
+  padding: 0px 40px;
+  margin: 5px auto;
   background-color: #F2F2F2;
+   
 }
 @media (min-width: 700px) {
 .textAreaSection {
@@ -276,7 +342,7 @@ body {
   color: #FFF;
   padding: 10px;
   border: none;
-  margin: 15px 0px 5px 0px;
+  margin: 3px 0px 5px 0px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
   align-self: flex-end;
   cursor: pointer;
@@ -291,22 +357,19 @@ body {
   width: 100%;
   height: auto;
   resize: none;
+  font-family:Arial, Helvetica, sans-serif;
 }
 
 #post-section {
     display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 50px;
+  padding: 0px 25px;
   margin: auto;
-  
-  
-
-}
+    }
 @media (min-width: 700px) {
     #post-section {
         width: 80%;
-        
     }
     }
 .individual-post {
@@ -488,4 +551,10 @@ h5 {
   width: 100px;
   height: 100px;
 
+}
+header {
+    position: sticky;
+    position: -webkit-sticky; /* Safari */
+    top: -110px;
+    z-index: 10
 }

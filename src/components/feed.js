@@ -15,6 +15,8 @@ function feed(navigateTo) {
   imageLogo.src = 'images/logo-home.png';
   imageLogo.alt = 'Logo TweetFit';
   imageLogo.classList.add('logoImgFeed');
+  const sectionLogOut = document.createElement('section');
+  sectionLogOut.classList.add('section-logout');
   const buttonLogout = document.createElement('button');
   buttonLogout.classList.add('button-logout');
   buttonLogout.textContent = 'Cerrar sesión';
@@ -22,6 +24,7 @@ function feed(navigateTo) {
   textAreaSection.classList.add('textAreaSection');
   const textArea = document.createElement('textarea');
   textArea.classList.add('text-area');
+  textArea.placeholder = '¿Qué quieres compartir hoy?';
   const sendPostButton = document.createElement('button');
   sendPostButton.classList.add('sendPost-button');
   sendPostButton.textContent = 'Publicar';
@@ -65,9 +68,10 @@ function feed(navigateTo) {
   });
 
   generalFeed.append(sectionHeader, textAreaSection, postsSection);
-  sectionHeader.append(sectionLogo, buttonLogout);
+  sectionHeader.append(sectionLogo, sectionLogOut);
   sectionLogo.append(imageLogo);
   textAreaSection.append(textArea, sendPostButton);
+  sectionLogOut.append(buttonLogout);
   return generalFeed;
 }
 
