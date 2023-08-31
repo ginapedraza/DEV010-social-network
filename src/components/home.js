@@ -7,7 +7,7 @@ function home(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-home.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h2');
   slogan.classList.add('slogan-style');

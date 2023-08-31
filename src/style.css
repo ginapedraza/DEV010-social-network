@@ -10,7 +10,7 @@ body {
     background: #F26938;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
     color: #FFF;
     padding: 10px;
     border: none;
@@ -18,19 +18,23 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
 }
+.registerButton:hover{
+  background: #ed3d16;
+}
 
 .logo-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 0px;
     flex-direction: column;
 
 }
 
 .logoImg {
    width: 250px;
-   height: 150px;
+   height: 100px;
+   margin: 35px;
 
 }
 
@@ -56,7 +60,7 @@ body {
 
 .slogan-style {
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
     color: white;
 }
 
@@ -74,7 +78,7 @@ body {
     color: #151618;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 
 .loginButton {
@@ -82,7 +86,7 @@ body {
     background: #011640;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
     height: 40px;
     width: 200px;
     color: #FFF;
@@ -91,6 +95,9 @@ body {
     margin: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
+}
+.loginButton:hover{
+  background: #010b1e;
 }
 
 .googleButton {
@@ -102,13 +109,16 @@ body {
     width: 200px;
     margin-bottom: 23px;
     padding: 0px 10px 0px 3px;
-    font-size: 15px;
+    font-size: 0.9rem;
     color: white;
     border-radius: 10px;
     border-style: solid;
     background: #011640;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
+}
+.googleButton:hover{
+  background: #010b1e;
 }
 
 .googleButton:before {
@@ -129,7 +139,7 @@ body {
 
 .loginSection, .resetPassSection {
     background-image: url("images/background-picture-2.png");
-    background-size: cover;
+    background-size: cover; 
     width: 100%;
     height: 100%;
     position: absolute;
@@ -150,7 +160,7 @@ body {
     background: #F26938;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
     width: 120px;
     color: #FFF;
     padding: 7px;
@@ -159,19 +169,22 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
 }
+.login-button:hover, .sendEmail:hover, .resetpass-button:hover {
+  background: #ed3d16;
+}
 
 .error {
     color: white;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 0.8rem;
 }
 
 .generalLogin, .generalRegister, .input-section{
     background-color: #011640;
     height: auto;
     width: auto;
-    padding: 15px 38px;
+    padding: 15px 35px;
     margin: auto; 
     border: none;
     border-radius: 5%;
@@ -181,7 +194,7 @@ body {
     color: white;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
 }
 
 .input-login, .input-register, .input-resetpass {
@@ -189,16 +202,18 @@ body {
     border: 1px solid #ccc;
     border-radius: 6px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 15px;
+    font-size: 0.9rem;
     padding: 7px;
 
 }
-
+.input-resetpass {
+  width: 185px;
+}
 .button-return {
     border-radius: 8px;
     text-align: center;
     font-family:Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 0.9rem;
     width: 120px;
     color: #151618;
     padding: 4px;
@@ -206,8 +221,15 @@ body {
     margin: 15px;
     cursor: pointer;
 }
+.button-return:hover {
+  background: #d1cece;
+}
 .restorePassP {
   cursor: pointer;
+  text-decoration: underline;
+}
+.restorePassP:hover {
+  color: #ed8046
 }
 
 
@@ -234,20 +256,21 @@ body {
 
 .headerClass {
   background-color: #011640;
-  height: 18vh;
+  height: 19vh;
   text-align:right;
-  padding:15px;
+  padding:8px, 15px, 8px, 15px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .logoImgFeed {
   width: 25vh;
-  height: 15vh;
+  height: 8vh;
+  margin: 0px;
 }
 .section-logout {
   display: flex;
   /* background-repeat: no-repeat;*/ 
   box-sizing: border-box;
-  padding-left: 70%;
+  padding-left: 85%;
   height: 30px;
 }
 @media (min-width: 700px) {
@@ -263,10 +286,9 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    width: 200px;
+    width: 50px;
     padding: 0px 3px 0px 0px;
-    font-size: 15px;
-    color: transparent;
+    font-size: 0rem;
     border-radius: 10px;
     border: none;
     background: none;
@@ -274,6 +296,7 @@ body {
     flex-direction:row;
     margin:0 0%;
 }
+
 @media (min-width: 700px) {
 .button-logout {
   font-family:Arial, Helvetica, sans-serif;
@@ -282,7 +305,7 @@ body {
   text-align: center;
   width: 200px;
   padding: 0px 3px 0px 0px;
-  font-size: 15px;
+  font-size: 0.9rem;
   color: white;
   border-radius: 10px;
   border: none;
@@ -292,8 +315,10 @@ body {
   margin:0 5%;
 }
 }
-.button-logout::after {
-  background-image: url("/images/log-out.png");
+.button-logout:hover {
+  opacity: 0.5;
+}
+.img-logout {
   content: '';
   width: 40px;
   height: 30px;
@@ -306,21 +331,26 @@ body {
   background-position: center center;
   cursor: pointer;
 }
-@media (min-width: 700px) {
-.button-logout::after {
-  background-image: url("/images/log-out.png");
-  content: '';
-  width: 15px;
-  height: 15px;
+.accessibility-section {
   display: flex;
-  margin-right: 10px;
-  background-repeat: no-repeat;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.button-size {
+  content: '';
+  width: 25px;
+  height: 25px;
+  margin: 5px;
+  margin-top: 10px;
   box-sizing: border-box;
-  background-size: 20px 20px;
-  background-position: center center;
+  background-size: 30px 30px;
   cursor: pointer;
 }
+.button-size:hover {
+  opacity: 0.5;
 }
+
+
 .textAreaSection {
   display: flex;
   flex-direction: column;
@@ -341,7 +371,7 @@ body {
   background: #F2522E;
   text-align: center;
   font-family:Arial, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 0.9rem;
   color: #FFF;
   padding: 10px;
   border: none;
@@ -350,12 +380,18 @@ body {
   align-self: flex-end;
   cursor: pointer;
 }
+.sendPost-button:hover {
+  background: #ed3d16;
+}
+.sendPost-button:disabled{
+  background: #e5a99b;
+}
 .text-area{
   margin: 15px;
   border: 1px solid #ccc;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  font-size: 15px;
+  font-size: 0.9rem;
   padding: 2rem 1rem;
   width: 100%;
   height: auto;
@@ -436,6 +472,9 @@ color: #ffba57;
   align-self: flex-end;
   cursor: pointer;
 }
+.likeImgFeed:hover {
+  opacity: 0.5;
+}
 
 .section-buttons-post {
   display: flex;
@@ -462,13 +501,16 @@ color: #ffba57;
   box-sizing: border-box;
   background-position: center center;
 }
+
 .edit-button, .close-edit, .delete-button {
   width: 25px;
   height: 25px;
   align-self: flex-end;
   cursor: pointer;
 }
-
+.edit-button:hover, .close-edit:hover, .delete-button:hover {
+  opacity: 0.5;
+}
 .popUp-edit {
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -631,6 +673,9 @@ h5 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
 }
+.button-home:hover {
+  background: #ed3d16;
+}
 
 .sloganstyle {
   color: #011640;
@@ -648,8 +693,13 @@ h5 {
 header {
     position: sticky;
     position: -webkit-sticky; /* Safari */
-    top: -110px;
-    z-index: 10
+    top: -92px;
+    z-index: 10;
+}
+@media (max-width: 500px) {
+header {
+  top: -105px;
+}
 }
 body::-webkit-scrollbar {
   width: 12px;              
@@ -664,3 +714,4 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;       
   border: 3px solid   #011640; 
 }
+

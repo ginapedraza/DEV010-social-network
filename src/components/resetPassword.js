@@ -7,7 +7,7 @@ function resetPassword(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-login.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const inputSection = document.createElement('section');
   inputSection.classList.add('input-section');
@@ -22,7 +22,7 @@ function resetPassword(navigateTo) {
   inputResetPass.placeholder = 'Ingresa tu correo electrónico';
 
   title.textContent = '¿Olvidaste tu contraseña?';
-  buttonResetPass.textContent = 'Ingresar';
+  buttonResetPass.textContent = 'Enviar';
   buttonReturn.textContent = 'Volver';
 
   buttonReturn.addEventListener('click', () => {

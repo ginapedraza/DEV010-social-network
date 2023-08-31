@@ -7,7 +7,7 @@ function mailVerificacion(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-home.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgFeed');
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('button-home');

@@ -8,7 +8,7 @@ function login(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-login.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h7');
   slogan.classList.add('sloganstyle');

@@ -6,7 +6,7 @@ function noFeed(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-home.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgFeed');
   const buttonhome = document.createElement('button');
   buttonhome.classList.add('button-home');
@@ -15,7 +15,7 @@ function noFeed(navigateTo) {
   messageSection.classList.add('message-section');
   const imageWarning = document.createElement('img');
   imageWarning.src = 'images/atencion-logo.png';
-  imageWarning.alt = 'Icono Atención';
+  imageWarning.alt = ' ';
   imageWarning.classList.add('logoWarning');
   const messageToHome = document.createElement('h5');
   messageToHome.classList.add('message-tohome');

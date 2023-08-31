@@ -12,13 +12,14 @@ function register(navigateTo) {
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-login.png';
-  imageLogo.alt = 'Logo TweetFit';
+  imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h7');
   slogan.classList.add('sloganstyle');
   const generalRegister = document.createElement('section');
   generalRegister.classList.add('generalRegister');
   const titleRegister = document.createElement('h2');
+  const registerForm = document.createElement('form');
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('input-register');
   inputEmail.setAttribute('id', 'inputEmail');
@@ -28,6 +29,10 @@ function register(navigateTo) {
   inputPass.classList.add('input-register');
   inputPass.setAttribute('id', 'inputPass');
   inputPass.type = 'password';
+  const inputConfirmPass = document.createElement('input');
+  inputConfirmPass.classList.add('input-register');
+  inputConfirmPass.setAttribute('id', 'inputConfirmPass');
+  inputConfirmPass.type = 'password';
   const sendEmailButton = document.createElement('button');
   sendEmailButton.classList.add('sendEmail');
   const buttonReturn = document.createElement('button');
@@ -39,6 +44,7 @@ function register(navigateTo) {
   inputEmail.placeholder = 'Correo electrónico';
   inputUser.placeholder = 'Nombre de usuario';
   inputPass.placeholder = 'Contraseña';
+  inputConfirmPass.placeholder = 'Repetir contraseña';
   buttonReturn.textContent = 'Volver atrás';
 
   slogan.textContent = '¡Bienvenido a la aventura fit!';
@@ -48,11 +54,18 @@ function register(navigateTo) {
     navigateTo('/');
   });
 
+  // eslint-disable-next-line consistent-return
   sendEmailButton.addEventListener('click', async (e) => {
     e.preventDefault();
     const email = inputEmail.value;
     const name = inputUser.value;
     const password = inputPass.value;
+    const confirmPass = inputConfirmPass.value;
+    errorAlert.textContent = 'Las contraseñas no coincides. Intenta nuevamente';
+    if (password !== confirmPass) {
+      registerForm.reset();
+      return errorAlert;
+    }
     const messageAlert = document.querySelector('.error');
     try {
       const result = await createUser(email, password);
@@ -84,8 +97,9 @@ function register(navigateTo) {
   // eslint-disable-next-line max-len
   sectionRegister.append(sectionLogo, generalRegister);
   sectionLogo.append(imageLogo, slogan);
+  registerForm.append(inputEmail, inputUser, inputPass, inputConfirmPass);
   // eslint-disable-next-line max-len
-  generalRegister.append(titleRegister, inputEmail, inputUser, inputPass, errorAlert, sendEmailButton, buttonReturn);
+  generalRegister.append(titleRegister, registerForm, errorAlert, sendEmailButton, buttonReturn);
   return sectionRegister;
 }
 export default register;

@@ -48,7 +48,9 @@ const showPosts = async () => {
     individualPost.classList.add('individual-post');
     const post = doc.data();
     const postNameUser = document.createElement('h4');
+    postNameUser.classList.add('user-name');
     const postContent = document.createElement('p');
+    postContent.classList.add('user-post');
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
@@ -59,7 +61,7 @@ const showPosts = async () => {
     sectionLike.classList.add('section-like');
     const likeImage = document.createElement('img');
     likeImage.src = '/images/icono-brazo-like.png';
-    likeImage.alt = 'Icono de Like';
+    likeImage.alt = 'Dar like a la publicación';
     likeImage.classList.add('likeImgFeed');
     // Sección botones editar y borrar
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
@@ -69,11 +71,11 @@ const showPosts = async () => {
       const editButton = document.createElement('img');
       editButton.classList.add('edit-button');
       editButton.src = '/images/editar.png';
-      editButton.alt = 'Icono de editar';
+      editButton.alt = 'Editar publicación';
       const deleteButton = document.createElement('img');
       deleteButton.classList.add('delete-button');
       deleteButton.src = '/images/trash.png';
-      deleteButton.alt = 'Icono de eliminar';
+      deleteButton.alt = 'Eliminar publicación';
       individualPost.append(sectionButtons);
       sectionButtons.append(editButton, deleteButton);
 
@@ -103,7 +105,7 @@ const showPosts = async () => {
           closeIconSection.classList.add('close-icon');
           const closeEdit = document.createElement('img');
           closeEdit.src = '/images/close-edit.png';
-          closeEdit.alt = 'Cerrar';
+          closeEdit.alt = 'Cerrar pantalla de edición';
           closeEdit.classList.add('close-edit');
           popUp.showModal();
           closeIconSection.append(closeEdit);
