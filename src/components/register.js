@@ -20,6 +20,7 @@ function register(navigateTo) {
   generalRegister.classList.add('generalRegister');
   const titleRegister = document.createElement('h2');
   const registerForm = document.createElement('form');
+  registerForm.classList.add('register-form');
   const inputEmail = document.createElement('input');
   inputEmail.classList.add('input-register');
   inputEmail.setAttribute('id', 'inputEmail');

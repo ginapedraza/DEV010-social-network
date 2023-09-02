@@ -9,6 +9,7 @@ import feed from './components/feed.js';
 import noFeed from './components/noFeed.js';
 import resetPassword from './components/resetPassword.js';
 import mailVerificacion from './components/mailVerification.js';
+import profile from './components/profile.js';
 
 const routes = [
   { path: '/', component: home },
@@ -19,6 +20,7 @@ const routes = [
   { path: '/noFeed', component: noFeed },
   { path: '/resetPassword', component: resetPassword },
   { path: '/mailVerification', component: mailVerificacion },
+  { path: '/profile', component: profile },
 ];
 
 const defaultRoute = '/';

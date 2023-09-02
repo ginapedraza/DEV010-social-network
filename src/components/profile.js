@@ -1,10 +1,12 @@
-// import { onAuthStateChanged } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { Timestamp } from 'firebase/firestore';
 import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
-import { addPost, logOut, showPosts } from '../lib/index.js';
+import {
+  addPost, logOut, showPostsProfile,
+} from '../lib/index.js';
 
-function feed(navigateTo) {
+function profile(navigateTo) {
+  let name = '';
   const generalFeed = document.createElement('section');
   generalFeed.setAttribute('id', 'general-section');
   const sectionHeader = document.createElement('header');
@@ -47,15 +49,20 @@ function feed(navigateTo) {
   imgLogout.src = '/images/log-out.png';
   imgLogout.alt = 'Cerrar sesión';
   imgLogout.classList.add('img-logout');
-  const buttonProfile = document.createElement('button');
-  buttonProfile.classList.add('button-profile');
-  const textButton = document.createElement('p');
-  textButton.classList.add('text-button');
-  // buttonProfile.textContent = 'Perfil';
+  const buttonHome = document.createElement('button');
+  buttonHome.classList.add('button-profile');
+  buttonHome.textContent = 'Inicio';
+  const imgHome = document.createElement('img');
+  imgHome.src = '/images/ButtonHome.png';
+  imgHome.alt = 'Ir a home';
+  imgHome.classList.add('img-home');
+  const profileTextSection = document.createElement('section');
+  profileTextSection.classList.add('profiletext-section');
+  const nameUser = document.createElement('h4');
+  nameUser.classList.add('name-user');
   const imgProfile = document.createElement('img');
-  // imgProfile.src = '/images/profileButton.png';
-  imgProfile.alt = 'Ir al perfil';
-  imgProfile.classList.add('img-profile');
+  imgProfile.classList.add('imgProfile');
+  imgProfile.alt = 'Foto de perfil';
   const textAreaSection = document.createElement('section');
   textAreaSection.classList.add('textAreaSection');
   const textArea = document.createElement('textarea');
@@ -67,27 +74,24 @@ function feed(navigateTo) {
   const postsSection = document.createElement('section');
   postsSection.setAttribute('id', 'post-section');
 
-  /* const dateSize = document.querySelector('.date');
-  const userSize = document.querySelector('.user-name');
-  const postSize = document.querySelector('.user-post'); */
+  buttonHome.addEventListener('click', () => {
+    navigateTo('/feed');
+  });
 
-  let name = '';
-  // Manejador para detectar el estado de autenticación
   onAuthStateChanged(auth, async (user) => {
+    // console.log(`inside promise: ${user.displayName}`);
     if (user) {
       // Mostrar los posts del usuario autenticado
+      // console.log(user.displayName);
+      // console.log(user);
       const photo = auth.currentUser.photoURL;
-      imgProfile.src = photo;
-      imgProfile.style.borderRadius = '50%';
-      imgProfile.style.height = '40px';
-      imgProfile.style.width = '40px';
-      if (photo === null) {
-        imgProfile.src = '/images/profileButton.png';
-      }
-      // buttonProfile.textContent = auth.currentUser.displayName;
-      textButton.textContent = auth.currentUser.displayName;
       name = user.displayName;
-      await showPosts(name, postsSection);
+      nameUser.textContent = auth.currentUser.displayName;
+      imgProfile.src = photo;
+      if (photo === null) {
+        imgProfile.src = '/images/defaultProfile.png';
+      }
+      await showPostsProfile(name, postsSection);
     } else {
       navigateTo('/noFeed');
     }
@@ -111,20 +115,15 @@ function feed(navigateTo) {
 
     if (post !== '') {
       addPost(name, post, date).then(() => {
-        showPosts();
+        showPostsProfile();
         textArea.value = '';
       });
     }
   });
-  // logOut es nuestra funcion que hicimos en index.js para cerrar sesión
   buttonLogout.addEventListener('click', () => {
     logOut();
   });
-  buttonProfile.addEventListener('click', () => {
-    navigateTo('/profile');
-  });
-
-  generalFeed.append(sectionHeader, textAreaSection, postsSection);
+  generalFeed.append(sectionHeader, profileTextSection, textAreaSection, postsSection);
   sectionHeader.append(accessibilitySection, sectionLogo, sectionLogOut);
   accessibilitySection.append(reduceButton, normalButton, increaseButton);
   normalButton.append(normalImg);
@@ -132,10 +131,11 @@ function feed(navigateTo) {
   increaseButton.append(increaseImg);
   sectionLogo.append(imageLogo);
   textAreaSection.append(textArea, sendPostButton);
-  sectionLogOut.append(buttonProfile, buttonLogout);
-  buttonProfile.append(imgProfile, textButton);
+  sectionLogOut.append(buttonHome, buttonLogout);
+  buttonHome.append(imgHome);
   buttonLogout.append(imgLogout);
+  profileTextSection.append(imgProfile, nameUser);
   return generalFeed;
 }
 
-export default feed;
+export default profile;
