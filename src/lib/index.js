@@ -2,6 +2,7 @@ import {
   // eslint-disable-next-line max-len
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail,
 } from 'firebase/auth';
+
 import {
   addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc,
 } from 'firebase/firestore';
@@ -25,9 +26,10 @@ const createUser = (email, password) => createUserWithEmailAndPassword(auth, ema
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Función para crear un post
-const addPost = async (name, post, date) => {
+const addPost = async (photo, name, post, date) => {
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
+    photo,
     name,
     post,
     date,
@@ -53,6 +55,9 @@ const showPostsProfile = async () => {
     individualPost.setAttribute('id', 'individual-post');
     individualPost.classList.add('individual-post');
     const post = doc.data();
+    const divProfile = document.createElement('div');
+    divProfile.classList.add('div-profile');
+    const imgProfile = document.createElement('img');
     const postNameUser = document.createElement('h4');
     postNameUser.classList.add('user-name');
     const postContent = document.createElement('p');
@@ -60,6 +65,10 @@ const showPostsProfile = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
+    imgProfile.src = auth.currentUser.photoURL;
+    imgProfile.style.borderRadius = '50%';
+    imgProfile.style.height = '40px';
+    imgProfile.style.width = '40px';
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
@@ -191,7 +200,8 @@ const showPostsProfile = async () => {
       // fin de if(deleteButton)
       // if (currentUser)
       getPostSection.append(individualPost);
-      individualPost.append(postNameUser, postContent, postDate, sectionLike);
+      divProfile.append(imgProfile, postNameUser);
+      individualPost.append(divProfile, postContent, postDate, sectionLike);
       sectionLike.append(likeButton);
       likeButton.append(likeImage);
     }
@@ -210,6 +220,9 @@ const showPosts = async () => {
     individualPost.setAttribute('id', 'individual-post');
     individualPost.classList.add('individual-post');
     const post = doc.data();
+    const divProfile = document.createElement('div');
+    divProfile.classList.add('div-profile');
+    const imgProfile = document.createElement('img');
     const postNameUser = document.createElement('h4');
     postNameUser.classList.add('user-name');
     const postContent = document.createElement('p');
@@ -217,6 +230,26 @@ const showPosts = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
+    imgProfile.src = auth.currentUser.photoURL;
+    console.log(post);
+    if (auth.currentUser.photoURL === null) {
+      imgProfile.src = '/images/profileButton.png';
+    }
+    imgProfile.style.borderRadius = '50%';
+    imgProfile.style.height = '40px';
+    imgProfile.style.width = '40px';
+
+    /*   onAuthStateChanged(auth, async (user) => {
+        if (user) {
+          imgProfile.src = auth.currentUser.photoURL;
+          imgProfile.style.borderRadius = '50%';
+          imgProfile.style.height = '40px';
+          imgProfile.style.width = '40px';
+          if (auth.currentUser.photoURL === null) {
+            imgProfile.src = '/images/profileButton.png';
+          }
+        }
+      }); */
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
     // Sección del Like
@@ -358,8 +391,9 @@ const showPosts = async () => {
       // fin de if(deleteButton)
     }
     // if (currentUser)
+    divProfile.append(imgProfile, postNameUser);
+    individualPost.append(divProfile, postContent, postDate, sectionLike);
     getPostSection.append(individualPost);
-    individualPost.append(postNameUser, postContent, postDate, sectionLike);
     sectionLike.append(likeButton);
     likeButton.append(likeImage);
   });

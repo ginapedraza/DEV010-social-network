@@ -25,7 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Guardamos en auth la función de firebase getAuth para la autenticación
 const auth = getAuth(app);
-console.log(auth);
 const db = getFirestore(app);
 
 export {

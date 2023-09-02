@@ -823,6 +823,9 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;       
   border: 3px solid   #011640; 
 }
+.user-name {
+ margin: 12px;
+}
 /* profile*/
 .name-user {
   font-size: 1.5rem;
@@ -837,4 +840,9 @@ body::-webkit-scrollbar-thumb {
   border-radius: 50%;
   height: 60px;
   width: 60px;
+}
+.div-profile {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
 }
