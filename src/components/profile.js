@@ -9,6 +9,8 @@ function profile(navigateTo) {
   let name = '';
   const generalFeed = document.createElement('section');
   generalFeed.setAttribute('id', 'general-section');
+  const backgroundSection = document.createElement('section');
+  backgroundSection.classList.add('background-Section');
   const sectionHeader = document.createElement('header');
   sectionHeader.classList.add('headerClass');
   const accessibilitySection = document.createElement('section');
@@ -123,8 +125,9 @@ function profile(navigateTo) {
   buttonLogout.addEventListener('click', () => {
     logOut();
   });
-  generalFeed.append(sectionHeader, profileTextSection, textAreaSection, postsSection);
+  generalFeed.append(sectionHeader, backgroundSection);
   sectionHeader.append(accessibilitySection, sectionLogo, sectionLogOut);
+  backgroundSection.append(profileTextSection, textAreaSection, postsSection);
   accessibilitySection.append(reduceButton, normalButton, increaseButton);
   normalButton.append(normalImg);
   reduceButton.append(reduceImg);

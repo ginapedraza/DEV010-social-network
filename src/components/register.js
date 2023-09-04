@@ -62,36 +62,38 @@ function register(navigateTo) {
     const name = inputUser.value;
     const password = inputPass.value;
     const confirmPass = inputConfirmPass.value;
-    errorAlert.textContent = 'Las contraseñas no coincides. Intenta nuevamente';
     if (password !== confirmPass) {
       registerForm.reset();
+      errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
       return errorAlert;
     }
-    const messageAlert = document.querySelector('.error');
-    try {
-      const result = await createUser(email, password);
-      await sendEmailVerification(auth.currentUser);
+    if (password === confirmPass) {
+      const messageAlert = document.querySelector('.error');
+      try {
+        const result = await createUser(email, password);
+        await sendEmailVerification(auth.currentUser);
 
-      await updateProfile(result.user, { displayName: name })
-        .then(() => {
-        //     // Email verification sent!
-          navigateTo('/mailVerification');
-        });
-    } catch (error) {
-      const errorCode = error.code;
-      // const errorMessage = error.message;
-      if (errorCode === 'auth/email-already-in-use') {
-        messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
+        await updateProfile(result.user, { displayName: name })
+          .then(() => {
+            //     // Email verification sent!
+            navigateTo('/mailVerification');
+          });
+      } catch (error) {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        if (errorCode === 'auth/email-already-in-use') {
+          messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
-      } else if (password.length < 6) {
-        messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+        } else if (password.length < 6) {
+          messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
-      } // else {
+        } // else {
       // messageAlert.textContent = errorMessage;
       // alert(errorMessage);
       // }
       // ..
+      }
     }
   });
 

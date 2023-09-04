@@ -7,6 +7,8 @@ import { addPost, logOut, showPosts } from '../lib/index.js';
 function feed(navigateTo) {
   const generalFeed = document.createElement('section');
   generalFeed.setAttribute('id', 'general-section');
+  const backgroundSection = document.createElement('section');
+  backgroundSection.classList.add('background-Section');
   const sectionHeader = document.createElement('header');
   sectionHeader.classList.add('headerClass');
   const accessibilitySection = document.createElement('section');
@@ -124,8 +126,9 @@ function feed(navigateTo) {
     navigateTo('/profile');
   });
 
-  generalFeed.append(sectionHeader, textAreaSection, postsSection);
+  generalFeed.append(sectionHeader, backgroundSection);
   sectionHeader.append(accessibilitySection, sectionLogo, sectionLogOut);
+  backgroundSection.append(textAreaSection, postsSection);
   accessibilitySection.append(reduceButton, normalButton, increaseButton);
   normalButton.append(normalImg);
   reduceButton.append(reduceImg);

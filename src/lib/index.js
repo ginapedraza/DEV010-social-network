@@ -156,7 +156,7 @@ const showPostsProfile = async () => {
             popUp.remove();
           });
           closeEditButton.addEventListener('click', () => {
-            popUp.close();
+            popUp.remove();
           });
         });
       }
@@ -201,8 +201,8 @@ const showPostsProfile = async () => {
       // if (currentUser)
       getPostSection.append(individualPost);
       divProfile.append(imgProfile, postNameUser);
-      individualPost.append(divProfile, postContent, postDate, sectionLike);
-      sectionLike.append(likeButton);
+      individualPost.append(divProfile, postContent, sectionLike);
+      sectionLike.append(postDate, likeButton);
       likeButton.append(likeImage);
     }
   });
@@ -239,17 +239,6 @@ const showPosts = async () => {
     imgProfile.style.height = '40px';
     imgProfile.style.width = '40px';
 
-    /*   onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          imgProfile.src = auth.currentUser.photoURL;
-          imgProfile.style.borderRadius = '50%';
-          imgProfile.style.height = '40px';
-          imgProfile.style.width = '40px';
-          if (auth.currentUser.photoURL === null) {
-            imgProfile.src = '/images/profileButton.png';
-          }
-        }
-      }); */
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
     // Sección del Like
@@ -339,15 +328,15 @@ const showPosts = async () => {
           closeIconSection.append(closeEditButton);
           closeEditButton.append(closeEdit);
           popUp.append(closeIconSection, editDescription, line, textareaEdit, saveButton);
+          closeEditButton.addEventListener('click', () => {
+            popUp.remove();
+          });
           saveButton.addEventListener('click', async () => {
             const editedPost = textareaEdit.value;
             await updateDoc(doc.ref, { post: editedPost });
             post.post = editedPost;
             postContent.textContent = editedPost;
             popUp.remove();
-          });
-          closeEditButton.addEventListener('click', () => {
-            popUp.close();
           });
         });
       }
@@ -394,7 +383,8 @@ const showPosts = async () => {
     divProfile.append(imgProfile, postNameUser);
     individualPost.append(divProfile, postContent, postDate, sectionLike);
     getPostSection.append(individualPost);
-    sectionLike.append(likeButton);
+    sectionLike.append(postDate, likeButton);
+    likeButton.append(likeImage);
     likeButton.append(likeImage);
   });
 };
