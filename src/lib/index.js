@@ -229,11 +229,15 @@ const showPosts = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
-    imgProfile.src = auth.currentUser.photoURL;
-    console.log(post);
-    if (auth.currentUser.photoURL === null) {
-      imgProfile.src = '/images/profileButton.png';
+    /* imgProfile.src = post.photoURL; */
+
+    const isCurrentUserPost = post.name === auth.currentUser.displayName;
+    if (isCurrentUserPost) {
+      imgProfile.src = auth.currentUser.photoURL;
+    } else {
+      imgProfile.src = '/images/azul.png';
     }
+    console.log(imgProfile);
     imgProfile.style.borderRadius = '50%';
     imgProfile.style.height = '40px';
     imgProfile.style.width = '40px';
@@ -265,8 +269,8 @@ const showPosts = async () => {
       postNameUser.style.fontSize = '1rem';
     });
     // Sección botones editar y borrar
-    const isCurrentUserPost = post.name === auth.currentUser.displayName;
-    if (isCurrentUserPost) {
+    const isCurrentUser = post.name === auth.currentUser.displayName;
+    if (isCurrentUser) {
       const sectionButtons = document.createElement('section');
       sectionButtons.classList.add('section-buttons-post');
       const buttonEdit = document.createElement('button');
