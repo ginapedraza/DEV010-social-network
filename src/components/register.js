@@ -65,7 +65,7 @@ function register(navigateTo) {
     if (password !== confirmPass) {
       registerForm.reset();
       errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
-      return errorAlert;
+      // return errorAlert;
     }
     if (password === confirmPass) {
       const messageAlert = document.querySelector('.error');
@@ -85,7 +85,8 @@ function register(navigateTo) {
           messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
-        } else if (password.length < 6) {
+        }
+        if (errorCode === 'auth/weak-password') {
           messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
         } // else {

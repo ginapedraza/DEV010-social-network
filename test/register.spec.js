@@ -33,7 +33,7 @@ describe('Testing register function', () => {
     document.body.appendChild(registerElement);
   });
 
-  it('should register a new user with matching passwords', async () => {
+  it('should register a new user with email and password', async () => {
     inputEmail.value = 'test@email.com';
     inputPass.value = '123456';
     inputConfirmPass.value = '123456';
@@ -54,10 +54,10 @@ describe('Testing register function', () => {
   });
 
   it('should display an error message when password length < 6 characters', async () => {
-    createUser.mockRejectedValue(inputPass.value.length < 6);
-    const messageAlert = registerElement.querySelector('.error');
+    createUser.mockRejectedValue({ code: 'auth/weak-password' });
+    const messageAlert = document.querySelector('.error');
     messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
-
+    // inputPass.value = '123';
     sendEmailButton.click();
     await Promise.resolve();
     expect(messageAlert.textContent).toBe('La contraseña debe tener al menos 6 caracteres.');
@@ -67,6 +67,8 @@ describe('Testing register function', () => {
     createUser.mockRejectedValue(inputPass.value !== inputConfirmPass.value);
     const messageAlert = registerElement.querySelector('.error');
     messageAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
+    // inputPass.value = '123456';
+    // inputConfirmPass.value = '123456';
 
     sendEmailButton.click();
     await Promise.resolve();

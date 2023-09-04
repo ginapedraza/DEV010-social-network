@@ -9,7 +9,7 @@ function noFeed(navigateTo) {
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgFeed');
   const buttonhome = document.createElement('button');
-  buttonhome.classList.add('button-home');
+  buttonhome.classList.add('button-home-nofeed');
   buttonhome.textContent = 'Volver';
   const messageSection = document.createElement('section');
   messageSection.classList.add('message-section');

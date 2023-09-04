@@ -10,7 +10,7 @@ function mailVerificacion(navigateTo) {
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgFeed');
   const buttonLogin = document.createElement('button');
-  buttonLogin.classList.add('button-home');
+  buttonLogin.classList.add('button-home-nofeed');
   buttonLogin.textContent = 'Ya verifiqué mi correo';
   const messageSection = document.createElement('section');
   messageSection.classList.add('message-section');
