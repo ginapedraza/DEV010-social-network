@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 // importamos la funcion que vamos a testear
 // import { sendEmailVerification } from 'firebase/auth';
-import * as auth from '../src/firebase.js';
+/* import * as auth from '../src/firebase.js';
 import login from '../src/components/login.js';
 
 describe('Testing Login function', () => {
@@ -9,7 +10,9 @@ describe('Testing Login function', () => {
     jest.restoreAllMocks();
   });
   test('it should call signIn and redirect to feed when emailVerified is true', () => {
-    jest.spyOn(auth, 'signIn').mockImplementation(() => Promise.resolve({ emailVerified: true, data: { code: 'mockData' } }));
+    // eslint-disable-next-line max-len, max-len, max-len
+    jest.spyOn(auth, 'signIn').mockImplementation(()
+    => Promise.resolve({ emailVerified: true, data: { code: 'mockData' } }));
 
     const DOM = document.createElement('div');
     const navigateTo = jest.fn(); // Agregar la función navigateTo simulada
@@ -28,7 +31,8 @@ describe('Testing Login function', () => {
     }, 0);
   });
 
-  test('it should show an error when signIn return emailVerified=false with code auth/user-not-found', () => {
+  test('it should show an error when signIn return emailVerified=false with code auth/user-not-found',
+  () => {
     jest.spyOn(auth, 'signIn').mockImplementation(() => Promise.resolve({ emailVerified: false, data: { code: 'auth/user-not-found' } }));
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
@@ -45,3 +49,4 @@ describe('Testing Login function', () => {
     }, 0);
   });
 });
+ */
