@@ -26,10 +26,9 @@ const createUser = (email, password) => createUserWithEmailAndPassword(auth, ema
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Función para crear un post
-const addPost = async (photo, name, post, date) => {
+const addPost = async (name, post, date) => {
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
-    photo,
     name,
     post,
     date,
