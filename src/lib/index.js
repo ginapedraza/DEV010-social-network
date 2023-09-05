@@ -188,11 +188,11 @@ const showPostsProfile = async () => {
             } catch (error) {
               console.error('error deleting the post:', error);
             } finally {
-              popUpDelete.close();
+              popUpDelete.remove();
             }
           });
           cancelButton.addEventListener('click', () => {
-            popUpDelete.close();
+            popUpDelete.remove();
           });
         });
       }
@@ -372,11 +372,11 @@ const showPosts = async () => {
             } catch (error) {
               console.error('error deleting the post:', error);
             } finally {
-              popUpDelete.close();
+              popUpDelete.remove();
             }
           });
           cancelButton.addEventListener('click', () => {
-            popUpDelete.close();
+            popUpDelete.remove();
           });
         });
       }

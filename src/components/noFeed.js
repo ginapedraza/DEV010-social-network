@@ -1,13 +1,13 @@
 function noFeed(navigateTo) {
   const noFeedSection = document.createElement('section');
   const sectionHeader = document.createElement('header');
-  sectionHeader.classList.add('headerClass');
+  sectionHeader.classList.add('headerNoFeed');
   const sectionLogo = document.createElement('section');
-  sectionLogo.classList.add('logo-section');
+  sectionLogo.classList.add('logo-section-noFeed');
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-home.png';
   imageLogo.alt = ' ';
-  imageLogo.classList.add('logoImgFeed');
+  imageLogo.classList.add('logoImgNoFeed');
   const buttonhome = document.createElement('button');
   buttonhome.classList.add('button-home-nofeed');
   buttonhome.textContent = 'Volver';

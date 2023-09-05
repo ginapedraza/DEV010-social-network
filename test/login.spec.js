@@ -1,52 +1,61 @@
 /* eslint-disable max-len */
-// importamos la funcion que vamos a testear
-// import { sendEmailVerification } from 'firebase/auth';
-/* import * as auth from '../src/firebase.js';
 import login from '../src/components/login.js';
+import { signIn } from '../src/lib/index.js';
+// import auth from '../src/firebase.js';
+
+jest.mock('../src/lib/index.js', () => (
+  {
+    signIn: jest.fn(),
+    // => Promise.resolve({ response: { test: 'test' } })),
+    auth: jest.fn(), // => objectAuth),
+    // createUserWithEmailAndPassword: jest.fn(),
+
+  }
+));
 
 describe('Testing Login function', () => {
-  beforeEach(() => {
-    // Restaurar la implementación original de auth.signIn antes de cada test
-    jest.restoreAllMocks();
-  });
-  test('it should call signIn and redirect to feed when emailVerified is true', () => {
-    // eslint-disable-next-line max-len, max-len, max-len
-    jest.spyOn(auth, 'signIn').mockImplementation(()
-    => Promise.resolve({ emailVerified: true, data: { code: 'mockData' } }));
+  const navigateTo = jest.fn();
+  // const userCredential = jest.fn();
+  const loginElement = login(navigateTo);
 
-    const DOM = document.createElement('div');
-    const navigateTo = jest.fn(); // Agregar la función navigateTo simulada
-    DOM.append(login(navigateTo));
-    const buttonLogin = DOM.querySelector('.login-button');
+  const buttonLogin = loginElement.querySelector('.login-button');
+  const inputEmail = loginElement.querySelector('#inputEmail');
+  const inputPass = loginElement.querySelector('#inputPass');
+  const buttonReturn = loginElement.querySelector('.button-return');
+  const restorePass = loginElement.querySelector('.restorePassP');
 
-    DOM.querySelector('#inputEmail').value = 'test@email.com';
-    DOM.querySelector('#inputPass').value = '123456';
+  it('should register a new user with email and password', async () => {
+    inputEmail.value = 'test@email.com';
+    inputPass.value = '123456';
 
     buttonLogin.click();
-    expect(auth.signIn).toHaveBeenCalledTimes(1);
-    expect(auth.signIn).toHaveBeenCalledWith('test@email.com', '123456');
+    expect(signIn).toHaveBeenCalledTimes(1);
+    expect(signIn).toHaveBeenCalledWith('test@email.com', '123456');
     setTimeout(() => {
       expect(navigateTo).toHaveBeenCalledTimes(1);
       expect(navigateTo).toHaveBeenCalledWith('/feed');
     }, 0);
   });
 
-  test('it should show an error when signIn return emailVerified=false with code auth/user-not-found',
-  () => {
-    jest.spyOn(auth, 'signIn').mockImplementation(() => Promise.resolve({ emailVerified: false, data: { code: 'auth/user-not-found' } }));
-    const DOM = document.createElement('div');
-    const navigateTo = jest.fn();
-    DOM.append(login(navigateTo));
-    const buttonLogin = DOM.querySelector('.login-button');
-    DOM.querySelector('#inputEmail').value = 'test@email.com';
-    DOM.querySelector('#inputPass').value = '123456';
-    const error1 = DOM.querySelector('.error');
+  it('should navigate to Home when clicking button return', async () => {
+    buttonReturn.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(navigateTo).toHaveBeenCalledWith('/');
+  }, 0);
+
+  it('should navigate to resetPaswword when clicking button restorePass', async () => {
+    restorePass.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(navigateTo).toHaveBeenCalledWith('/resetPassword');
+  }, 0);
+
+  /* it('should show an error message when email is not verified', async () => {
+    signIn.mockRejectedValue(userCredential.user.emailVerified === false);
+    const errorAlert = loginElement.querySelector('.error');
+    errorAlert.textContent = 'Aun no verificas tu email';
+
     buttonLogin.click();
-    expect(auth.signIn).toHaveBeenCalledTimes(1);
-    setTimeout(() => {
-      expect(navigateTo).toHaveBeenCalledTimes(0);
-      expect(error1.innerText).toBe('Usuario no encontrado. Verifica tus credenciales.');
-    }, 0);
-  });
+    await Promise.resolve();
+    expect(errorAlert.textContent).toBe('Aun no verificas tu email');
+  }); */
 });
- */

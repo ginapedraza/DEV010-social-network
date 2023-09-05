@@ -68,7 +68,7 @@ function register(navigateTo) {
       // return errorAlert;
     }
     if (password === confirmPass) {
-      const messageAlert = document.querySelector('.error');
+      // const messageAlert = document.querySelector('.error');
       try {
         const result = await createUser(email, password);
         await sendEmailVerification(auth.currentUser);
@@ -82,12 +82,12 @@ function register(navigateTo) {
         const errorCode = error.code;
         // const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use') {
-          messageAlert.textContent = 'El correo proporcionado ya esta en uso.';
+          errorAlert.textContent = 'El correo proporcionado ya esta en uso.';
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
         }
-        if (errorCode === 'auth/weak-password') {
-          messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+        if (inputPass.value.length < 6) {
+          errorAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
         } // else {
       // messageAlert.textContent = errorMessage;

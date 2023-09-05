@@ -63,7 +63,8 @@ function login(navigateTo) {
       if (userCredential.user.emailVerified) {
         // El usuario está autenticado y su correo está verificado.
         navigateTo('/feed');
-      } else {
+      }
+      if (userCredential.user.emailVerified === false) {
         error1.textContent = 'Aun no verificas tu email';
       }
     } catch (error) {
@@ -71,13 +72,16 @@ function login(navigateTo) {
       if (error.code === 'auth/user-not-found') {
         error1.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
         // alert('Usuario no encontrado. Verifica tus credenciales.');
-      } else if (error.code === 'auth/wrong-password') {
+      }
+      if (error.code === 'auth/wrong-password') {
         error1.textContent = 'Contraseña incorrecta. Verifica tus datos.';
         // alert('Contraseña incorrecta. Verifica tus credenciales.');
-      } else if (error.code === 'auth/user-disabled') {
+      }
+      if (error.code === 'auth/user-disabled') {
         error1.textContent = 'Tu cuenta ha sido deshabilitada.';
         // alert('Tu cuenta ha sido deshabilitada. Contacta al soporte.');
-      } else if (error.code === 'auth/user-mismatch') {
+      }
+      if (error.code === 'auth/user-mismatch') {
         error1.textContent = 'Hay un problema con tu cuenta.';
         // alert('Hay un problema con tu cuenta. Contacta al soporte.');
       } /* else {
