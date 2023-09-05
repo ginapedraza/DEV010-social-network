@@ -510,6 +510,7 @@ body {
   height: auto;
   resize: none;
   font-family:Arial, Helvetica, sans-serif;
+  white-space: pre-line;
 }
 
 #post-section {
@@ -881,4 +882,8 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: row;
   margin: 8px;
+
+}
+.user-post {
+  white-space: pre-line;
 }
