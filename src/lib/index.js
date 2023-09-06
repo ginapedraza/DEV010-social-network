@@ -32,6 +32,8 @@ const addPost = async (name, post, date) => {
     name,
     post,
     date,
+    likes: [],
+    likesCount: 0,
   });
 };
 /* const showName = () => {
@@ -229,6 +231,7 @@ const showPosts = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
+
     /* imgProfile.src = post.photoURL; */
 
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
@@ -237,7 +240,6 @@ const showPosts = async () => {
     } else {
       imgProfile.src = '/images/azul.png';
     }
-    console.log(imgProfile);
     imgProfile.style.borderRadius = '50%';
     imgProfile.style.height = '40px';
     imgProfile.style.width = '40px';
@@ -253,6 +255,49 @@ const showPosts = async () => {
     likeImage.src = '/images/icono-brazo-like.png';
     likeImage.alt = 'Dar like a la publicación';
     likeImage.classList.add('likeImgFeed');
+    let userLiked = post.likes && post.likes.includes(auth.currentUser.uid);
+    const likesCount = post.likesCount;
+    console.log(likesCount);
+    likeImage.src = userLiked ? '/images/button-liked.png' : '/images/icono-brazo-like.png';
+
+    likeButton.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const userId = auth.currentUser.uid;
+      const arrayLikes = post.likes;
+      console.log(arrayLikes);
+
+      const tempArrayLikes = arrayLikes || [];
+      console.log(tempArrayLikes);
+      userLiked = tempArrayLikes.includes(userId);
+      console.log(userLiked);
+
+      try {
+        if (userLiked === false) {
+          likeImage.src = '/images/button-liked.png';
+          tempArrayLikes.push(userId);
+          const arrayLikesLength = tempArrayLikes.length;
+          await updateDoc(doc.ref, { likes: tempArrayLikes });
+          await updateDoc(doc.ref, { likesCount: arrayLikesLength });
+          likesCount.innerHTML = arrayLikesLength;
+        }
+        if (userLiked) {
+          likeImage.src = '/images/icono-brazo-like.png';
+          const indexUserLikesArray = tempArrayLikes.indexOf(userId);
+          tempArrayLikes.splice(indexUserLikesArray, 1);
+          console.log(tempArrayLikes);
+          const arrayLikesLength = tempArrayLikes.length;
+
+          await updateDoc(doc.ref, { likes: tempArrayLikes });
+          await updateDoc(doc.ref, { likesCount: arrayLikesLength });
+
+          likesCount.innerHTML = arrayLikesLength;
+        }
+      } catch (error) {
+        console.error('Error updating the post:', error);
+      }
+    });
+
+    // Botones de accesibilidad
     const getReduceButton = document.querySelector('#reduceButton');
     const getIncreaseButton = document.querySelector('#increaseButton');
     const getNormalButton = document.querySelector('#normalButton');
@@ -386,7 +431,7 @@ const showPosts = async () => {
     divProfile.append(imgProfile, postNameUser);
     individualPost.append(divProfile, postContent, postDate, sectionLike);
     getPostSection.append(individualPost);
-    sectionLike.append(postDate, likeButton);
+    sectionLike.append(postDate, likeButton, likesCount);
     likeButton.append(likeImage);
     likeButton.append(likeImage);
   });

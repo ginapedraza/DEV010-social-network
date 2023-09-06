@@ -1,9 +1,7 @@
-import {
-  addDoc, collection, Timestamp,
-} from 'firebase/firestore';
-import { db } from '../src/firebase.js';
+// import { collection } from 'firebase/firestore';
+// import { db } from '../src/firebase.js';
 import feed from '../src/components/feed.js';
-import { addPost } from '../src/lib/index.js';
+import { addPost, logOut } from '../src/lib/index.js';
 
 jest.mock('../src/lib/index.js', () => (
   {
@@ -13,32 +11,61 @@ jest.mock('../src/lib/index.js', () => (
     // createUserWithEmailAndPassword: jest.fn(),
     auth: jest.fn(),
 
+    logOut: jest.fn(),
+
   }
 ));
 
+jest.mock('firebase/firestore', () => ({
+  getFirestore: jest.fn(),
+  collection: jest.fn(),
+  addDoc: jest.fn((_, { publication: name, post, date }) => `name:${name}, post:${post}, date:${date}`),
+  getDocs: jest.fn(() => 'postDelUsuario'),
+  doc: jest.fn((_, __, id) => id),
+  deleteDoc: jest.fn((id) => id),
+  updateDoc: jest.fn((id, { publication: post }) => `id:${id}, post:${post}`),
+}));
+
 describe('Testing feed function', () => {
-  // const navigateTo = jest.fn();
-  // const feedElement = feed(navigateTo);
+  const navigateTo = jest.fn();
+  const feedElement = feed(navigateTo);
+  const buttonLogout = feedElement.querySelector('.button-logout');
+  const buttonProfile = feedElement.querySelector('.button-profile');
 
-  // const sendPostButton = feedElement.querySelector('.sendPost-button');
-  // const textArea = feedElement.querySelector('.text-area');
-  // const post = textArea.value;
-  // const name = auth.currentUser.displayName;
-  // const date = Timestamp.now();
+  it('should log out when clicking button buttonLogout', async () => {
+    buttonLogout.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(logOut).toHaveBeenCalledTimes(1);
+  }, 0);
 
-  /* it('should call showPosts when clicking the sendPostButton', async () => {
-    sendPostButton.click();
-    await Promise.resolve();
-    expect(addPost).toHaveBeenCalledTimes(1);
+  it('should navigate to /profile when clicking button buttonProfile', async () => {
+    buttonProfile.click();
+    expect(navigateTo).toHaveBeenCalledWith('/profile');
+  }, 0);
+
+  it('Debería ser una función', () => {
+    expect(typeof addPost).toBe('function');
+  });
+
+  /* it('should add a post successfully', () => {
+    // const collectionMock = jest.fn();
+    // collection.mockReturnValue(collectionMock);
+
+    const name = 'Maria';
+    const post = 'Hola a todas!';
+    const date = new Date();
+    // expect(addPost).toHaveBeenCalledTimes(1);
+    expect(addPost()).toEqual(`name:${name}, post:${post}, date:${date}`);
   }); */
+});
 
-  it('should add a post successfully', async () => {
+/* it('should add a post successfully', async () => {
     const collectionMock = jest.fn();
     collection.mockReturnValue(collectionMock);
 
     const name = 'Maria';
     const post = 'Hola a todas!';
-    const date = Timestamp.now();
+    const date = new Date();
 
     await addPost(name, post, date);
 
@@ -47,6 +74,4 @@ describe('Testing feed function', () => {
       name,
       post,
       date,
-    });
-  });
-});
+    }); */

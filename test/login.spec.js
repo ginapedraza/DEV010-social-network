@@ -49,13 +49,18 @@ describe('Testing Login function', () => {
     expect(navigateTo).toHaveBeenCalledWith('/resetPassword');
   }, 0);
 
+  it('Debería ser una función', () => {
+    expect(typeof signIn).toBe('function');
+  });
+
   /* it('should show an error message when email is not verified', async () => {
-    signIn.mockRejectedValue(userCredential.user.emailVerified === false);
+    signIn.mockRejectedValue('auth/user-not-found'); // Como el test verifica este error.
     const errorAlert = loginElement.querySelector('.error');
-    errorAlert.textContent = 'Aun no verificas tu email';
+    // errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
+    // signIn.mockImplementation(() => Promise.resolve(errorAlert));
 
     buttonLogin.click();
     await Promise.resolve();
-    expect(errorAlert.textContent).toBe('Aun no verificas tu email');
+    expect(errorAlert.textContent).toBe('Usuario no encontrado. Verifica tus credenciales.');
   }); */
 });
