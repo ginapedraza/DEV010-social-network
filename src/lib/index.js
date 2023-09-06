@@ -249,6 +249,8 @@ const showPosts = async () => {
     // Sección del Like
     const sectionLike = document.createElement('section');
     sectionLike.classList.add('section-like');
+    const subSectionLike = document.createElement('section');
+    subSectionLike.classList.add('subsection');
     const likeButton = document.createElement('button');
     likeButton.classList.add('like-button');
     const likeImage = document.createElement('img');
@@ -256,7 +258,10 @@ const showPosts = async () => {
     likeImage.alt = 'Dar like a la publicación';
     likeImage.classList.add('likeImgFeed');
     let userLiked = post.likes && post.likes.includes(auth.currentUser.uid);
-    const likesCount = post.likesCount;
+    const likesCount = document.createElement('p');
+    likesCount.classList.add('counter');
+    likesCount.textContent = post.likes.length;
+
     console.log(likesCount);
     likeImage.src = userLiked ? '/images/button-liked.png' : '/images/icono-brazo-like.png';
 
@@ -278,7 +283,7 @@ const showPosts = async () => {
           const arrayLikesLength = tempArrayLikes.length;
           await updateDoc(doc.ref, { likes: tempArrayLikes });
           await updateDoc(doc.ref, { likesCount: arrayLikesLength });
-          likesCount.innerHTML = arrayLikesLength;
+          likesCount.textContent = arrayLikesLength.toString();
         }
         if (userLiked) {
           likeImage.src = '/images/icono-brazo-like.png';
@@ -290,7 +295,7 @@ const showPosts = async () => {
           await updateDoc(doc.ref, { likes: tempArrayLikes });
           await updateDoc(doc.ref, { likesCount: arrayLikesLength });
 
-          likesCount.innerHTML = arrayLikesLength;
+          likesCount.textContent = arrayLikesLength.toString();
         }
       } catch (error) {
         console.error('Error updating the post:', error);
@@ -431,7 +436,8 @@ const showPosts = async () => {
     divProfile.append(imgProfile, postNameUser);
     individualPost.append(divProfile, postContent, postDate, sectionLike);
     getPostSection.append(individualPost);
-    sectionLike.append(postDate, likeButton, likesCount);
+    sectionLike.append(postDate, subSectionLike);
+    subSectionLike.append(likeButton, likesCount);
     likeButton.append(likeImage);
     likeButton.append(likeImage);
   });

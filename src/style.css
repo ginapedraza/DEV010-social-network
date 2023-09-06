@@ -568,7 +568,7 @@ font-family: Arial, Helvetica, sans-serif;
     display: flex;
     /* background-repeat: no-repeat;*/ 
     padding: auto;
-    box-sizing: border-box;
+    flex-direction: row;
     /* background-position: center center; */
     justify-content: space-between;
 }
@@ -577,10 +577,20 @@ font-family: Arial, Helvetica, sans-serif;
   display: flex;
   /* background-repeat: no-repeat;*/ 
   padding: auto;
-  box-sizing: border-box;
+  flex-direction: row;
   background-position: center center;
   justify-content: space-between;
 }
+}
+
+.subsection {
+  display: flex;
+  
+  
+}
+
+.counter {
+  font-weight: bold;
 }
 .like-button {
   box-shadow: none;
@@ -590,7 +600,6 @@ font-family: Arial, Helvetica, sans-serif;
 .likeImgFeed {
   width: 30px;
   height: 30px;
-  align-self: flex-end;
   cursor: pointer;
 }
 .likeImgFeed:hover {
