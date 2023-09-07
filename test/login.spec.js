@@ -54,11 +54,11 @@ describe('Testing Login function', () => {
   });
 
   /* it('should show an error message when email is not verified', async () => {
-    signIn.mockRejectedValue('auth/user-not-found'); // Como el test verifica este error.
+    signIn.mockRejectedValue({ code: 'auth/user-not-found' }); // Como el test verifica este error.
     const errorAlert = loginElement.querySelector('.error');
     // errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
-    // signIn.mockImplementation(() => Promise.resolve(errorAlert));
-
+    inputEmail.value = 'test@email.com';
+    inputPass.value = '123456';
     buttonLogin.click();
     await Promise.resolve();
     expect(errorAlert.textContent).toBe('Usuario no encontrado. Verifica tus credenciales.');

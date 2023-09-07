@@ -93,6 +93,7 @@ function register(navigateTo) {
 
   // eslint-disable-next-line consistent-return
   sendEmailButton.addEventListener('click', async (e) => {
+    console.log('hola');
     e.preventDefault();
     const email = inputEmail.value;
     const name = inputUser.value;
@@ -102,8 +103,7 @@ function register(navigateTo) {
       registerForm.reset();
       errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
       // return errorAlert;
-    }
-    if (password === confirmPass) {
+    } else if (password === confirmPass) {
       // const messageAlert = document.querySelector('.error');
       try {
         const result = await createUser(email, password);
@@ -115,20 +115,20 @@ function register(navigateTo) {
             navigateTo('/mailVerification');
           });
       } catch (error) {
+        console.log(error);
+        console.log('catch');
         const errorCode = error.code;
         // const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use') {
+          console.log(errorCode);
           errorAlert.textContent = 'El correo proporcionado ya esta en uso.';
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
-        }
-        if (inputUser.value.length === 0) {
+        } else if (inputUser.value.length === 0) {
           errorAlert.textContent = 'Debes ingresar un nombre de usuario';
-        }
-        if (inputEmail.value.length === 0) {
+        } else if (inputEmail.value.length === 0) {
           errorAlert.textContent = 'Debes ingresar tu email.';
-        }
-        if (inputPass.value.length < 6) {
+        } else if (inputPass.value.length < 6) {
           errorAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
         } // else {

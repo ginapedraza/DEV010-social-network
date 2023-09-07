@@ -19,7 +19,8 @@ jest.mock('../src/lib/index.js', () => (
 jest.mock('firebase/firestore', () => ({
   getFirestore: jest.fn(),
   collection: jest.fn(),
-  addDoc: jest.fn((_, { publication: name, post, date }) => `name:${name}, post:${post}, date:${date}`),
+  addDoc: jest.fn(),
+  // { publication: name, post, date }) => `name:${name}, post:${post}, date:${date}`),
   getDocs: jest.fn(() => 'postDelUsuario'),
   doc: jest.fn((_, __, id) => id),
   deleteDoc: jest.fn((id) => id),

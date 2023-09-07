@@ -86,20 +86,21 @@ function login(navigateTo) {
         error1.textContent = 'Aun no verificas tu email';
       }
     } catch (error) {
+      const errorCode = error.code;
       // Manejar el error de autenticación o verificación de correo aquí.
-      if (error.code === 'auth/user-not-found') {
+      if (errorCode === 'auth/user-not-found') {
         error1.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
         // alert('Usuario no encontrado. Verifica tus credenciales.');
       }
-      if (error.code === 'auth/wrong-password') {
+      if (errorCode === 'auth/wrong-password') {
         error1.textContent = 'Contraseña incorrecta. Verifica tus datos.';
         // alert('Contraseña incorrecta. Verifica tus credenciales.');
       }
-      if (error.code === 'auth/user-disabled') {
+      if (errorCode === 'auth/user-disabled') {
         error1.textContent = 'Tu cuenta ha sido deshabilitada.';
         // alert('Tu cuenta ha sido deshabilitada. Contacta al soporte.');
       }
-      if (error.code === 'auth/user-mismatch') {
+      if (errorCode === 'auth/user-mismatch') {
         error1.textContent = 'Hay un problema con tu cuenta.';
         // alert('Hay un problema con tu cuenta. Contacta al soporte.');
       } /* else {
