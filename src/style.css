@@ -3,13 +3,16 @@ body {
     padding: 0;
     height: 100%;
     background-color:white;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+  
 }
 
 .registerButton {
     border-radius: 10px;
     background: #F26938;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.3rem;
     color: #FFF;
     padding: 10px;
@@ -63,7 +66,7 @@ body {
 }
 
 .slogan-style {
-    font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
     color: white;
 }
@@ -81,7 +84,7 @@ body {
     flex-direction: column;
     color: #151618;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
 }
 
@@ -89,7 +92,7 @@ body {
     border-radius: 10px;
     background: #011640;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
     height: 40px;
     width: 200px;
@@ -110,7 +113,7 @@ body {
 
 .googleButton {
   height: 40px;
-    font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     align-items: center;
     text-align: center;
@@ -171,7 +174,7 @@ body {
     border-radius: 10px;
     background: #F26938;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.3rem;
     width: 120px;
     color: #FFF;
@@ -188,7 +191,7 @@ body {
 .error {
     color: white;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.8rem;
 }
 
@@ -205,7 +208,7 @@ body {
     flex-direction: column;
     color: white;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
 }
 .pass-section {
@@ -278,7 +281,7 @@ body {
 .button-return {
     border-radius: 8px;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
     width: 120px;
     color: #151618;
@@ -356,7 +359,7 @@ body {
 }
 }
 .button-logout {
-    font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     align-items: center;
     text-align: center;
@@ -373,7 +376,7 @@ body {
 
 @media (min-width: 700px) {
 .button-logout {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
   text-align: center;
@@ -393,7 +396,7 @@ body {
   opacity: 0.5;
 }
 .button-profile, .button-home {
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
   align-items: center;
   width: 200px;
@@ -412,7 +415,7 @@ body {
 }
 @media (min-width: 700px) {
   .button-home, .button-profile {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     align-items: center;
     text-align: center;
@@ -536,7 +539,7 @@ body {
   border-radius: 10px;
   background: #F2522E;
   text-align: center;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 0.9rem;
   color: #FFF;
   padding: 10px;
@@ -562,7 +565,7 @@ body {
   width: 100%;
   height: auto;
   resize: none;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   white-space: pre-line;
 }
 
@@ -584,7 +587,7 @@ body {
     color: #151618;
     border-top: 1px solid #151618;
     /* border-radius: 10px; */
-    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0px -7px 7px 0px rgba(0, 0, 0, 0.1);
     text-align: left;
     width: 100%;
     height: auto;
@@ -593,7 +596,7 @@ body {
     margin: 10px 10px 5px 10px;
     display: flex;
     flex-direction: column;
-    font-family:Arial, Helvetica, sans-serif;
+    
     transition: 0.5px;
 
 }
@@ -614,7 +617,7 @@ font-size: 12px;
 margin: 10px 20px 0px 20px;
 color: #F26938;
 font-weight: bold;
-font-family: Arial, Helvetica, sans-serif;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .section-like {
@@ -745,7 +748,7 @@ font-family: Arial, Helvetica, sans-serif;
     width: 90%;
     height: auto;
     resize: none;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
   }
   .textarea-edit::-webkit-scrollbar {
@@ -756,7 +759,7 @@ font-family: Arial, Helvetica, sans-serif;
       font-size: 18px;
       margin: 5px 20px 20px 20px;
       color: black;
-      font-family:Arial, Helvetica, sans-serif;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   }
   .line {
@@ -773,7 +776,7 @@ font-family: Arial, Helvetica, sans-serif;
     border-radius: 10px;
     background: #F2522E;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: #FFF;
     padding: 10px;
@@ -810,13 +813,13 @@ font-family: Arial, Helvetica, sans-serif;
         font-size: 18px;
     margin: 5px 5px 30px 5px;
     color: black;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
   .cancel-button{
     border-radius: 10px;
     background: #011640;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: #FFF;
     padding: 10px;
@@ -830,7 +833,7 @@ font-family: Arial, Helvetica, sans-serif;
     border-radius: 10px;
     background: #F2522E;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     color: #FFF;
     padding: 10px;
@@ -849,7 +852,7 @@ font-family: Arial, Helvetica, sans-serif;
   justify-content: center;
   padding: auto;
   margin: 30px;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 h5 {
@@ -861,7 +864,7 @@ h5 {
   border-radius: 10px;
     background: #F26938;
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     width: 120px;
     color: #FFF;
@@ -878,7 +881,7 @@ h5 {
 
 .sloganstyle {
   color: #011640;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 15px;
   font-weight: bold;
 
@@ -952,7 +955,7 @@ body::-webkit-scrollbar-thumb {
   height: 50px;
   display: flex;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin-top: 20px;
   margin-bottom: 20px;
 }
