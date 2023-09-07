@@ -122,6 +122,12 @@ function register(navigateTo) {
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
         }
+        if (inputUser.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar un nombre de usuario';
+        }
+        if (inputEmail.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar tu email.';
+        }
         if (inputPass.value.length < 6) {
           errorAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
         // alert('La contraseña debe tener al menos 6 caracteres');
