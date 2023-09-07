@@ -27,11 +27,25 @@ function register(navigateTo) {
   const inputUser = document.createElement('input');
   inputUser.classList.add('input-register');
   const inputPass = document.createElement('input');
-  inputPass.classList.add('input-register');
+  inputPass.classList.add('input-register-pass');
   inputPass.setAttribute('id', 'inputPass');
   inputPass.type = 'password';
+  const passButton = document.createElement('button');
+  passButton.classList.add('pass-button');
+  const confirmPassButton = document.createElement('button');
+  confirmPassButton.classList.add('confirmpass-button');
+  const passSection = document.createElement('section');
+  passSection.classList.add('pass-section');
+  const confirmPassSection = document.createElement('section');
+  confirmPassSection.classList.add('confirmpass-section');
+  const passImg = document.createElement('img');
+  passImg.classList.add('pass-img');
+  passImg.src = 'images/ver-pass.png';
+  const confirmPassImg = document.createElement('img');
+  confirmPassImg.classList.add('confirmpass-img');
+  confirmPassImg.src = 'images/ver-pass.png';
   const inputConfirmPass = document.createElement('input');
-  inputConfirmPass.classList.add('input-register');
+  inputConfirmPass.classList.add('input-register-pass');
   inputConfirmPass.setAttribute('id', 'inputConfirmPass');
   inputConfirmPass.type = 'password';
   const sendEmailButton = document.createElement('button');
@@ -50,6 +64,28 @@ function register(navigateTo) {
 
   slogan.textContent = '¡Bienvenido a la aventura fit!';
   sendEmailButton.textContent = 'Enviar';
+
+  let click = false;
+  passButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!click) {
+      inputPass.type = 'text';
+      click = true;
+    } else if (click) {
+      inputPass.type = 'password';
+      click = false;
+    }
+  });
+  confirmPassButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!click) {
+      inputConfirmPass.type = 'text';
+      click = true;
+    } else if (click) {
+      inputConfirmPass.type = 'password';
+      click = false;
+    }
+  });
 
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
@@ -101,9 +137,13 @@ function register(navigateTo) {
   // eslint-disable-next-line max-len
   sectionRegister.append(sectionLogo, generalRegister);
   sectionLogo.append(imageLogo, slogan);
-  registerForm.append(inputEmail, inputUser, inputPass, inputConfirmPass);
+  registerForm.append(inputEmail, inputUser, passSection, confirmPassSection);
   // eslint-disable-next-line max-len
   generalRegister.append(titleRegister, registerForm, errorAlert, sendEmailButton, buttonReturn);
+  passSection.append(inputPass, passButton);
+  confirmPassSection.append(inputConfirmPass, confirmPassButton);
+  passButton.append(passImg);
+  confirmPassButton.append(confirmPassImg);
   return sectionRegister;
 }
 export default register;

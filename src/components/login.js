@@ -19,9 +19,16 @@ function login(navigateTo) {
   inputEmail.classList.add('input-login');
   inputEmail.setAttribute('id', 'inputEmail');
   const inputPass = document.createElement('input');
-  inputPass.classList.add('input-login');
+  inputPass.classList.add('input-register-pass');
   inputPass.setAttribute('id', 'inputPass');
   inputPass.type = 'password';
+  const passButton = document.createElement('button');
+  passButton.classList.add('pass-button');
+  const passSection = document.createElement('section');
+  passSection.classList.add('pass-section');
+  const passImg = document.createElement('img');
+  passImg.classList.add('pass-img');
+  passImg.src = 'images/ver-pass.png';
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('login-button');
   const buttonReturn = document.createElement('button');
@@ -93,7 +100,9 @@ function login(navigateTo) {
 
   sectionLogo.append(imageLogo, slogan);
   // eslint-disable-next-line max-len
-  sectionGeneral.append(title, inputEmail, inputPass, errorAlert, buttonLogin, buttonReturn, resetpassSection);
+  sectionGeneral.append(title, inputEmail, passSection, errorAlert, buttonLogin, buttonReturn, resetpassSection);
+  passSection.append(inputPass, passButton);
+  passButton.append(passImg);
   section.append(sectionLogo, sectionGeneral);
   resetpassSection.append(resetPass, restorePass);
 
