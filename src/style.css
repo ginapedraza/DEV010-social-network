@@ -213,6 +213,8 @@ body {
   height: 25px;
   flex-direction: row;
   margin: 15px;
+  flex-wrap: nowrap;
+  align-items: flex-start;
 }
 .confirmpass-section {
   display: flex;
@@ -221,26 +223,34 @@ body {
   margin: 15px;
 }
 .pass-img {
-  height: 25px;
+  height: 18px;
   width: 25px;
 }
 .confirmpass-img {
-  height: 25px;
+  height: 18px;
   width: 25px;
 }
 .pass-button{
-  height: 33px;
+  height: 31px;
   width: 33px;
   padding: 0px;
-  border-radius: 6px;
   cursor: pointer;
+  background: white;
+  box-shadow: none;
+  border-radius: 0px 6px 6px 0px;
+  border: none;
+
 }
 .confirmpass-button {
-  height: 33px;
+  height: 31px;
   width: 33px;
   padding: 0px;
-  border-radius: 6px;
   cursor: pointer;
+  background: white;
+  box-shadow: none;
+  border-radius: 0px 6px 6px 0px;
+  border: none;
+
 }
 .input-login, .input-register, .input-resetpass {
     margin: 15px;
@@ -253,8 +263,8 @@ body {
 }
 .input-register-pass {
     margin-right: 0px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+    border: none;
+    border-radius: 6px 0px 0px 6px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
     padding: 7px;

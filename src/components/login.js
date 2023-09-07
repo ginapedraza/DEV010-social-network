@@ -28,7 +28,7 @@ function login(navigateTo) {
   passSection.classList.add('pass-section');
   const passImg = document.createElement('img');
   passImg.classList.add('pass-img');
-  passImg.src = 'images/ver-pass.png';
+  passImg.src = 'images/black-eye.png';
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('login-button');
   const buttonReturn = document.createElement('button');
@@ -52,6 +52,17 @@ function login(navigateTo) {
   slogan.textContent = '¡Juntos podemos lograr grandes resultados!';
   buttonReturn.textContent = 'Volver atrás';
 
+  let click = false;
+  passButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (!click) {
+      inputPass.type = 'text';
+      click = true;
+    } else if (click) {
+      inputPass.type = 'password';
+      click = false;
+    }
+  });
   buttonReturn.addEventListener('click', () => {
     navigateTo('/');
   });
