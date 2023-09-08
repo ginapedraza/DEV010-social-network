@@ -1,7 +1,8 @@
-// import { collection } from 'firebase/firestore';
+import { collection } from 'firebase/firestore';
 // import { db } from '../src/firebase.js';
+// import { onAuthStateChanged } from 'firebase/auth';
 import feed from '../src/components/feed.js';
-import { addPost, logOut } from '../src/lib/index.js';
+import { addPost, logOut, showPosts } from '../src/lib/index.js';
 
 jest.mock('../src/lib/index.js', () => (
   {
@@ -12,7 +13,18 @@ jest.mock('../src/lib/index.js', () => (
     auth: jest.fn(),
 
     logOut: jest.fn(),
+  }
+));
 
+jest.mock('firebase/auth', () => (
+  {
+    onAuthStateChanged: jest.fn(),
+  }
+));
+
+jest.mock('../src/firebase.js', () => (
+  {
+    db: jest.fn(),
   }
 ));
 
@@ -32,6 +44,12 @@ describe('Testing feed function', () => {
   const feedElement = feed(navigateTo);
   const buttonLogout = feedElement.querySelector('.button-logout');
   const buttonProfile = feedElement.querySelector('.button-profile');
+  const textArea = feedElement.querySelector('.text-area');
+  const sendPostButton = feedElement.querySelector('.sendPost-button');
+
+  it('Feed Debería ser una función', () => {
+    expect(typeof feed).toBe('function');
+  });
 
   it('should log out when clicking button buttonLogout', async () => {
     buttonLogout.click();
@@ -44,11 +62,35 @@ describe('Testing feed function', () => {
     expect(navigateTo).toHaveBeenCalledWith('/profile');
   }, 0);
 
-  it('Debería ser una función', () => {
+  it('addPost Debería ser una función', () => {
     expect(typeof addPost).toBe('function');
   });
+  it('ShowPosts Debería ser una función', () => {
+    expect(typeof showPosts).toBe('function');
+  });
 
-  /* it('should add a post successfully', () => {
+  it('should add a post successfully', async () => {
+    const mockCollection = jest.fn();
+    collection.mockReturnValue(mockCollection);
+
+    const name = 'Ana';
+    const post = 'Hi, everybody!';
+    const date = new Date();
+
+    sendPostButton.click();
+    await addPost(name, post, date);
+    // expect(collection).toHaveBeenCalledWith(db, 'posts');
+    expect(addPost).toHaveBeenCalledWith(name, post, date);
+  });
+
+  it('should disable the button if textarea is empty', () => {
+    textArea.value = '';
+    // textArea.oninput();
+    expect(sendPostButton.disabled).toBe(true);
+  });
+});
+
+/* it('should add a post successfully', () => {
     // const collectionMock = jest.fn();
     // collection.mockReturnValue(collectionMock);
 
@@ -58,7 +100,6 @@ describe('Testing feed function', () => {
     // expect(addPost).toHaveBeenCalledTimes(1);
     expect(addPost()).toEqual(`name:${name}, post:${post}, date:${date}`);
   }); */
-});
 
 /* it('should add a post successfully', async () => {
     const collectionMock = jest.fn();

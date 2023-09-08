@@ -53,14 +53,37 @@ describe('Testing Login function', () => {
     expect(typeof signIn).toBe('function');
   });
 
-  /* it('should show an error message when email is not verified', async () => {
+  it('should show an error message when email is not verified', (done) => {
     signIn.mockRejectedValue({ code: 'auth/user-not-found' }); // Como el test verifica este error.
-    const errorAlert = loginElement.querySelector('.error');
-    // errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
     inputEmail.value = 'test@email.com';
     inputPass.value = '123456';
     buttonLogin.click();
-    await Promise.resolve();
-    expect(errorAlert.textContent).toBe('Usuario no encontrado. Verifica tus credenciales.');
-  }); */
+    process.nextTick(() => {
+      const errorAlert = loginElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('Usuario no encontrado. Verifica tus credenciales.');
+      done();
+    });
+  });
+  it('should show an error message when password is incorrect', (done) => {
+    signIn.mockRejectedValue({ code: 'auth/wrong-password' }); // Como el test verifica este error.
+    inputEmail.value = 'juanpabloviloria@gmail.com';
+    inputPass.value = '123455';
+    buttonLogin.click();
+    process.nextTick(() => {
+      const errorAlert = loginElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('Contraseña incorrecta. Verifica tus datos.');
+      done();
+    });
+  });
+  it('should show an error message when user is disabled', (done) => {
+    signIn.mockRejectedValue({ code: 'auth/user-disabled' }); // Como el test verifica este error.
+    inputEmail.value = 'n_rogget@yahoo.es';
+    inputPass.value = '123456';
+    buttonLogin.click();
+    process.nextTick(() => {
+      const errorAlert = loginElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('Tu cuenta ha sido deshabilitada.');
+      done();
+    });
+  });
 });

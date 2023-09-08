@@ -97,6 +97,7 @@ function feed(navigateTo) {
   if (textArea.value === '') {
     sendPostButton.disabled = true;
   }
+
   textArea.addEventListener('input', () => {
     if (textArea.value !== '') {
       sendPostButton.disabled = false;

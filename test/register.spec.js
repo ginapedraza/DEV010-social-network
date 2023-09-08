@@ -24,15 +24,23 @@ describe('Testing register function', () => {
   const navigateTo = jest.fn();
   const registerElement = register(navigateTo);
 
-  beforeEach(() => {
-    document.body.innerHTML = '';
-    document.body.appendChild(registerElement);
-  });
   const sendEmailButton = registerElement.querySelector('.sendEmail');
   const inputEmail = registerElement.querySelector('#inputEmail');
   const inputPass = registerElement.querySelector('#inputPass');
   const inputConfirmPass = registerElement.querySelector('#inputConfirmPass');
   const inputName = registerElement.querySelector('.input-register');
+  const buttonReturn = registerElement.querySelector('.button-return');
+
+  beforeEach(() => {
+    document.body.innerHTML = '';
+    document.body.appendChild(registerElement);
+  });
+
+  it('should navigate to Home when clicking button return', async () => {
+    buttonReturn.click();
+    expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(navigateTo).toHaveBeenCalledWith('/');
+  }, 0);
 
   it('should register a new user with email and password', async () => {
     inputEmail.value = 'test@email.com';
@@ -70,7 +78,7 @@ describe('Testing register function', () => {
       done();
     });
   });
-  /* it('should display an error message when password length < 6 characters', (done) => {
+  it('should display an error message when password length < 6 characters', (done) => {
     // eslint-disable-next-line max-len
     createUser.mockRejectedValue(inputPass.value.length < 6); // No parece estar evaluando esta línea
 
@@ -84,5 +92,6 @@ describe('Testing register function', () => {
       const errorAlert = registerElement.querySelector('.error');
       expect(errorAlert.textContent).toBe('La contraseña debe tener al menos 6 caracteres.');
       done();
-    }); */
+    });
+  });
 });

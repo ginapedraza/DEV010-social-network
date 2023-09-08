@@ -73,7 +73,7 @@ function login(navigateTo) {
     e.preventDefault();
     const getEmail = inputEmail.value;
     const getPass = inputPass.value;
-    const error1 = document.querySelector('.error');
+    // const errorAlert = document.querySelector('.error');
 
     try {
       const userCredential = await signIn(getEmail, getPass);
@@ -83,30 +83,23 @@ function login(navigateTo) {
         navigateTo('/feed');
       }
       if (userCredential.user.emailVerified === false) {
-        error1.textContent = 'Aun no verificas tu email';
+        errorAlert.textContent = 'Aun no verificas tu email';
       }
     } catch (error) {
       const errorCode = error.code;
       // Manejar el error de autenticación o verificación de correo aquí.
       if (errorCode === 'auth/user-not-found') {
-        error1.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
-        // alert('Usuario no encontrado. Verifica tus credenciales.');
+        errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
+        // return errorAlert;
       }
       if (errorCode === 'auth/wrong-password') {
-        error1.textContent = 'Contraseña incorrecta. Verifica tus datos.';
-        // alert('Contraseña incorrecta. Verifica tus credenciales.');
+        errorAlert.textContent = 'Contraseña incorrecta. Verifica tus datos.';
+        // return errorAlert;
       }
       if (errorCode === 'auth/user-disabled') {
-        error1.textContent = 'Tu cuenta ha sido deshabilitada.';
-        // alert('Tu cuenta ha sido deshabilitada. Contacta al soporte.');
+        errorAlert.textContent = 'Tu cuenta ha sido deshabilitada.';
+        // return errorAlert;
       }
-      if (errorCode === 'auth/user-mismatch') {
-        error1.textContent = 'Hay un problema con tu cuenta.';
-        // alert('Hay un problema con tu cuenta. Contacta al soporte.');
-      } /* else {
-        // error1.textContent = 'Ocurrió un error. Intenta nuevamente.';
-        alert('Ocurrió un error. Por favor, intenta nuevamente.');
-      } */
     }
   });
 

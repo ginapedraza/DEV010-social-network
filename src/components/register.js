@@ -103,7 +103,8 @@ function register(navigateTo) {
       registerForm.reset();
       errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
       // return errorAlert;
-    } else if (password === confirmPass) {
+    }
+    if (password === confirmPass) {
       // const messageAlert = document.querySelector('.error');
       try {
         const result = await createUser(email, password);
@@ -122,16 +123,29 @@ function register(navigateTo) {
         if (errorCode === 'auth/email-already-in-use') {
           console.log(errorCode);
           errorAlert.textContent = 'El correo proporcionado ya esta en uso.';
+          return errorAlert;
         // console.log(errorCode);
         // alert('El correo proporcionado ya esta en uso.');
-        } else if (inputUser.value.length === 0) {
-          errorAlert.textContent = 'Debes ingresar un nombre de usuario';
-        } else if (inputEmail.value.length === 0) {
-          errorAlert.textContent = 'Debes ingresar tu email.';
-        } else if (inputPass.value.length < 6) {
+        }
+        if (inputPass.value.length < 6) {
           errorAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
-        // alert('La contraseña debe tener al menos 6 caracteres');
-        } // else {
+          return errorAlert;
+        }
+        if (inputUser.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar un nombre de usuario';
+          return errorAlert;
+        }
+        if (inputEmail.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar tu email.';
+          return errorAlert;
+        }
+        /* if (inputUser.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar un nombre de usuario';
+        }
+        if (inputEmail.value.length === 0) {
+          errorAlert.textContent = 'Debes ingresar tu email.';
+        } */
+        // else {
       // messageAlert.textContent = errorMessage;
       // alert(errorMessage);
       // }
