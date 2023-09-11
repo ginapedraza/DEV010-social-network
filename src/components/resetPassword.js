@@ -1,3 +1,4 @@
+import { auth } from '../firebase';
 import { restorePassword } from '../lib/index';
 
 function resetPassword(navigateTo) {
@@ -31,6 +32,7 @@ function resetPassword(navigateTo) {
 
   buttonResetPass.addEventListener('click', async (e) => {
     e.preventDefault();
+    console.log(auth);
 
     const passwordReset = await restorePassword(inputResetPass.value);
     if (passwordReset !== undefined) {

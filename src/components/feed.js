@@ -1,6 +1,5 @@
 // import { onAuthStateChanged } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { Timestamp } from 'firebase/firestore';
 import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
 import { addPost, logOut, showPosts } from '../lib/index.js';
 
@@ -109,11 +108,9 @@ function feed(navigateTo) {
     // console.log(user);
 
     const post = textArea.value;
-    name = auth.currentUser.displayName;
-    const date = Timestamp.now();
 
     if (post !== '') {
-      addPost(name, post, date).then(() => {
+      addPost(post).then(() => {
         showPosts();
         textArea.value = '';
       });

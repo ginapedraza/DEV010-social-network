@@ -4,7 +4,7 @@ import {
 } from 'firebase/auth';
 
 import {
-  addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc,
+  addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc, Timestamp,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
 // Función que inicia sesión con google
@@ -26,7 +26,9 @@ const createUser = (email, password) => createUserWithEmailAndPassword(auth, ema
 const signIn = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Función para crear un post
-const addPost = async (name, post, date) => {
+const addPost = async (post) => {
+  const name = auth.currentUser.displayName;
+  const date = Timestamp.now();
   const postsCollection = collection(db, 'posts');
   await addDoc(postsCollection, {
     name,
