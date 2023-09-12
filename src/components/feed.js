@@ -83,7 +83,7 @@ function feed(navigateTo) {
       imgProfile.style.borderRadius = '50%';
       imgProfile.style.height = '40px';
       imgProfile.style.width = '40px';
-      if (photo === null) {
+      if (photo === null || photo === undefined) {
         imgProfile.src = '/images/profileButton.png';
       }
       // buttonProfile.textContent = auth.currentUser.displayName;
@@ -93,7 +93,7 @@ function feed(navigateTo) {
     } else {
       navigateTo('/noFeed');
     }
-  });
+  })
   if (textArea.value === '') {
     sendPostButton.disabled = true;
   }
