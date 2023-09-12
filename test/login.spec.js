@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+// import { spyOn } from 'jest-mock';
 import login from '../src/components/login.js';
 import { signIn } from '../src/lib/index.js';
 // import auth from '../src/firebase.js';
@@ -24,7 +25,7 @@ describe('Testing Login function', () => {
   const buttonReturn = loginElement.querySelector('.button-return');
   const restorePass = loginElement.querySelector('.restorePassP');
 
-  it('should register a new user with email and password', async () => {
+  it('should login a user with email and password', async () => {
     inputEmail.value = 'test@email.com';
     inputPass.value = '123456';
 
@@ -86,4 +87,30 @@ describe('Testing Login function', () => {
       done();
     });
   });
+  it('should show pass when click passButton once', async () => {
+    const passButton = loginElement.querySelector('.pass-button');
+    passButton.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(inputPass.type).toBe('text');
+  }, 0);
+  /*   it.only('should navigate to feed if user is verified', async () => {
+      expect(navigateTo).toHaveBeenCalledWith('/feed');
+    }, 0); */
+  it('should navigate to feed if user is verified', (done) => {
+    inputEmail.value = 'nicole.rogget@gmail.com';
+    inputPass.value = '123456';
+    buttonLogin.click();
+    expect(navigateTo).toHaveBeenCalledWith('/feed');
+    done();
+  });
+/*   it.only('debería llamar navegar a feed si el usuario está autenticado', () => {
+    inputEmail.value = 'test@email.com';
+    inputPass.value = '123456';
+    const getEmail = inputEmail.value;
+    const getPass = inputPass.value;
+    const userCredential = signIn(getEmail, getPass);
+    buttonLogin.click();
+    expect(userCredential).toBe(true);
+    expect(navigateTo).toHaveBeenCalledWith('/feed');
+  }); */
 });

@@ -26,6 +26,7 @@ function register(navigateTo) {
   inputEmail.setAttribute('id', 'inputEmail');
   const inputUser = document.createElement('input');
   inputUser.classList.add('input-register');
+  inputUser.setAttribute('id', 'inputUser');
   const inputPass = document.createElement('input');
   inputPass.classList.add('input-register-pass');
   inputPass.setAttribute('id', 'inputPass');

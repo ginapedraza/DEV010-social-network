@@ -69,14 +69,17 @@ describe('logOut', () => {
   const feedElement = feed(navigateTo);
   const buttonLogout = feedElement.querySelector('.button-logout');
   const buttonProfile = feedElement.querySelector('.button-profile');
-  it('should log out when clicking button buttonLogout', () => {
+  it('should log out when clicking button buttonLogout', (done) => {
     buttonLogout.click();
     // expect(navigateTo).toHaveBeenCalledTimes(1);
     // const logOut = jest.spyOn(lib, 'logOut');
     spyOn(lib, 'logOut').mockImplementation(() => Promise.resolve());
     expect(lib.logOut).toHaveBeenCalled();
+    done();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
     // expect(navigateTo).toHaveBeenCalledWith('/');
   }, 0);
+
   it('should navigate to /profile when clicking button buttonProfile', async () => {
     buttonProfile.click();
     expect(navigateTo).toHaveBeenCalledWith('/profile');
@@ -87,21 +90,10 @@ describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
   // const navigateTo = () => { };
   it('debería llamar a navigateTo con "/noFeed" si el usuario no está autenticado', () => {
-    // Simula que el usuario no está autenticado
-
-    /*     const mockAuth = jest.fn();
-    const user = {
-      currentUser: {
-        displayName: 'Nicole',
-      },
-    }; */
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null); // Usuario no autenticado
     });
-
-    // Llama a la función feed con navigateTo
     feed(navigateTo);
-
     // Verifica si navigateTo se llamó con la ruta correcta
     expect(navigateTo).toHaveBeenCalledWith('/noFeed');
   });

@@ -263,20 +263,15 @@ const showPosts = async () => {
     const likesCount = document.createElement('p');
     likesCount.classList.add('counter');
     likesCount.textContent = post.likes.length;
-
-    console.log(likesCount);
     likeImage.src = userLiked ? '/images/button-liked.png' : '/images/icono-brazo-like.png';
 
     likeButton.addEventListener('click', async (e) => {
       e.preventDefault();
       const userId = auth.currentUser.uid;
       const arrayLikes = post.likes;
-      console.log(arrayLikes);
 
       const tempArrayLikes = arrayLikes || [];
-      console.log(tempArrayLikes);
       userLiked = tempArrayLikes.includes(userId);
-      console.log(userLiked);
 
       try {
         if (userLiked === false) {
@@ -291,7 +286,6 @@ const showPosts = async () => {
           likeImage.src = '/images/icono-brazo-like.png';
           const indexUserLikesArray = tempArrayLikes.indexOf(userId);
           tempArrayLikes.splice(indexUserLikesArray, 1);
-          console.log(tempArrayLikes);
           const arrayLikesLength = tempArrayLikes.length;
 
           await updateDoc(doc.ref, { likes: tempArrayLikes });

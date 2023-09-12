@@ -28,10 +28,14 @@ describe('Testing register function', () => {
   const inputEmail = registerElement.querySelector('#inputEmail');
   const inputPass = registerElement.querySelector('#inputPass');
   const inputConfirmPass = registerElement.querySelector('#inputConfirmPass');
-  const inputName = registerElement.querySelector('.input-register');
+  const inputName = registerElement.querySelector('#inputUser');
   const buttonReturn = registerElement.querySelector('.button-return');
 
   beforeEach(() => {
+    document.body.innerHTML = '';
+    document.body.appendChild(registerElement);
+  });
+  afterEach(() => {
     document.body.innerHTML = '';
     document.body.appendChild(registerElement);
   });
@@ -91,6 +95,72 @@ describe('Testing register function', () => {
     process.nextTick(() => {
       const errorAlert = registerElement.querySelector('.error');
       expect(errorAlert.textContent).toBe('La contraseña debe tener al menos 6 caracteres.');
+      done();
+    });
+  });
+  it('should show pass when click passButton once', async () => {
+    const passButton = registerElement.querySelector('.pass-button');
+    passButton.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(inputPass.type).toBe('text');
+  }, 0);
+  /*  it.only('should no show pass when click passButton once', async () => {
+    const passButton = registerElement.querySelector('.pass-button');
+    passButton.click();
+    expect(inputPass.type).toBe('password');
+  }, 0); */
+  it('should show confirm pass when click confirmPassButton once', async () => {
+    const confirmPassButton = registerElement.querySelector('.confirmpass-button');
+    confirmPassButton.click();
+    // expect(navigateTo).toHaveBeenCalledTimes(1);
+    expect(inputConfirmPass.type).toBe('password');
+  }, 0);
+
+  it('should display an error message when no user', (done) => {
+    // eslint-disable-next-line max-len
+    createUser.mockRejectedValue(inputName.value.length === 0); // No parece estar evaluando esta línea
+
+    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    inputName.value = '';
+    inputEmail.value = 'test123@gmail.com';
+    inputPass.value = '123456';
+    inputConfirmPass.value = '123456';
+    sendEmailButton.click();
+    process.nextTick(() => {
+      const errorAlert = registerElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('Debes ingresar un nombre de usuario');
+      done();
+    });
+  });
+  it('should display an error message when no email', (done) => {
+    // eslint-disable-next-line max-len
+    createUser.mockRejectedValue(inputEmail.value.length === 0); // No parece estar evaluando esta línea
+
+    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    inputName.value = 'Gina';
+    inputEmail.value = '';
+    inputPass.value = '123456';
+    inputConfirmPass.value = '123456';
+    sendEmailButton.click();
+    process.nextTick(() => {
+      const errorAlert = registerElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('Debes ingresar tu email.');
+      done();
+    });
+  });
+  // Este falla pero cubre
+  it('should no display an error message when no email', (done) => {
+    // eslint-disable-next-line max-len
+    createUser.mockRejectedValue(inputEmail.value.length !== 0);
+    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    inputName.value = 'Gina';
+    inputEmail.value = 'test123@gmail.com';
+    inputPass.value = '123456';
+    inputConfirmPass.value = '123456';
+    sendEmailButton.click();
+    process.nextTick(() => {
+      const errorAlert = registerElement.querySelector('.error');
+      expect(errorAlert.textContent).toBe('');
       done();
     });
   });
