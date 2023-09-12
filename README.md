@@ -1,14 +1,41 @@
 TweetFit
 
-![Logo](image.png)
+![Alt text](image.png)
 
  Red social para compartir consejos, rutinas, logros y motivación 
  relacionados con el mundo del fitness de manera concisa y rápida.
 
-
  Descripción del producto 
+TweetFit le da la bienvenida al usuario en la vista home, que le 
+permite decidir si desea iniciar sesión con correo electrónico y 
+contraseña o con Google, si el usuario no está registrado, tiene 
+la opcion disponible para dirigirse a la página de registro. 
+- Iniciando sesión con correo electrónico y contraseña:
+  En esta vista el usuario visualiza un input para ingresar su
+  dirección de correo electrónico y otro para ingresar su contraseña,
+  ambos deben estar almacenados en la base de datos de firebase, en
+  caso contrario, la aplicación emitirá un mensaje indicando el
+  error.
+  Si el usuario ha olvidado su contraseña, tiene la opción de
+  recuperarla con un botón, que lo llevará a una vista para que ingrese
+  una dirección de correo electrónico válida, a la cual se le
+  enviará un link para restablecer su contraseña. Si ingresa
+  una dirección de correo electrónico que no ha sido verificada,
+  se le mostrará un mensaje en la pantalla.
+   Una vez ingresados los datos correctamente el usuario
+  podrá acceder a la vista del feed.
+- Iniciando sesión con Google:
+  Al seleccionar el botón de Google se abrirá una ventana
+  emergente que provee google para seleccionar la cuenta con
+  la que desea ingresar. Una vez iniciada la sesión se redirigirá
+  a la vista de feed.
+- Registrandose:
+  En esta vista el usuario debe ingresar su correo electrónico,
+  nombre de usuario, contraseña y confirmación de contraseña.
+  Los inputs de contraseña tienen la opcion para ocultarla o
+  visualizarla. 
+ 
   [✔️]
-
 
 
 
