@@ -1,6 +1,6 @@
 import {
   // eslint-disable-next-line max-len
-  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail,
+  signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
 
 import {
@@ -450,15 +450,7 @@ const logOut = async () => {
   await signOut(auth);
 };
 
-const restorePassword = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    return true;
-  } catch (error) {
-    return error;
-  }
-};
 export {
   // eslint-disable-next-line max-len
-  loginWithGoogle, createUser, signIn, addPost, showPosts, logOut, restorePassword, showPostsProfile,
+  loginWithGoogle, createUser, signIn, addPost, showPosts, logOut, showPostsProfile,
 };

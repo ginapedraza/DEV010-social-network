@@ -74,6 +74,7 @@ function feed(navigateTo) {
 
   let name = '';
   // Manejador para detectar el estado de autenticación
+  console.log(auth);
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       // Mostrar los posts del usuario autenticado

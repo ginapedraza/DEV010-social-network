@@ -1,5 +1,6 @@
+import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase';
-import { restorePassword } from '../lib/index';
+// import { restorePassword } from '../lib';
 
 function resetPassword(navigateTo) {
   const resetPasswordSection = document.createElement('section');
@@ -21,6 +22,8 @@ function resetPassword(navigateTo) {
   const buttonReturn = document.createElement('button');
   buttonReturn.classList.add('button-return');
   inputResetPass.placeholder = 'Ingresa tu correo electrónico';
+  const errorAlert = document.createElement('p');
+  errorAlert.classList.add('error');
 
   title.textContent = '¿Olvidaste tu contraseña?';
   buttonResetPass.textContent = 'Enviar';
@@ -32,19 +35,28 @@ function resetPassword(navigateTo) {
 
   buttonResetPass.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log(auth);
-
-    const passwordReset = await restorePassword(inputResetPass.value);
-    if (passwordReset !== undefined) {
-      alert('Hemos enviado un link a tu correo para recuperar tu contraseña');
-      navigateTo('/login');
-    } else {
-      alert('Hubo un error al recuperar tu contraseña');
-    }
+    sendPasswordResetEmail(auth, inputResetPass.value)
+      .then(() => {
+        errorAlert.textContent = 'Hemos enviado un link a tu correo para recuperar tu contraseña';
+        buttonResetPass.textContent = 'Ir al inicio';
+        buttonResetPass.addEventListener('click', () => {
+          navigateTo('/login');
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        // const errorMessage = error.message;
+        if (errorCode === 'auth/user-not-found') {
+          errorAlert.textContent = 'Correo electrónico no encontrado';
+        }
+        if (errorCode !== 'auth/user-not-found') {
+          errorAlert.textContent = 'Hubo un error al recuperar tu contraseña';
+        }
+      });
   });
   resetPasswordSection.append(sectionLogo, inputSection);
   sectionLogo.append(imageLogo);
-  inputSection.append(title, inputResetPass, buttonResetPass, buttonReturn);
+  inputSection.append(title, inputResetPass, errorAlert, buttonResetPass, buttonReturn);
 
   return resetPasswordSection;
 }

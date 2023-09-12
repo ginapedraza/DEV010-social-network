@@ -93,7 +93,6 @@ function register(navigateTo) {
 
   // eslint-disable-next-line consistent-return
   sendEmailButton.addEventListener('click', async (e) => {
-    console.log('hola');
     e.preventDefault();
     const email = inputEmail.value;
     const name = inputUser.value;
@@ -116,12 +115,9 @@ function register(navigateTo) {
             navigateTo('/mailVerification');
           });
       } catch (error) {
-        console.log(error);
-        console.log('catch');
         const errorCode = error.code;
         // const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use') {
-          console.log(errorCode);
           errorAlert.textContent = 'El correo proporcionado ya esta en uso.';
           return errorAlert;
         // console.log(errorCode);
