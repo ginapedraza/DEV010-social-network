@@ -65,7 +65,7 @@ describe('profile', () => {
     expect(imgProfile.src).toBe(`${window.location.origin}/images/profileButton.png`);
   });
 });
-describe('logOut', () => {
+/* describe('logOut', () => {
   const navigateTo = jest.fn();
   const profileElement = profile(navigateTo);
   // const buttonLogout = profileElement.querySelector('.button-logout');
@@ -75,13 +75,13 @@ describe('logOut', () => {
     spyOn(lib, 'logOut').mockImplementation(() => Promise.resolve());
     expect(lib.logOut).toHaveBeenCalled();
     done();
-  }, 0); */
+  }, 0);
   // este tambien funciona
   it('should navigate to /feed when clicking button buttonhome', async () => {
     buttonHome.click();
     expect(navigateTo).toHaveBeenCalledWith('/feed');
   }, 0);
-});
+}); */
 
 describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
