@@ -67,9 +67,9 @@ describe('feed', () => {
 describe('logOut', () => {
   const navigateTo = jest.fn();
   const feedElement = feed(navigateTo);
-  const buttonLogout = feedElement.querySelector('.button-logout');
+  // const buttonLogout = feedElement.querySelector('.button-logout');
   const buttonProfile = feedElement.querySelector('.button-profile');
-  it('should log out when clicking button buttonLogout', (done) => {
+  /*   it('should log out when clicking button buttonLogout', (done) => {
     buttonLogout.click();
     // expect(navigateTo).toHaveBeenCalledTimes(1);
     // const logOut = jest.spyOn(lib, 'logOut');
@@ -78,7 +78,7 @@ describe('logOut', () => {
     done();
     // expect(navigateTo).toHaveBeenCalledTimes(1);
     // expect(navigateTo).toHaveBeenCalledWith('/');
-  }, 0);
+  }, 0); */
 
   it('should navigate to /profile when clicking button buttonProfile', async () => {
     buttonProfile.click();

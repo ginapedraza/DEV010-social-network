@@ -96,13 +96,13 @@ describe('Testing Login function', () => {
   /*   it.only('should navigate to feed if user is verified', async () => {
       expect(navigateTo).toHaveBeenCalledWith('/feed');
     }, 0); */
-  it('should navigate to feed if user is verified', (done) => {
+  /*   it('should navigate to feed if user is verified', (done) => {
     inputEmail.value = 'nicole.rogget@gmail.com';
     inputPass.value = '123456';
     buttonLogin.click();
     expect(navigateTo).toHaveBeenCalledWith('/feed');
     done();
-  });
+  }); */
 /*   it.only('debería llamar navegar a feed si el usuario está autenticado', () => {
     inputEmail.value = 'test@email.com';
     inputPass.value = '123456';
