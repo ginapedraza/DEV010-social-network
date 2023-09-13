@@ -16,7 +16,7 @@ authenticator.auth = {
 describe('profile', () => {
   it('should send post correctly ', (done) => {
     spyOn(lib, 'addPost').mockImplementation(() => Promise.resolve());
-    spyOn(lib, 'showPosts');
+    spyOn(lib, 'showPostsProfile');
     const navigateTo = () => { };
     const profileContainer = profile(navigateTo);
     const textarea = profileContainer.querySelector('.text-area');
@@ -39,7 +39,7 @@ describe('profile', () => {
     spyOn(firebase, 'getAuth').mockImplementation(() => ({
       _isInitialized: true,
     }));
-    spyOn(lib, 'showPosts').mockImplementation(() => Promise.resolve());
+    spyOn(lib, 'showPostsProfile').mockImplementation(() => Promise.resolve());
     setTimeout(() => {
       expect(lib.showPosts).toHaveBeenCalled();
       done();
@@ -53,16 +53,16 @@ describe('profile', () => {
     expect(navigateTo).toHaveBeenCalledWith('/feed');
   });
   it('Should show standard image when post is not from current user', () => {
-    spyOn(firebase, 'getAuth').mockImplementation(() => ({
+    spyOn(firebase, 'onAuthStateChanged').mockImplementation(() => ({
       currentUser: {
         photoURL: null,
       },
     }));
-    const navigateTo = () => { };
-    const feedContainer = profile(navigateTo);
-    const imgProfile = feedContainer.querySelector('.imgProfile');
-    imgProfile.src = '/images/profileButton.png';
-    expect(imgProfile.src).toBe(`${window.location.origin}/images/profileButton.png`);
+    const navigateTo = jest.fn();
+    const profileContainer = profile(navigateTo);
+    const imgProfile = profileContainer.querySelector('.imgProfile');
+    imgProfile.src = '/images/defaultProfile.png';
+    expect(imgProfile.src).toBe(`${window.location.origin}/images/defaultProfile.png`);
   });
 });
 /* describe('logOut', () => {
@@ -70,7 +70,7 @@ describe('profile', () => {
   const profileElement = profile(navigateTo);
   // const buttonLogout = profileElement.querySelector('.button-logout');
   const buttonHome = profileElement.querySelector('.button-profile');
-  /*   it('should log out when clicking button buttonLogout', (done) => {
+  /* it('should log out when clicking button buttonLogout', (done) => {
     buttonLogout.click();
     spyOn(lib, 'logOut').mockImplementation(() => Promise.resolve());
     expect(lib.logOut).toHaveBeenCalled();
@@ -111,8 +111,8 @@ describe('onAuthStateChanged', () => {
       const user = { displayName: 'NombreUsuario' };
       const name = user.displayName;
       const postsSection = feedContainer.querySelector('#post-section');
-      expect(lib.showPosts).toHaveBeenCalled();
-      expect(lib.showPosts).toHaveBeenCalledWith(name, postsSection);
+      expect(lib.showPostsProfile).toHaveBeenCalled();
+      expect(lib.showPostsProfile).toHaveBeenCalledWith(name, postsSection);
     });
   });
   // funciona
@@ -130,16 +130,16 @@ describe('onAuthStateChanged', () => {
       callback(user); // Usuario autenticado
     });
 
-    const feedContainer = profile(navigateTo);
+    const profileContainer = profile(navigateTo);
 
     setTimeout(() => {
       // Verifica si showPosts se llamó
 
       const user = { displayName: 'NombreUsuario' };
       const name = user.displayName;
-      const postsSection = feedContainer.querySelector('#post-section');
-      expect(lib.showPosts).toHaveBeenCalled();
-      expect(lib.showPosts).toHaveBeenCalledWith(name, postsSection);
+      const postsSection = profileContainer.querySelector('#profilePost-section');
+      expect(lib.showPostsProfile).toHaveBeenCalled();
+      expect(lib.showPostsProfile).toHaveBeenCalledWith(name, postsSection);
     });
   });
 });

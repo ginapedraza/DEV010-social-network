@@ -79,7 +79,6 @@ function profile(navigateTo) {
   buttonHome.addEventListener('click', () => {
     navigateTo('/feed');
   });
-
   onAuthStateChanged(auth, async (user) => {
     // console.log(`inside promise: ${user.displayName}`);
     if (user) {
@@ -87,10 +86,10 @@ function profile(navigateTo) {
       // console.log(user.displayName);
       // console.log(user);
       const photo = auth.currentUser.photoURL;
-      name = user.displayName;
       nameUser.textContent = auth.currentUser.displayName;
       imgProfile.src = photo;
-      if (photo === null) {
+      name = user.displayName;
+      if (photo === null || photo === undefined) {
         imgProfile.src = '/images/defaultProfile.png';
       }
       await showPostsProfile(name, postsSection);
@@ -141,4 +140,4 @@ function profile(navigateTo) {
   return generalFeed;
 }
 
-export default profile; 
+export default profile;

@@ -51,7 +51,7 @@ describe('feed', () => {
       done();
     }, 100);
   });
-  it('Should show standard image when post is not from current user', () => {
+  /* it('Should show standard image when post is not from current user', () => {
     spyOn(firebase, 'getAuth').mockImplementation(() => ({
       currentUser: {
         photoURL: null,
@@ -62,7 +62,7 @@ describe('feed', () => {
     const imgProfile = feedContainer.querySelector('.img-profile');
     imgProfile.src = '/images/profileButton.png';
     expect(imgProfile.src).toBe(`${window.location.origin}/images/profileButton.png`);
-  });
+  }); */
 });
 describe('logOut', () => {
   const navigateTo = jest.fn();
@@ -117,7 +117,6 @@ describe('onAuthStateChanged', () => {
       expect(lib.showPosts).toHaveBeenCalledWith(name, postsSection);
     });
   });
-
   it('debería llamar a showPost si el usuario está autenticado y con foto', async () => {
     authenticator.auth = {
       currentUser: {

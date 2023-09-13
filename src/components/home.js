@@ -1,3 +1,5 @@
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
 import { loginWithGoogle } from '../lib/index';
 
 function home(navigateTo) {
@@ -41,6 +43,11 @@ function home(navigateTo) {
     loginWithGoogle().then(() => {
       navigateTo('/feed');
     });
+  });
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      navigateTo('/feed');
+    }
   });
   sectionLogo.append(imageLogo, slogan);
   sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
