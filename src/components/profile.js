@@ -141,4 +141,4 @@ function profile(navigateTo) {
   return generalFeed;
 }
 
-export default profile;
+export default profile; 
