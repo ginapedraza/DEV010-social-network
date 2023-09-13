@@ -151,15 +151,15 @@ describe('Testing register function', () => {
   // Este falla pero cubre
   it('should no display an error message when no email', (done) => {
     // eslint-disable-next-line max-len
-    createUser.mockRejectedValue(inputEmail.value.length !== 0);
-    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    createUser.mockRejectedValue(inputEmail.value.length >= 1);
+    const errorAlert = registerElement.querySelector('.error');
+    errorAlert.textContent = '';
     inputName.value = 'Gina';
     inputEmail.value = 'test123@gmail.com';
     inputPass.value = '123456';
     inputConfirmPass.value = '123456';
     sendEmailButton.click();
     process.nextTick(() => {
-      const errorAlert = registerElement.querySelector('.error');
       expect(errorAlert.textContent).toBe('');
       done();
     });
