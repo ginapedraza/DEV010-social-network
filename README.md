@@ -1,11 +1,12 @@
 TweetFit
 
-![Alt text](image.png)
+![LOGO](image-7.png)
 
  Red social para compartir consejos, rutinas, logros y motivación 
  relacionados con el mundo del fitness de manera concisa y rápida.
 
- Descripción del producto 
+Descripción del producto  
+
 TweetFit le da la bienvenida al usuario en la vista home, que le 
 permite decidir si desea iniciar sesión con correo electrónico y 
 contraseña o con Google, si el usuario no está registrado, tiene 
@@ -34,8 +35,31 @@ la opcion disponible para dirigirse a la página de registro.
   nombre de usuario, contraseña y confirmación de contraseña.
   Los inputs de contraseña tienen la opcion para ocultarla o
   visualizarla. 
+
+  Una vez que el usuario se ha logueado, pasa a la vista del feed, donde puede visualizar las publicaciones de todos los usuarios y una casilla para escribir una publicación propia. 
+  
+  En el header del feed hay un botón con su imagen avatar que al seleccionarlo dirige al perfil, vista donde el usuario visualiza únicamente sus propios posts. También en el header, hay un botón para cerrar sesión y botones disponibles de accesibilidad que aumentan y disminuyen el tamaño de las fuentes para las personas que tienen problemas de visibilidad. 
+
+  Los usuarios pueden interactuar entre sí con el botón de Like, éste cambia de color al seleccionarlo y se muestra el conteo de likes a un lado del ícono.
+
+  El usuario logueado adicionalmente tiene disponibles dos botones en sus propias publicaciones, uno para editarla y otro para borrarla. 
+
+  La app fue construida como SPA y es responsive.
+
+Planificación:
+
+Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto. 
  
-  [✔️]
+  [✔️] Se decidió temática de la app. Ideamos el objetivo, nombre y logo de la app.
+  ![lOGO-HOME](image-1.png) ![LOGO-LOGIN](image-2.png)
+  [✔️] Se escogió paleta de colores. 
+  ![PALETA-DE-COLORES](image-3.png)
+  [✔️] Se llevó a cabo investigación de usuarios, respondiendo las siguientes preguntas:
+  ![INV-USUARIOS](image-5.png)
+  ![INV-USUARIOS-2](image-6.png)
+
+
+
 
 
 
