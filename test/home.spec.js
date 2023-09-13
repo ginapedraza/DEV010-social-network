@@ -1,8 +1,10 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { spyOn } from 'jest-mock';
+import * as firebase from 'firebase/auth';
 import home from '../src/components/home';
 import * as lib from '../src/lib';
 
+// eslint-disable-next-line no-import-assign
 jest.mock('../src/lib', () => (
   {
     loginWithGoogle: jest.fn(),
@@ -33,4 +35,13 @@ describe('Testing home function', () => {
       done();
     }, 100);
   }, 60000);
+  /*  it('should navigate to feed id user is autenticated', (done) => {
+    spyOn(firebase, 'getAuth').mockImplementation(() => ({
+      _isInitialized: true,
+    }));
+    setTimeout(() => {
+      expect(navigateTo).toHaveBeenCalledWith('/feed');
+      done();
+    }, 100);
+  }); */
 });

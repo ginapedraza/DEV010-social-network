@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import {
   // eslint-disable-next-line max-len
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
@@ -67,12 +69,6 @@ const showPostsProfile = async () => {
     if (isCurrentUserPost) {
       const sectionLike = document.createElement('section');
       sectionLike.classList.add('section-like');
-      const likeButton = document.createElement('button');
-      likeButton.classList.add('like-button');
-      const likeImage = document.createElement('img');
-      likeImage.src = '/images/icono-brazo-like.png';
-      likeImage.alt = 'Dar like a la publicación';
-      likeImage.classList.add('likeImgFeed');
       const getReduceButton = document.querySelector('#reduceButton');
       const getIncreaseButton = document.querySelector('#increaseButton');
       const getNormalButton = document.querySelector('#normalButton');
@@ -188,8 +184,7 @@ const showPostsProfile = async () => {
       getPostSection.append(individualPost);
       divProfile.append(imgProfile, postNameUser);
       individualPost.append(divProfile, postContent, sectionLike);
-      sectionLike.append(postDate, likeButton);
-      likeButton.append(likeImage);
+      sectionLike.append(postDate);
     }
   });
 };

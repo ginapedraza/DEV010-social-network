@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+import { spyOn } from 'jest-mock';
+import * as firebase from 'firebase/auth';
 import login from '../src/components/login.js';
 import { signIn } from '../src/lib/index.js';
 
@@ -8,11 +10,11 @@ jest.mock('../src/lib/index.js', () => (
     auth: jest.fn(),
   }
 ));
+jest.mock('@firebase/auth');
 
 describe('Testing Login function', () => {
   const navigateTo = jest.fn();
   const loginElement = login(navigateTo);
-
   const buttonLogin = loginElement.querySelector('.login-button');
   const inputEmail = loginElement.querySelector('#inputEmail');
   const inputPass = loginElement.querySelector('#inputPass');
@@ -83,5 +85,10 @@ describe('Testing Login function', () => {
     const passButton = loginElement.querySelector('.pass-button');
     passButton.click();
     expect(inputPass.type).toBe('text');
+  }, 0);
+  it('should no show pass', async () => {
+    const passButton = loginElement.querySelector('.pass-button');
+    passButton.click();
+    expect(inputPass.type).toBe('password');
   }, 0);
 });

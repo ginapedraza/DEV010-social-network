@@ -87,7 +87,17 @@ describe('Testing register function', () => {
     passButton.click();
     expect(inputPass.type).toBe('text');
   }, 0);
+  it('should no show pass when click passButton again', async () => {
+    const passButton = registerElement.querySelector('.pass-button');
+    passButton.click();
+    expect(inputPass.type).toBe('password');
+  }, 0);
   it('should show confirm pass when click confirmPassButton once', async () => {
+    const confirmPassButton = registerElement.querySelector('.confirmpass-button');
+    confirmPassButton.click();
+    expect(inputConfirmPass.type).toBe('text');
+  }, 0);
+  it('should no show confirm pass when click confirmPassButton again', async () => {
     const confirmPassButton = registerElement.querySelector('.confirmpass-button');
     confirmPassButton.click();
     expect(inputConfirmPass.type).toBe('password');
