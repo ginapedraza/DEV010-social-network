@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import { signIn } from '../lib/index.js';
 
 function login(navigateTo) {
@@ -73,8 +72,6 @@ function login(navigateTo) {
     e.preventDefault();
     const getEmail = inputEmail.value;
     const getPass = inputPass.value;
-    // const errorAlert = document.querySelector('.error');
-
     try {
       const userCredential = await signIn(getEmail, getPass);
 
@@ -90,15 +87,12 @@ function login(navigateTo) {
       // Manejar el error de autenticación o verificación de correo aquí.
       if (errorCode === 'auth/user-not-found') {
         errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
-        // return errorAlert;
       }
       if (errorCode === 'auth/wrong-password') {
         errorAlert.textContent = 'Contraseña incorrecta. Verifica tus datos.';
-        // return errorAlert;
       }
       if (errorCode === 'auth/user-disabled') {
         errorAlert.textContent = 'Tu cuenta ha sido deshabilitada.';
-        // return errorAlert;
       }
     }
   });

@@ -1,4 +1,3 @@
-// import { getAuth } from 'firebase/auth';
 import { sendEmailVerification, updateProfile } from 'firebase/auth';
 import {
   createUser,
@@ -102,27 +101,21 @@ function register(navigateTo) {
     if (password !== confirmPass) {
       registerForm.reset();
       errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
-      // return errorAlert;
     }
     if (password === confirmPass) {
-      // const messageAlert = document.querySelector('.error');
       try {
         const result = await createUser(email, password);
         await sendEmailVerification(auth.currentUser);
 
         await updateProfile(result.user, { displayName: name })
           .then(() => {
-            //     // Email verification sent!
             navigateTo('/mailVerification');
           });
       } catch (error) {
         const errorCode = error.code;
-        // const errorMessage = error.message;
         if (errorCode === 'auth/email-already-in-use') {
           errorAlert.textContent = 'El correo proporcionado ya esta en uso.';
           return errorAlert;
-        // console.log(errorCode);
-        // alert('El correo proporcionado ya esta en uso.');
         }
         if (inputPass.value.length < 6) {
           errorAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
@@ -136,17 +129,6 @@ function register(navigateTo) {
           errorAlert.textContent = 'Debes ingresar tu email.';
           return errorAlert;
         }
-        /* if (inputUser.value.length === 0) {
-          errorAlert.textContent = 'Debes ingresar un nombre de usuario';
-        }
-        if (inputEmail.value.length === 0) {
-          errorAlert.textContent = 'Debes ingresar tu email.';
-        } */
-        // else {
-      // messageAlert.textContent = errorMessage;
-      // alert(errorMessage);
-      // }
-      // ..
       }
     }
   });

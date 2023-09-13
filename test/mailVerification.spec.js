@@ -1,4 +1,4 @@
-import mailVerificacion from "../src/components/mailVerification"; 
+import mailVerificacion from '../src/components/mailVerification';
 
 describe('Testing mailVerificacion', () => {
   const navigateTo = jest.fn();

@@ -1,29 +1,16 @@
-/* eslint-disable max-len */
-// import { sendEmailVerification } from 'firebase/auth';
-// import { verifyEmail } from '../src/firebase.js';
-// import { verifyEmail, createUser } from '../src/firebase.js';
-// import { createUserWithEmailAndPassword } from 'firebase/auth';
 import register from '../src/components/register.js';
 import { createUser } from '../src/lib/index.js';
-
-/* const objectAuth = {
-  currentUser: '',
-}; */
 
 jest.mock('../src/lib/index.js', () => (
   {
     createUser: jest.fn(),
-    // => Promise.resolve({ response: { test: 'test' } })),
-    auth: jest.fn(), // => objectAuth),
-    // createUserWithEmailAndPassword: jest.fn(),
-
+    auth: jest.fn(),
   }
 ));
 
 describe('Testing register function', () => {
   const navigateTo = jest.fn();
   const registerElement = register(navigateTo);
-
   const sendEmailButton = registerElement.querySelector('.sendEmail');
   const inputEmail = registerElement.querySelector('#inputEmail');
   const inputPass = registerElement.querySelector('#inputPass');
@@ -59,7 +46,6 @@ describe('Testing register function', () => {
   it('should show an error message if passwords do not match', async () => {
     createUser.mockRejectedValue(inputPass.value !== inputConfirmPass.value);
     const errorAlert = registerElement.querySelector('.error');
-    // messageAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
     inputPass.value = '123456';
     inputConfirmPass.value = '123556';
 
@@ -69,7 +55,7 @@ describe('Testing register function', () => {
   });
   it('should display an error message when registration fails due to existing user', (done) => {
     // eslint-disable-next-line max-len
-    createUser.mockRejectedValue({ code: 'auth/email-already-in-use' }); // No parece estar evaluando esta línea
+    createUser.mockRejectedValue({ code: 'auth/email-already-in-use' });
 
     inputEmail.value = 'ginapedraza00@gmail.com';
     inputPass.value = '123456';
@@ -84,9 +70,7 @@ describe('Testing register function', () => {
   });
   it('should display an error message when password length < 6 characters', (done) => {
     // eslint-disable-next-line max-len
-    createUser.mockRejectedValue(inputPass.value.length < 6); // No parece estar evaluando esta línea
-
-    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    createUser.mockRejectedValue(inputPass.value.length < 6);
     inputName.value = 'Gina';
     inputEmail.value = 'test123@gmail.com';
     inputPass.value = '1234';
@@ -101,26 +85,17 @@ describe('Testing register function', () => {
   it('should show pass when click passButton once', async () => {
     const passButton = registerElement.querySelector('.pass-button');
     passButton.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
     expect(inputPass.type).toBe('text');
   }, 0);
-  /*  it.only('should no show pass when click passButton once', async () => {
-    const passButton = registerElement.querySelector('.pass-button');
-    passButton.click();
-    expect(inputPass.type).toBe('password');
-  }, 0); */
   it('should show confirm pass when click confirmPassButton once', async () => {
     const confirmPassButton = registerElement.querySelector('.confirmpass-button');
     confirmPassButton.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
     expect(inputConfirmPass.type).toBe('password');
   }, 0);
 
   it('should display an error message when no user', (done) => {
     // eslint-disable-next-line max-len
-    createUser.mockRejectedValue(inputName.value.length === 0); // No parece estar evaluando esta línea
-
-    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    createUser.mockRejectedValue(inputName.value.length === 0);
     inputName.value = '';
     inputEmail.value = 'test123@gmail.com';
     inputPass.value = '123456';
@@ -134,9 +109,7 @@ describe('Testing register function', () => {
   });
   it('should display an error message when no email', (done) => {
     // eslint-disable-next-line max-len
-    createUser.mockRejectedValue(inputEmail.value.length === 0); // No parece estar evaluando esta línea
-
-    // messageAlert.textContent = 'La contraseña debe tener al menos 6 caracteres.';
+    createUser.mockRejectedValue(inputEmail.value.length === 0);
     inputName.value = 'Gina';
     inputEmail.value = '';
     inputPass.value = '123456';
@@ -148,7 +121,6 @@ describe('Testing register function', () => {
       done();
     });
   });
-  // Este falla pero cubre
   it('should no display an error message when no email', (done) => {
     // eslint-disable-next-line max-len
     createUser.mockRejectedValue(inputEmail.value.length >= 1);

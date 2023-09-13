@@ -1,22 +1,16 @@
 /* eslint-disable max-len */
-// import { spyOn } from 'jest-mock';
 import login from '../src/components/login.js';
 import { signIn } from '../src/lib/index.js';
-// import auth from '../src/firebase.js';
 
 jest.mock('../src/lib/index.js', () => (
   {
     signIn: jest.fn(),
-    // => Promise.resolve({ response: { test: 'test' } })),
-    auth: jest.fn(), // => objectAuth),
-    // createUserWithEmailAndPassword: jest.fn(),
-
+    auth: jest.fn(),
   }
 ));
 
 describe('Testing Login function', () => {
   const navigateTo = jest.fn();
-  // const userCredential = jest.fn();
   const loginElement = login(navigateTo);
 
   const buttonLogin = loginElement.querySelector('.login-button');
@@ -40,13 +34,11 @@ describe('Testing Login function', () => {
 
   it('should navigate to Home when clicking button return', async () => {
     buttonReturn.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
     expect(navigateTo).toHaveBeenCalledWith('/');
   }, 0);
 
   it('should navigate to resetPaswword when clicking button restorePass', async () => {
     restorePass.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
     expect(navigateTo).toHaveBeenCalledWith('/resetPassword');
   }, 0);
 
@@ -55,7 +47,7 @@ describe('Testing Login function', () => {
   });
 
   it('should show an error message when email is not verified', (done) => {
-    signIn.mockRejectedValue({ code: 'auth/user-not-found' }); // Como el test verifica este error.
+    signIn.mockRejectedValue({ code: 'auth/user-not-found' });
     inputEmail.value = 'test@email.com';
     inputPass.value = '123456';
     buttonLogin.click();
@@ -66,7 +58,7 @@ describe('Testing Login function', () => {
     });
   });
   it('should show an error message when password is incorrect', (done) => {
-    signIn.mockRejectedValue({ code: 'auth/wrong-password' }); // Como el test verifica este error.
+    signIn.mockRejectedValue({ code: 'auth/wrong-password' });
     inputEmail.value = 'juanpabloviloria@gmail.com';
     inputPass.value = '123455';
     buttonLogin.click();
@@ -77,7 +69,7 @@ describe('Testing Login function', () => {
     });
   });
   it('should show an error message when user is disabled', (done) => {
-    signIn.mockRejectedValue({ code: 'auth/user-disabled' }); // Como el test verifica este error.
+    signIn.mockRejectedValue({ code: 'auth/user-disabled' });
     inputEmail.value = 'n_rogget@yahoo.es';
     inputPass.value = '123456';
     buttonLogin.click();
@@ -90,27 +82,6 @@ describe('Testing Login function', () => {
   it('should show pass when click passButton once', async () => {
     const passButton = loginElement.querySelector('.pass-button');
     passButton.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
     expect(inputPass.type).toBe('text');
   }, 0);
-  /*   it.only('should navigate to feed if user is verified', async () => {
-      expect(navigateTo).toHaveBeenCalledWith('/feed');
-    }, 0); */
-  /*   it('should navigate to feed if user is verified', (done) => {
-    inputEmail.value = 'nicole.rogget@gmail.com';
-    inputPass.value = '123456';
-    buttonLogin.click();
-    expect(navigateTo).toHaveBeenCalledWith('/feed');
-    done();
-  }); */
-/*   it.only('debería llamar navegar a feed si el usuario está autenticado', () => {
-    inputEmail.value = 'test@email.com';
-    inputPass.value = '123456';
-    const getEmail = inputEmail.value;
-    const getPass = inputPass.value;
-    const userCredential = signIn(getEmail, getPass);
-    buttonLogin.click();
-    expect(userCredential).toBe(true);
-    expect(navigateTo).toHaveBeenCalledWith('/feed');
-  }); */
 });

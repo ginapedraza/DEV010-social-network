@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { Timestamp } from 'firebase/firestore';
-import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
+import { auth } from '../firebase.js';
 import {
   addPost, logOut, showPostsProfile,
 } from '../lib/index.js';
@@ -80,11 +80,8 @@ function profile(navigateTo) {
     navigateTo('/feed');
   });
   onAuthStateChanged(auth, async (user) => {
-    // console.log(`inside promise: ${user.displayName}`);
     if (user) {
       // Mostrar los posts del usuario autenticado
-      // console.log(user.displayName);
-      // console.log(user);
       const photo = auth.currentUser.photoURL;
       nameUser.textContent = auth.currentUser.displayName;
       imgProfile.src = photo;
@@ -108,8 +105,6 @@ function profile(navigateTo) {
     }
   });
   sendPostButton.addEventListener('click', () => {
-    // console.log(user);
-
     const post = textArea.value;
     name = auth.currentUser.displayName;
     const date = Timestamp.now();

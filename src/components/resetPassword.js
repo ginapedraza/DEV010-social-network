@@ -1,6 +1,5 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase';
-// import { restorePassword } from '../lib';
 
 function resetPassword(navigateTo) {
   const resetPasswordSection = document.createElement('section');
@@ -45,7 +44,6 @@ function resetPassword(navigateTo) {
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
         if (errorCode === 'auth/user-not-found') {
           errorAlert.textContent = 'Correo electrónico no encontrado';
         }

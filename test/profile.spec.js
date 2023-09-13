@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-import-assign */
 import { expect, jest } from '@jest/globals';
 import { spyOn } from 'jest-mock';
@@ -34,17 +35,6 @@ describe('profile', () => {
       done();
     }, 100);
   }, 60000);
-
-  /* it('should call showPost when user is autenticated', (done) => {
-    spyOn(firebase, 'getAuth').mockImplementation(() => ({
-      _isInitialized: true,
-    }));
-    spyOn(lib, 'showPostsProfile').mockImplementation(() => Promise.resolve());
-    setTimeout(() => {
-      expect(lib.showPosts).toHaveBeenCalled();
-      done();
-    }, 100);
-  }); */
   it('should navigate to feed when clicking button home', () => {
     const navigateTo = jest.fn();
     const feedContainer = profile(navigateTo);
@@ -65,27 +55,10 @@ describe('profile', () => {
     expect(imgProfile.src).toBe(`${window.location.origin}/images/defaultProfile.png`);
   });
 });
-/* describe('logOut', () => {
-  const navigateTo = jest.fn();
-  const profileElement = profile(navigateTo);
-  // const buttonLogout = profileElement.querySelector('.button-logout');
-  const buttonHome = profileElement.querySelector('.button-profile');
-  /* it('should log out when clicking button buttonLogout', (done) => {
-    buttonLogout.click();
-    spyOn(lib, 'logOut').mockImplementation(() => Promise.resolve());
-    expect(lib.logOut).toHaveBeenCalled();
-    done();
-  }, 0);
-  // este tambien funciona
-  it('should navigate to /feed when clicking button buttonhome', async () => {
-    buttonHome.click();
-    expect(navigateTo).toHaveBeenCalledWith('/feed');
-  }, 0);
-}); */
 
 describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
-  // funciona
+
   it('debería llamar a navigateTo con "/noFeed" si el usuario no está autenticado', () => {
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null); // Usuario no autenticado
@@ -94,7 +67,6 @@ describe('onAuthStateChanged', () => {
     // Verifica si navigateTo se llamó con la ruta correcta
     expect(navigateTo).toHaveBeenCalledWith('/noFeed');
   });
-  // funciona
   it('debería llamar a showPost si el usuario está autenticado', async () => {
     // Simula que el usuario está autenticado
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
@@ -115,7 +87,6 @@ describe('onAuthStateChanged', () => {
       expect(lib.showPostsProfile).toHaveBeenCalledWith(name, postsSection);
     });
   });
-  // funciona
   it('debería llamar a showPost si el usuario está autenticado y con foto', async () => {
     authenticator.auth = {
       currentUser: {

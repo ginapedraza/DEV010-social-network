@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-import-assign */
 import { expect, jest } from '@jest/globals';
 import { spyOn } from 'jest-mock';
@@ -15,11 +16,6 @@ authenticator.auth = {
 };
 describe('feed', () => {
   it('should send post correctly ', (done) => {
-    /*      spyOn(auth, 'getAuth').mockImplementation(() => ({
-      currentUser: {
-        displayName: 'Nicole',
-      },
-    })); */
     spyOn(lib, 'addPost').mockImplementation(() => Promise.resolve());
     spyOn(lib, 'showPosts');
     const navigateTo = () => { };
@@ -51,35 +47,11 @@ describe('feed', () => {
       done();
     }, 100);
   });
-  /* it('Should show standard image when post is not from current user', () => {
-    spyOn(firebase, 'getAuth').mockImplementation(() => ({
-      currentUser: {
-        photoURL: null,
-      },
-    }));
-    const navigateTo = () => { };
-    const feedContainer = feed(navigateTo);
-    const imgProfile = feedContainer.querySelector('.img-profile');
-    imgProfile.src = '/images/profileButton.png';
-    expect(imgProfile.src).toBe(`${window.location.origin}/images/profileButton.png`);
-  }); */
 });
 describe('logOut', () => {
   const navigateTo = jest.fn();
   const feedElement = feed(navigateTo);
-  // const buttonLogout = feedElement.querySelector('.button-logout');
   const buttonProfile = feedElement.querySelector('.button-profile');
-  /*   it('should log out when clicking button buttonLogout', (done) => {
-    buttonLogout.click();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
-    // const logOut = jest.spyOn(lib, 'logOut');
-    spyOn(lib, 'logOut').mockImplementation(() => Promise.resolve());
-    expect(lib.logOut).toHaveBeenCalled();
-    done();
-    // expect(navigateTo).toHaveBeenCalledTimes(1);
-    // expect(navigateTo).toHaveBeenCalledWith('/');
-  }, 0); */
-
   it('should navigate to /profile when clicking button buttonProfile', async () => {
     buttonProfile.click();
     expect(navigateTo).toHaveBeenCalledWith('/profile');
@@ -88,7 +60,6 @@ describe('logOut', () => {
 
 describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
-  // const navigateTo = () => { };
   it('debería llamar a navigateTo con "/noFeed" si el usuario no está autenticado', () => {
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null); // Usuario no autenticado
@@ -135,7 +106,6 @@ describe('onAuthStateChanged', () => {
 
     setTimeout(() => {
       // Verifica si showPosts se llamó
-
       const user = { displayName: 'NombreUsuario' };
       const name = user.displayName;
       const postsSection = feedContainer.querySelector('#post-section');

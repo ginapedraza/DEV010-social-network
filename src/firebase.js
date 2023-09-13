@@ -1,12 +1,9 @@
 /* eslint-disable no-alert */
 import { initializeApp } from 'firebase/app';
 import {
-  // eslint-disable-next-line max-len
   getAuth,
 } from 'firebase/auth';
-// import { firebase } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
-// Import the functions you need from the SDKs you need
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,7 +20,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// Guardamos en auth la función de firebase getAuth para la autenticación
 const auth = getAuth(app);
 const db = getFirestore(app);
 

@@ -2,15 +2,13 @@ import {
   // eslint-disable-next-line max-len
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
 } from 'firebase/auth';
-
 import {
   addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc, Timestamp,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
-// Función que inicia sesión con google
+
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
-  // const auth = getAuth(app);
   return signInWithPopup(auth, provider)
     .then((result) => result)
     .catch((error) => {
@@ -38,19 +36,10 @@ const addPost = async (post) => {
     likesCount: 0,
   });
 };
-/* const showName = () => {
-  const getProfileTextSection = document.querySelector('.profiletext-section');
-  const nameUser = document.createElement('h4');
-  nameUser.classList.add('name-user');
-  nameUser.textContent = 'hola + post.name';
-  getProfileTextSection.append(nameUser);
-}; */
 
 const showPostsProfile = async () => {
-  // Aquí hice cambios con query
   const querySnapshot = query(collection(db, 'posts'), orderBy('date', 'desc'));
   const postsSnapshot = await getDocs(querySnapshot);
-  // const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date', 'desc'));
   const getPostSection = document.getElementById('post-section');
   getPostSection.innerHTML = '';
   postsSnapshot.forEach((doc) => {
@@ -76,7 +65,6 @@ const showPostsProfile = async () => {
     postContent.textContent = post.post;
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
     if (isCurrentUserPost) {
-      // Sección del Like
       const sectionLike = document.createElement('section');
       sectionLike.classList.add('section-like');
       const likeButton = document.createElement('button');
@@ -133,8 +121,6 @@ const showPostsProfile = async () => {
           editDescription.textContent = 'Edita tu publicación';
           const textareaEdit = document.createElement('textarea');
           textareaEdit.classList.add('textarea-edit');
-          // textareaEdit.setAttribute('id', 'edit-textarea');
-          // const editTextArea = document.getElementById('edit-textarea');
           textareaEdit.value = post.post;
           const saveButton = document.createElement('button');
           saveButton.classList.add('save-button');
@@ -163,7 +149,6 @@ const showPostsProfile = async () => {
           });
         });
       }
-      // fin de if (editButton)
       if (deleteButton) {
         deleteButton.addEventListener('click', () => {
           const popUpDelete = document.createElement('dialog');
@@ -200,8 +185,6 @@ const showPostsProfile = async () => {
           });
         });
       }
-      // fin de if(deleteButton)
-      // if (currentUser)
       getPostSection.append(individualPost);
       divProfile.append(imgProfile, postNameUser);
       individualPost.append(divProfile, postContent, sectionLike);
@@ -212,10 +195,8 @@ const showPostsProfile = async () => {
 };
 // Función para mostrar todos los posts
 const showPosts = async () => {
-  // Aquí hice cambios con query
   const querySnapshot = query(collection(db, 'posts'), orderBy('date', 'desc'));
   const postsSnapshot = await getDocs(querySnapshot);
-  // const querySnapshot = await getDocs(collection(db, 'posts'), orderBy('date', 'desc'));
   const getPostSection = document.getElementById('post-section');
   getPostSection.innerHTML = '';
   postsSnapshot.forEach((doc) => {
@@ -233,9 +214,6 @@ const showPosts = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
-
-    /* imgProfile.src = post.photoURL; */
-
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
     if (isCurrentUserPost) {
       imgProfile.src = auth.currentUser.photoURL;
@@ -248,7 +226,6 @@ const showPosts = async () => {
 
     postNameUser.textContent = post.name;
     postContent.textContent = post.post;
-    // Sección del Like
     const sectionLike = document.createElement('section');
     sectionLike.classList.add('section-like');
     const subSectionLike = document.createElement('section');
@@ -297,7 +274,6 @@ const showPosts = async () => {
         console.error('Error updating the post:', error);
       }
     });
-
     // Botones de accesibilidad
     const getReduceButton = document.querySelector('#reduceButton');
     const getIncreaseButton = document.querySelector('#increaseButton');
@@ -335,16 +311,6 @@ const showPosts = async () => {
       sectionButtons.append(buttonEdit, buttonDelete);
       buttonEdit.append(editButton);
       buttonDelete.append(deleteButton);
-      /*  $('#resettext').click(function() {
-        if (curSize != 18)
-          $('#content').css('font-size', 18);
-      });
-      $('#decreasetext').click(function() {
-        curSize = parseInt($('#content').css('font-size')) - 2;
-        if (curSize >= 14)
-          $('#content').css('font-size', curSize);
-      });
- */
       if (editButton) {
         editButton.addEventListener('click', () => {
           const popUp = document.createElement('dialog');
@@ -359,8 +325,6 @@ const showPosts = async () => {
           editDescription.textContent = 'Edita tu publicación';
           const textareaEdit = document.createElement('textarea');
           textareaEdit.classList.add('textarea-edit');
-          // textareaEdit.setAttribute('id', 'edit-textarea');
-          // const editTextArea = document.getElementById('edit-textarea');
           textareaEdit.value = post.post;
           const saveButton = document.createElement('button');
           saveButton.classList.add('save-button');
@@ -389,7 +353,6 @@ const showPosts = async () => {
           });
         });
       }
-      // fin de if (editButton)
       if (deleteButton) {
         deleteButton.addEventListener('click', () => {
           const popUpDelete = document.createElement('dialog');
@@ -426,9 +389,7 @@ const showPosts = async () => {
           });
         });
       }
-      // fin de if(deleteButton)
     }
-    // if (currentUser)
     divProfile.append(imgProfile, postNameUser);
     individualPost.append(divProfile, postContent, postDate, sectionLike);
     getPostSection.append(individualPost);

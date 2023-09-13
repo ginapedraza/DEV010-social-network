@@ -1,6 +1,5 @@
-// import { onAuthStateChanged } from 'firebase/auth';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase.js'; // aca se importa tambien db más adelante
+import { auth } from '../firebase.js';
 import { addPost, logOut, showPosts } from '../lib/index.js';
 
 function feed(navigateTo) {
@@ -52,9 +51,7 @@ function feed(navigateTo) {
   buttonProfile.classList.add('button-profile');
   const textButton = document.createElement('p');
   textButton.classList.add('text-button');
-  // buttonProfile.textContent = 'Perfil';
   const imgProfile = document.createElement('img');
-  // imgProfile.src = '/images/profileButton.png';
   imgProfile.alt = 'Ir al perfil';
   imgProfile.classList.add('img-profile');
   const textAreaSection = document.createElement('section');
@@ -67,10 +64,6 @@ function feed(navigateTo) {
   sendPostButton.textContent = 'Publicar';
   const postsSection = document.createElement('section');
   postsSection.setAttribute('id', 'post-section');
-
-  /* const dateSize = document.querySelector('.date');
-  const userSize = document.querySelector('.user-name');
-  const postSize = document.querySelector('.user-post'); */
 
   let name = '';
   // Manejador para detectar el estado de autenticación
@@ -85,7 +78,6 @@ function feed(navigateTo) {
       if (photo === null || photo === undefined) {
         imgProfile.src = '/images/profileButton.png';
       }
-      // buttonProfile.textContent = auth.currentUser.displayName;
       textButton.textContent = auth.currentUser.displayName;
       name = user.displayName;
       await showPosts(name, postsSection);
@@ -105,10 +97,7 @@ function feed(navigateTo) {
     }
   });
   sendPostButton.addEventListener('click', () => {
-    // console.log(user);
-
     const post = textArea.value;
-
     if (post !== '') {
       addPost(post).then(() => {
         showPosts();
@@ -116,7 +105,6 @@ function feed(navigateTo) {
       });
     }
   });
-  // logOut es nuestra funcion que hicimos en index.js para cerrar sesión
   buttonLogout.addEventListener('click', () => {
     logOut();
   });
