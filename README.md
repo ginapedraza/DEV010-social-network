@@ -1,12 +1,12 @@
-<p align="center">
-<b>**TweetFit**</b>
+<p align="center" style="font-size: 40px" >
+<b>TweetFit</b>
 </p>
+ Red social para compartir consejos, rutinas, logros y motivación 
+ relacionados con el mundo del fitness de manera concisa y rápida.
+
 <p align="center">
 <img src="image-7.png" alt="LOGO">
 </p>
-
- Red social para compartir consejos, rutinas, logros y motivación 
- relacionados con el mundo del fitness de manera concisa y rápida.
 
 **Descripción del producto** 
 
