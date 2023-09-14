@@ -1,4 +1,4 @@
-<p align="center" style="font-size: 40px" >
+<p align="center" style="font-size: 160%;">
 <b>TweetFit</b>
 </p>
  Red social para compartir consejos, rutinas, logros y motivación 
@@ -7,6 +7,9 @@
 <p align="center">
 <img src="image-7.png" alt="LOGO">
 </p>
+# Uno
+## Dos
+### tres
 
 **Descripción del producto** 
 
