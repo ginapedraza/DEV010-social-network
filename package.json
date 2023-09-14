@@ -47,7 +47,18 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "modulePathIgnorePatterns": ["<rootDir>/src/lib"]
+    "collectCoverageFrom": [
+      "**/*.js",
+    "!**/src/lib/**",
+    "!**/coverage/lcov-report/**",
+    "!**/social-network/**",
+    "!**/src/main**",
+    "!**/src/components/resetPassword**",
+    "!**/babel.config**",
+    "!**/stylelint.config**",
+    "!**/vite.config**"
+    
+    ]
   }
   
 }

@@ -36,8 +36,7 @@ describe('Testing home function', () => {
     }, 100);
   }, 60000);
   /*  it('should navigate to feed id user is autenticated', (done) => {
-    spyOn(firebase, 'getAuth').mockImplementation(() => ({
-      _isInitialized: true,
+    spyOn(firebase, 'onAuthStateChanged').mockImplementation(() => ({
     }));
     setTimeout(() => {
       expect(navigateTo).toHaveBeenCalledWith('/feed');

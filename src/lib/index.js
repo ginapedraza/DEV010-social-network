@@ -1,5 +1,3 @@
-/* istanbul ignore file */
-
 import {
   // eslint-disable-next-line max-len
   signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
