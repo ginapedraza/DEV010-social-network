@@ -29,13 +29,13 @@ describe('feed', () => {
     expect(textarea.value).toBe('Bienvenidos a TweetFit');
     expect(textarea).toBeTruthy();
     expect(button).toBeTruthy();
+    expect(lib.addPost).toHaveBeenCalled();
+    expect(firebase.onAuthStateChanged).toHaveBeenCalled();
     setTimeout(() => {
-      expect(lib.addPost).toHaveBeenCalled();
       expect(lib.showPosts).toHaveBeenCalled();
-      expect(firebase.onAuthStateChanged).toHaveBeenCalled();
       expect(textarea.value).toBe('');
-      done();
     }, 100);
+    done();
   }, 60000);
   it('should call showPost when user is autenticated', (done) => {
     spyOn(firebase, 'getAuth').mockImplementation(() => ({

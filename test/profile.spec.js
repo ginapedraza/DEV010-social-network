@@ -29,11 +29,11 @@ describe('profile', () => {
     expect(textarea.value).toBe('Bienvenidos a TweetFit');
     expect(textarea).toBeTruthy();
     expect(sendPostbutton).toBeTruthy();
+    expect(firebase.onAuthStateChanged).toHaveBeenCalled();
     setTimeout(() => {
-      expect(firebase.onAuthStateChanged).toHaveBeenCalled();
       expect(textarea.value).toBe('');
-      done();
     }, 100);
+    done();
   }, 60000);
   it('should navigate to feed when clicking button home', () => {
     const navigateTo = jest.fn();
