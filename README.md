@@ -1,11 +1,14 @@
-TweetFit
-
-![LOGO](image-7.png)
+<p align="center">
+<b>**TweetFit**</b>
+</p>
+<p align="center">
+<img src="image-7.png" alt="LOGO">
+</p>
 
  Red social para compartir consejos, rutinas, logros y motivación 
  relacionados con el mundo del fitness de manera concisa y rápida.
 
-Descripción del producto  
+**Descripción del producto** 
 
 TweetFit le da la bienvenida al usuario en la vista home, que le 
 permite decidir si desea iniciar sesión con correo electrónico y 
@@ -46,16 +49,22 @@ la opcion disponible para dirigirse a la página de registro.
 
   La app fue construida como SPA y es responsive.
 
-Planificación:
+**Planificación:**
 
 Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto. 
  
   [✔️] Establecimos temática de la app. Ideamos el objetivo, nombre y logo de la app.
+
   [✔️] Escogimos paleta de colores. 
+
   ![PALETA-DE-COLORES](image-3.png)
+
   [✔️] Llevamos a cabo investigación de usuarios, respondiendo las siguientes preguntas:
+
   ![INV-USUARIOS-2](image-6.png)
+
   [✔️]Elaboramos las siguientes historias de usuario: 
+
   ![Hist-usuario1](src/images/HU(1).jpg)
   ![Hist-usuario2](src/images/HU(2).jpg)
   ![Hist-usuario3](src/images/HU(3).jpg)
@@ -63,10 +72,14 @@ Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se
   ![Hist-usuario5](src/images/HU(5).jpg)
   ![Hist-usuario6](src/images/HU(6).jpg)
   ![Hist-usuario7](src/images/HU(7).jpg)
+
   [✔️] Elaboramos prototipos de baja y alta fidelidad.
+
   ![prototipo-baja-fidelidad](image-8.png)
   ![prototipo-alta-fidelidad](image-9.png)
+
   [✔️] Aplicamos test de usabilidad a 5 usuarios.
+
   [Ver resultados](https://docs.google.com/document/d/1zi0zpeZEEKPD2lybzpOivme6ZKEFK3P1/edit?usp=drive_link&ouid=114967044527011804122&rtpof=true&sd=true)
   
 
