@@ -54,7 +54,6 @@ Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se
   [✔️] Escogimos paleta de colores. 
   ![PALETA-DE-COLORES](image-3.png)
   [✔️] Llevamos a cabo investigación de usuarios, respondiendo las siguientes preguntas:
-  ![INV-USUARIOS](image-5.png)
   ![INV-USUARIOS-2](image-6.png)
   [✔️]Elaboramos las siguientes historias de usuario: 
   ![Hist-usuario1](src/images/HU(1).jpg)
