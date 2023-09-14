@@ -44,7 +44,7 @@ describe('Testing Login function', () => {
     expect(navigateTo).toHaveBeenCalledWith('/resetPassword');
   }, 0);
 
-  it('Debería ser una función', () => {
+  it('should be a function', () => {
     expect(typeof signIn).toBe('function');
   });
 
@@ -86,7 +86,7 @@ describe('Testing Login function', () => {
     passButton.click();
     expect(inputPass.type).toBe('text');
   }, 0);
-  it('should no show pass', async () => {
+  it('should hide password', async () => {
     const passButton = loginElement.querySelector('.pass-button');
     passButton.click();
     expect(inputPass.type).toBe('password');

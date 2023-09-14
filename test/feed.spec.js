@@ -15,7 +15,7 @@ authenticator.auth = {
   },
 };
 describe('feed', () => {
-  it('should send post correctly ', (done) => {
+  it('should send a post correctly ', (done) => {
     spyOn(lib, 'addPost').mockImplementation(() => Promise.resolve());
     spyOn(lib, 'showPosts');
     const navigateTo = () => { };
@@ -52,7 +52,7 @@ describe('logOut', () => {
   const navigateTo = jest.fn();
   const feedElement = feed(navigateTo);
   const buttonProfile = feedElement.querySelector('.button-profile');
-  it('should navigate to /profile when clicking button buttonProfile', async () => {
+  it('should navigate to /profile when clicking buttonProfile', async () => {
     buttonProfile.click();
     expect(navigateTo).toHaveBeenCalledWith('/profile');
   }, 0);
@@ -60,7 +60,7 @@ describe('logOut', () => {
 
 describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
-  it('debería llamar a navigateTo con "/noFeed" si el usuario no está autenticado', () => {
+  it('should call navigateTo with "/noFeed" if user is not authenticated', () => {
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null); // Usuario no autenticado
     });
@@ -68,7 +68,7 @@ describe('onAuthStateChanged', () => {
     // Verifica si navigateTo se llamó con la ruta correcta
     expect(navigateTo).toHaveBeenCalledWith('/noFeed');
   });
-  it('debería llamar a showPost si el usuario está autenticado', async () => {
+  it('should call showPost if user is authenticated', async () => {
     // Simula que el usuario está autenticado
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       // eslint-disable-next-line no-param-reassign
@@ -88,7 +88,7 @@ describe('onAuthStateChanged', () => {
       expect(lib.showPosts).toHaveBeenCalledWith(name, postsSection);
     });
   });
-  it('debería llamar a showPost si el usuario está autenticado y con foto', async () => {
+  it('should call showPost if user is authenticated and has a profile photo', async () => {
     authenticator.auth = {
       currentUser: {
         displayName: 'Nicole',

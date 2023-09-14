@@ -50,13 +50,39 @@ Planificación:
 
 Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto. 
  
-  [✔️] Se decidió temática de la app. Ideamos el objetivo, nombre y logo de la app.
-  ![lOGO-HOME](image-1.png) ![LOGO-LOGIN](image-2.png)
-  [✔️] Se escogió paleta de colores. 
+  [✔️] Establecimos temática de la app. Ideamos el objetivo, nombre y logo de la app.
+  [✔️] Escogimos paleta de colores. 
   ![PALETA-DE-COLORES](image-3.png)
-  [✔️] Se llevó a cabo investigación de usuarios, respondiendo las siguientes preguntas:
+  [✔️] Llevamos a cabo investigación de usuarios, respondiendo las siguientes preguntas:
   ![INV-USUARIOS](image-5.png)
   ![INV-USUARIOS-2](image-6.png)
+  [✔️]Elaboramos las siguientes historias de usuario: 
+  ![Hist-usuario1](src/images/HU(1).jpg)
+  ![Hist-usuario2](src/images/HU(2).jpg)
+  ![Hist-usuario3](src/images/HU(3).jpg)
+  ![Hist-usuario4](src/images/HU(4).jpg)
+  ![Hist-usuario5](src/images/HU(5).jpg)
+  ![Hist-usuario6](src/images/HU(6).jpg)
+  ![Hist-usuario7](src/images/HU(7).jpg)
+  [✔️] Elaboramos prototipos de baja y alta fidelidad.
+  ![prototipo-baja-fidelidad](image-8.png)
+  ![prototipo-alta-fidelidad](image-9.png)
+  [✔️] Aplicamos test de usabilidad a 5 usuarios.
+  [Ver resultados](https://docs.google.com/document/d/1zi0zpeZEEKPD2lybzpOivme6ZKEFK3P1/edit?usp=drive_link&ouid=114967044527011804122&rtpof=true&sd=true)
+  
+
+  Cambios en el producto final:
+
+![cambios-1](src/images/cambios1.jpg)
+![cambios-2](src/images/cambios2.jpg)
+![cambios-3](src/images/cambios3.jpg)
+  
+
+
+
+
+
+
 
 
 

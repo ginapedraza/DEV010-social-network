@@ -82,28 +82,28 @@ describe('Testing register function', () => {
       done();
     });
   });
-  it('should show pass when click passButton once', async () => {
+  it('should show pass when clicking passButton once', async () => {
     const passButton = registerElement.querySelector('.pass-button');
     passButton.click();
     expect(inputPass.type).toBe('text');
   }, 0);
-  it('should no show pass when click passButton again', async () => {
+  it('should no show pass when clicking passButton again', async () => {
     const passButton = registerElement.querySelector('.pass-button');
     passButton.click();
     expect(inputPass.type).toBe('password');
   }, 0);
-  it('should show confirm pass when click confirmPassButton once', async () => {
+  it('should show confirm pass when clicking confirmPassButton once', async () => {
     const confirmPassButton = registerElement.querySelector('.confirmpass-button');
     confirmPassButton.click();
     expect(inputConfirmPass.type).toBe('text');
   }, 0);
-  it('should no show confirm pass when click confirmPassButton again', async () => {
+  it('should no show confirm pass when clicking confirmPassButton again', async () => {
     const confirmPassButton = registerElement.querySelector('.confirmpass-button');
     confirmPassButton.click();
     expect(inputConfirmPass.type).toBe('password');
   }, 0);
 
-  it('should display an error message when no user', (done) => {
+  it('should display an error message when user input is empty', (done) => {
     // eslint-disable-next-line max-len
     createUser.mockRejectedValue(inputName.value.length === 0);
     inputName.value = '';
@@ -117,7 +117,7 @@ describe('Testing register function', () => {
       done();
     });
   });
-  it('should display an error message when no email', (done) => {
+  it('should display an error message when email input is empty', (done) => {
     // eslint-disable-next-line max-len
     createUser.mockRejectedValue(inputEmail.value.length === 0);
     inputName.value = 'Gina';
@@ -131,7 +131,7 @@ describe('Testing register function', () => {
       done();
     });
   });
-  it('should no display an error message when no email', (done) => {
+  it('shouldnt display an error message when email input is correctly filled', (done) => {
     // eslint-disable-next-line max-len
     createUser.mockRejectedValue(inputEmail.value.length >= 1);
     const errorAlert = registerElement.querySelector('.error');

@@ -8,7 +8,7 @@ function mailVerificacion(navigateTo) {
   const imageLogo = document.createElement('img');
   imageLogo.src = 'images/logo-home.png';
   imageLogo.alt = ' ';
-  imageLogo.classList.add('logoImgFeed');
+  imageLogo.classList.add('logoImgNoFeed');
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('button-home-nofeed');
   buttonLogin.textContent = 'Ya verifiqué mi correo';

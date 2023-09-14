@@ -59,7 +59,7 @@ describe('profile', () => {
 describe('onAuthStateChanged', () => {
   const navigateTo = jest.fn();
 
-  it('debería llamar a navigateTo con "/noFeed" si el usuario no está autenticado', () => {
+  it('should call navigateTo with "/noFeed" if user is not authenticated', () => {
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       callback(null); // Usuario no autenticado
     });
@@ -67,7 +67,7 @@ describe('onAuthStateChanged', () => {
     // Verifica si navigateTo se llamó con la ruta correcta
     expect(navigateTo).toHaveBeenCalledWith('/noFeed');
   });
-  it('debería llamar a showPost si el usuario está autenticado', async () => {
+  it('shoul call showPost if user is authenticated', async () => {
     // Simula que el usuario está autenticado
     firebase.onAuthStateChanged.mockImplementation((auth, callback) => {
       // eslint-disable-next-line no-param-reassign
@@ -87,7 +87,7 @@ describe('onAuthStateChanged', () => {
       expect(lib.showPostsProfile).toHaveBeenCalledWith(name, postsSection);
     });
   });
-  it('debería llamar a showPost si el usuario está autenticado y con foto', async () => {
+  it('should call showPost if user is authenticated and has a profile photo', async () => {
     authenticator.auth = {
       currentUser: {
         displayName: 'Nicole',
