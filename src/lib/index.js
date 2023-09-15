@@ -11,6 +11,7 @@ import brazoLike from '../images/brazoLike.png';
 import brazoLiked from '../images/brazoLiked.png';
 import trash from '../images/trash.png';
 import editar from '../images/editar.png';
+import close from '../images/close.png';
 
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -62,7 +63,12 @@ const showPostsProfile = async () => {
     const postDate = document.createElement('p');
     postDate.classList.add('date');
     postDate.textContent = post.date.toDate().toLocaleDateString();
-    imgProfile.src = auth.currentUser.photoURL;
+    const photo = auth.currentUser.photoURL;
+    if (photo === null || photo === undefined) {
+      imgProfile.src = azul;
+    } else {
+      imgProfile.src = auth.currentUser.photoURL;
+    }
     imgProfile.style.borderRadius = '50%';
     imgProfile.style.height = '40px';
     imgProfile.style.width = '40px';
@@ -127,7 +133,7 @@ const showPostsProfile = async () => {
           const closeIconSection = document.createElement('section');
           closeIconSection.classList.add('close-icon');
           const closeEdit = document.createElement('img');
-          closeEdit.src = '/images/close-edit.png';
+          closeEdit.src = close;
           closeEdit.alt = 'Cerrar pantalla de edición';
           closeEdit.classList.add('close-edit');
           const closeEditButton = document.createElement('button');
@@ -214,7 +220,13 @@ const showPosts = async () => {
     postDate.textContent = post.date.toDate().toLocaleDateString();
     const isCurrentUserPost = post.name === auth.currentUser.displayName;
     if (isCurrentUserPost) {
-      imgProfile.src = auth.currentUser.photoURL;
+      const photo = auth.currentUser.photoURL;
+      if (photo === null || photo === undefined) {
+        imgProfile.src = azul;
+      } else {
+        imgProfile.src = auth.currentUser.photoURL;
+      }
+      // imgProfile.src = auth.currentUser.photoURL;
     } else {
       imgProfile.src = azul;
     }

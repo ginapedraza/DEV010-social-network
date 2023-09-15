@@ -10,6 +10,7 @@ import reducir from '../images/reducir.png';
 import aumentar from '../images/aumentar.png';
 import letraNormal from '../images/letraNormal.png';
 import logOutImg from '../images/logOutImg.png';
+import azul from '../images/azul.png';
 
 function profile(navigateTo) {
   let name = '';
@@ -93,7 +94,7 @@ function profile(navigateTo) {
       imgProfile.src = photo;
       name = user.displayName;
       if (photo === null || photo === undefined) {
-        imgProfile.src = '/images/defaultProfile.png';
+        imgProfile.src = azul;
       }
       await showPostsProfile(name, postsSection);
     } else {
