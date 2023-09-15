@@ -1,3 +1,5 @@
+import logoHome from '../images/logoHome.png';
+
 function mailVerificacion(navigateTo) {
   const verificationSection = document.createElement('section');
   verificationSection.classList.add('verification-section');
@@ -6,7 +8,7 @@ function mailVerificacion(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-home.png';
+  imageLogo.src = logoHome;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgNoFeed');
   const buttonLogin = document.createElement('button');

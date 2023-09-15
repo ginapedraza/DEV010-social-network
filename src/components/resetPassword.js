@@ -1,5 +1,6 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase';
+import logoLogin from '../images/logoLogin.png';
 
 function resetPassword(navigateTo) {
   const resetPasswordSection = document.createElement('section');
@@ -7,7 +8,7 @@ function resetPassword(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-login.png';
+  imageLogo.src = logoLogin;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const inputSection = document.createElement('section');

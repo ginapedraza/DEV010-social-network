@@ -1,3 +1,6 @@
+import logoHome from '../images/logoHome.png';
+import atencion from '../images/atencion.png';
+
 function noFeed(navigateTo) {
   const noFeedSection = document.createElement('section');
   const sectionHeader = document.createElement('header');
@@ -5,7 +8,7 @@ function noFeed(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section-noFeed');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-home.png';
+  imageLogo.src = logoHome;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgNoFeed');
   const buttonhome = document.createElement('button');
@@ -14,7 +17,7 @@ function noFeed(navigateTo) {
   const messageSection = document.createElement('section');
   messageSection.classList.add('message-section');
   const imageWarning = document.createElement('img');
-  imageWarning.src = 'images/atencion-logo.png';
+  imageWarning.src = atencion;
   imageWarning.alt = ' ';
   imageWarning.classList.add('logoWarning');
   const messageToHome = document.createElement('h5');

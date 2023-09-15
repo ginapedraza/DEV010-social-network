@@ -3,6 +3,8 @@ import {
   createUser,
 } from '../lib/index';
 import { auth } from '../firebase.js';
+import blackEye from '../images/blackEye.png';
+import logoLogin from '../images/logoLogin.png';
 
 function register(navigateTo) {
   const sectionRegister = document.createElement('section');
@@ -10,7 +12,7 @@ function register(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-login.png';
+  imageLogo.src = logoLogin;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h7');
@@ -40,10 +42,10 @@ function register(navigateTo) {
   confirmPassSection.classList.add('confirmpass-section');
   const passImg = document.createElement('img');
   passImg.classList.add('pass-img');
-  passImg.src = 'images/black-eye.png';
+  passImg.src = blackEye;
   const confirmPassImg = document.createElement('img');
   confirmPassImg.classList.add('confirmpass-img');
-  confirmPassImg.src = 'images/black-eye.png';
+  confirmPassImg.src = blackEye;
   const inputConfirmPass = document.createElement('input');
   inputConfirmPass.classList.add('input-register-pass');
   inputConfirmPass.setAttribute('id', 'inputConfirmPass');

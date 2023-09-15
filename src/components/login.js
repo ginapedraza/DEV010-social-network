@@ -1,4 +1,6 @@
 import { signIn } from '../lib/index.js';
+import logoLogin from '../images/logoLogin.png';
+import blackEye from '../images/blackEye.png';
 
 function login(navigateTo) {
   const section = document.createElement('section');
@@ -6,7 +8,7 @@ function login(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-login.png';
+  imageLogo.src = logoLogin;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h7');
@@ -27,7 +29,7 @@ function login(navigateTo) {
   passSection.classList.add('pass-section');
   const passImg = document.createElement('img');
   passImg.classList.add('pass-img');
-  passImg.src = 'images/black-eye.png';
+  passImg.src = blackEye;
   const buttonLogin = document.createElement('button');
   buttonLogin.classList.add('login-button');
   const buttonReturn = document.createElement('button');

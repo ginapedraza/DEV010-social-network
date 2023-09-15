@@ -6,6 +6,11 @@ import {
   addDoc, collection, getDocs, orderBy, query, updateDoc, deleteDoc, Timestamp,
 } from 'firebase/firestore';
 import { db, auth } from '../firebase.js';
+import azul from '../images/azul.png';
+import brazoLike from '../images/brazoLike.png';
+import brazoLiked from '../images/brazoLiked.png';
+import trash from '../images/trash.png';
+import editar from '../images/editar.png';
 
 const loginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -89,13 +94,13 @@ const showPostsProfile = async () => {
       buttonEdit.classList.add('button-edit');
       const editButton = document.createElement('img');
       editButton.classList.add('edit-button');
-      editButton.src = '/images/editar.png';
+      editButton.src = editar;
       editButton.alt = 'Editar publicación';
       const deleteButton = document.createElement('img');
       const buttonDelete = document.createElement('button');
       buttonDelete.classList.add('button-delete');
       deleteButton.classList.add('delete-button');
-      deleteButton.src = '/images/trash.png';
+      deleteButton.src = trash;
       deleteButton.alt = 'Eliminar publicación';
       individualPost.append(sectionButtons);
       sectionButtons.append(buttonEdit, buttonDelete);
@@ -211,7 +216,7 @@ const showPosts = async () => {
     if (isCurrentUserPost) {
       imgProfile.src = auth.currentUser.photoURL;
     } else {
-      imgProfile.src = '/images/azul.png';
+      imgProfile.src = azul;
     }
     imgProfile.style.borderRadius = '50%';
     imgProfile.style.height = '40px';
@@ -226,14 +231,14 @@ const showPosts = async () => {
     const likeButton = document.createElement('button');
     likeButton.classList.add('like-button');
     const likeImage = document.createElement('img');
-    likeImage.src = '/images/icono-brazo-like.png';
+    likeImage.src = brazoLike;
     likeImage.alt = 'Dar like a la publicación';
     likeImage.classList.add('likeImgFeed');
     let userLiked = post.likes && post.likes.includes(auth.currentUser.uid);
     const likesCount = document.createElement('p');
     likesCount.classList.add('counter');
     likesCount.textContent = post.likes.length;
-    likeImage.src = userLiked ? '/images/button-liked.png' : '/images/icono-brazo-like.png';
+    likeImage.src = userLiked ? brazoLiked : brazoLike;
 
     likeButton.addEventListener('click', async (e) => {
       e.preventDefault();
@@ -245,7 +250,7 @@ const showPosts = async () => {
 
       try {
         if (userLiked === false) {
-          likeImage.src = '/images/button-liked.png';
+          likeImage.src = brazoLiked;
           tempArrayLikes.push(userId);
           const arrayLikesLength = tempArrayLikes.length;
           await updateDoc(doc.ref, { likes: tempArrayLikes });
@@ -253,7 +258,7 @@ const showPosts = async () => {
           likesCount.textContent = arrayLikesLength.toString();
         }
         if (userLiked) {
-          likeImage.src = '/images/icono-brazo-like.png';
+          likeImage.src = brazoLike;
           const indexUserLikesArray = tempArrayLikes.indexOf(userId);
           tempArrayLikes.splice(indexUserLikesArray, 1);
           const arrayLikesLength = tempArrayLikes.length;
@@ -292,13 +297,13 @@ const showPosts = async () => {
       buttonEdit.classList.add('button-edit');
       const editButton = document.createElement('img');
       editButton.classList.add('edit-button');
-      editButton.src = '/images/editar.png';
+      editButton.src = editar;
       editButton.alt = 'Editar publicación';
       const deleteButton = document.createElement('img');
       const buttonDelete = document.createElement('button');
       buttonDelete.classList.add('button-delete');
       deleteButton.classList.add('delete-button');
-      deleteButton.src = '/images/trash.png';
+      deleteButton.src = trash;
       deleteButton.alt = 'Eliminar publicación';
       individualPost.append(sectionButtons);
       sectionButtons.append(buttonEdit, buttonDelete);

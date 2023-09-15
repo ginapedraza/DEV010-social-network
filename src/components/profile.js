@@ -4,6 +4,12 @@ import { auth } from '../firebase.js';
 import {
   addPost, logOut, showPostsProfile,
 } from '../lib/index.js';
+import logoHome from '../images/logoHome.png';
+import ButtonHome from '../images/ButtonHome.png';
+import reducir from '../images/reducir.png';
+import aumentar from '../images/aumentar.png';
+import letraNormal from '../images/letraNormal.png';
+import logOutImg from '../images/logOutImg.png';
 
 function profile(navigateTo) {
   let name = '';
@@ -19,27 +25,27 @@ function profile(navigateTo) {
   reduceButton.classList.add('button-size');
   reduceButton.setAttribute('id', 'reduceButton');
   const reduceImg = document.createElement('img');
-  reduceImg.src = '/images/a-.png';
+  reduceImg.src = reducir;
   reduceImg.alt = 'Disminuir tamaño de la fuente';
   reduceImg.classList.add('button-size-img');
   const increaseButton = document.createElement('button');
   increaseButton.classList.add('button-size');
   increaseButton.setAttribute('id', 'increaseButton');
   const increaseImg = document.createElement('img');
-  increaseImg.src = '/images/a+.png';
+  increaseImg.src = aumentar;
   increaseImg.alt = 'Aumentar tamaño de la fuente';
   increaseImg.classList.add('button-size-img');
   const normalButton = document.createElement('button');
   normalButton.classList.add('button-size');
   normalButton.setAttribute('id', 'normalButton');
   const normalImg = document.createElement('img');
-  normalImg.src = '/images/a.png';
+  normalImg.src = letraNormal;
   normalImg.alt = 'Tamaño normal de la fuente';
   normalImg.classList.add('button-size-img');
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-home.png';
+  imageLogo.src = logoHome;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImgFeed');
   const sectionLogOut = document.createElement('section');
@@ -48,14 +54,14 @@ function profile(navigateTo) {
   buttonLogout.classList.add('button-logout');
   buttonLogout.textContent = 'Cerrar sesión';
   const imgLogout = document.createElement('img');
-  imgLogout.src = '/images/log-out.png';
+  imgLogout.src = logOutImg;
   imgLogout.alt = 'Cerrar sesión';
   imgLogout.classList.add('img-logout');
   const buttonHome = document.createElement('button');
   buttonHome.classList.add('button-profile');
   buttonHome.textContent = 'Inicio';
   const imgHome = document.createElement('img');
-  imgHome.src = '/images/ButtonHome.png';
+  imgHome.src = ButtonHome;
   imgHome.alt = 'Ir a home';
   imgHome.classList.add('img-home');
   const profileTextSection = document.createElement('section');
