@@ -1,6 +1,6 @@
-\begin{center}
+
 # TweetFit
-\end{center}
+
 
 
  Red social para compartir consejos, rutinas, logros y motivación 
@@ -12,7 +12,7 @@
 
 
 
-**Descripción del producto** 
+## Descripción del producto
 
 TweetFit le da la bienvenida al usuario en la vista home, que le 
 permite decidir si desea iniciar sesión con correo electrónico y 
@@ -55,7 +55,7 @@ la opcion disponible para dirigirse a la página de registro.
 
 
   
-**Planificación:**
+## Planificación:
 
 Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto. 
  
@@ -90,7 +90,7 @@ Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se
   
 
 
- **Cambios en el producto final:**
+## Cambios en el producto final:
 
 ![cambios-1](src/images/cambios1.jpg)
 ![cambios-2](src/images/cambios2.jpg)
