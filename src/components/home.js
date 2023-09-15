@@ -1,6 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
 import { loginWithGoogle } from '../lib/index';
+import logoHome from '../images/logoHome.png';
 
 function home(navigateTo) {
   const section = document.createElement('section');
@@ -8,7 +9,7 @@ function home(navigateTo) {
   const sectionLogo = document.createElement('section');
   sectionLogo.classList.add('logo-section');
   const imageLogo = document.createElement('img');
-  imageLogo.src = 'images/logo-home.png';
+  imageLogo.src = logoHome;
   imageLogo.alt = ' ';
   imageLogo.classList.add('logoImg');
   const slogan = document.createElement('h2');
