@@ -342,7 +342,7 @@ const showPosts = async () => {
           const closeIconSection = document.createElement('section');
           closeIconSection.classList.add('close-icon');
           const closeEdit = document.createElement('img');
-          closeEdit.src = '/images/close-edit.png';
+          closeEdit.src = close;
           closeEdit.alt = 'Cerrar pantalla de edición';
           closeEdit.classList.add('close-edit');
           const closeEditButton = document.createElement('button');
