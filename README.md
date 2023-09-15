@@ -36,21 +36,23 @@ la opcion disponible para dirigirse a la página de registro.
   emergente que provee google para seleccionar la cuenta con
   la que desea ingresar. Una vez iniciada la sesión se redirigirá
   a la vista de feed.
-- Registrandose:
+- Registrándose:
   En esta vista el usuario debe ingresar su correo electrónico,
   nombre de usuario, contraseña y confirmación de contraseña.
-  Los inputs de contraseña tienen la opcion para ocultarla o
-  visualizarla. 
+  Los inputs de contraseña tienen la opción para ocultarla o
+  visualizarla.
+- Usuario con sesión iniciada previamente:
+  En caso de que el usuario haya ingresado nuevamente a la aplicación sin haber cerrado previamente la sesión, automáticamente será redirigido al feed. 
 
-  Una vez que el usuario se ha logueado, pasa a la vista del feed, donde puede visualizar las publicaciones de todos los usuarios y una casilla para escribir una publicación propia. 
+Una vez que el usuario se ha logueado, pasa a la vista del feed, donde puede visualizar las publicaciones de todos los usuarios y una casilla para escribir una publicación propia. 
   
-  En el header del feed hay un botón con su imagen avatar que al seleccionarlo dirige al perfil, vista donde el usuario visualiza únicamente sus propios posts. También en el header, hay un botón para cerrar sesión y botones disponibles de accesibilidad que aumentan y disminuyen el tamaño de las fuentes para las personas que tienen problemas de visibilidad. 
+En el header del feed hay un botón con su imagen avatar que al seleccionarlo dirige al perfil, vista donde el usuario visualiza únicamente sus propios posts. También en el header, hay un botón para cerrar sesión y botones disponibles de accesibilidad que aumentan y disminuyen el tamaño de las fuentes para facilitar la lectura de los posts.
 
-  Los usuarios pueden interactuar entre sí con el botón de Like, éste cambia de color al seleccionarlo y se muestra el conteo de likes a un lado del ícono.
+Los usuarios pueden interactuar entre sí con el botón de Like, éste cambia de color al seleccionarlo y se muestra el conteo de likes a un lado del ícono.
 
-  El usuario logueado adicionalmente tiene disponibles dos botones en sus propias publicaciones, uno para editarla y otro para borrarla. 
+El usuario logueado adicionalmente tiene disponibles dos botones en sus propias publicaciones, uno para editarla y otro para borrarla. 
 
-  La app fue construida como SPA y es responsive.
+La app fue construida como SPA y es responsive.
 
 
   
@@ -78,7 +80,7 @@ Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se
   ![Hist-usuario6](src/images/HU(6).jpg)
   ![Hist-usuario7](src/images/HU(7).jpg)
 
-  [✔️] Elaboramos prototipos de baja y alta fidelidad.
+  [✔️] Elaboramos prototipos de baja fidelidad utilizando Excalidraw y de alta fidelidad con la herramienta Figma.
 
   ![prototipo-baja-fidelidad](image-8.png)
   ![prototipo-alta-fidelidad](image-9.png)
