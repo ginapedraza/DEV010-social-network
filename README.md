@@ -1,6 +1,6 @@
-<center>
+
 # TweetFit
-</center>
+
 
 
  Red social para compartir consejos, rutinas, logros y motivación 
