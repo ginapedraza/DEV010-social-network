@@ -19,7 +19,8 @@
     "dev": "vite dev src",
     "start": "npm run dev",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist" 
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
@@ -43,7 +44,8 @@
     "commit": "3cf716dfe2a8c328a7e9dce5c030cb2c3ab8531c"
   },
   "dependencies": {
-    "firebase": "^10.1.0"
+    "firebase": "^10.1.0",
+    "gh-pages": "^6.0.0"
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -51,18 +53,17 @@
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMocks.js",
       "\\.(css|less)$": "<rootDir>/mocks/fileMocks.js"
     },
-  "collectCoverageFrom": [
-    "**/*.js",
-    "!**/src/lib/**",
-    "!**/dist/assets/**",
-    "!**/coverage/lcov-report/**",
-    "!**/social-network/**",
-    "!**/src/main**",
-    "!**/src/components/resetPassword**",
-    "!**/babel.config**",
-    "!**/stylelint.config**",
-    "!**/vite.config**"
-  ]
-  
-}
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/src/lib/**",
+      "!**/dist/assets/**",
+      "!**/coverage/lcov-report/**",
+      "!**/social-network/**",
+      "!**/src/main**",
+      "!**/src/components/resetPassword**",
+      "!**/babel.config**",
+      "!**/stylelint.config**",
+      "!**/vite.config**"
+    ]
+  }
 }
