@@ -1,15 +1,16 @@
-<p align="center" style="font-size: 160%;">
-<b>TweetFit</b>
-</p>
+\begin{center}
+# TweetFit
+\end{center}
+
+
  Red social para compartir consejos, rutinas, logros y motivación 
  relacionados con el mundo del fitness de manera concisa y rápida.
 
 <p align="center">
 <img src="image-7.png" alt="LOGO">
 </p>
-# Uno
-## Dos
-### tres
+
+
 
 **Descripción del producto** 
 
@@ -52,6 +53,8 @@ la opcion disponible para dirigirse a la página de registro.
 
   La app fue construida como SPA y es responsive.
 
+
+  
 **Planificación:**
 
 Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se establecieron objetivos y tareas para construir paso a paso el proyecto. 
@@ -86,7 +89,8 @@ Para organizar y estructurar el proyecto fue utilizada la herramienta Trello. Se
   [Ver resultados](https://docs.google.com/document/d/1zi0zpeZEEKPD2lybzpOivme6ZKEFK3P1/edit?usp=drive_link&ouid=114967044527011804122&rtpof=true&sd=true)
   
 
-  Cambios en el producto final:
+
+ **Cambios en el producto final:**
 
 ![cambios-1](src/images/cambios1.jpg)
 ![cambios-2](src/images/cambios2.jpg)
