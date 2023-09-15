@@ -47,9 +47,14 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "collectCoverageFrom": [
-      "**/*.js",
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/fileMocks.js",
+      "\\.(css|less)$": "<rootDir>/mocks/fileMocks.js"
+    },
+  "collectCoverageFrom": [
+    "**/*.js",
     "!**/src/lib/**",
+    "!**/dist/assets/**",
     "!**/coverage/lcov-report/**",
     "!**/social-network/**",
     "!**/src/main**",
@@ -57,8 +62,7 @@
     "!**/babel.config**",
     "!**/stylelint.config**",
     "!**/vite.config**"
-    
-    ]
-  }
+  ]
   
+}
 }
