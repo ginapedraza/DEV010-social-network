@@ -2,6 +2,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../firebase';
 import { loginWithGoogle } from '../lib/index';
 import logoHome from '../images/logoHome.png';
+import LogoGoogle from '../images/LogoGoogle.png';
 
 function home(navigateTo) {
   const section = document.createElement('section');
@@ -24,10 +25,15 @@ function home(navigateTo) {
   const titleRegister = document.createElement('h3');
   const registerButton = document.createElement('button');
   registerButton.classList.add('registerButton');
+  const googleImg = document.createElement('img');
+  googleImg.classList.add('google-img');
+  googleImg.src = LogoGoogle;
+  const googleText = document.createElement('p');
+  googleText.classList.add('google-text');
+  googleText.textContent = 'Acceder con Google';
 
   slogan.textContent = '¡Comparte tus éxitos, inspira tu Fitness!';
   emailButton.textContent = 'Correo electrónico';
-  googleButton.textContent = 'Google';
   titleLogin.textContent = 'Inicia sesión';
   titleRegister.textContent = 'Si no tienes cuenta';
   registerButton.textContent = 'Regístrate';
@@ -52,6 +58,7 @@ function home(navigateTo) {
   });
   sectionLogo.append(imageLogo, slogan);
   sectionGeneral.append(titleLogin, emailButton, googleButton, titleRegister, registerButton);
+  googleButton.append(googleImg, googleText);
   section.append(sectionLogo, sectionGeneral);
   return section;
 }
