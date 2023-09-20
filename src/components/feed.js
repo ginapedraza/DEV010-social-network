@@ -6,7 +6,7 @@ import ProfileButton from '../images/ProfileButton.png';
 import reducir from '../images/reducir.png';
 import aumentar from '../images/aumentar.png';
 import letraNormal from '../images/letraNormal.png';
-import logOutImg from '../images/logOutImg.png';
+import logOutIcon from '../images/logOutIcon.svg';
 
 function feed(navigateTo) {
   const generalFeed = document.createElement('section');
@@ -50,7 +50,7 @@ function feed(navigateTo) {
   buttonLogout.classList.add('button-logout');
   buttonLogout.textContent = 'Cerrar sesión';
   const imgLogout = document.createElement('img');
-  imgLogout.src = logOutImg;
+  imgLogout.src = logOutIcon;
   imgLogout.alt = 'Cerrar sesión';
   imgLogout.classList.add('img-logout');
   const buttonProfile = document.createElement('button');
