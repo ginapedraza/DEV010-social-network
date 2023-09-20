@@ -74,27 +74,32 @@ function feed(navigateTo) {
   let name = '';
   // Manejador para detectar el estado de autenticación
   onAuthStateChanged(auth, async (user) => {
+    // Si el usuario está autenticado, se obtiene la foto del perfil del usuario actual
     if (user) {
-      // Mostrar los posts del usuario autenticado
       const photo = auth.currentUser.photoURL;
       imgProfile.src = photo;
       imgProfile.style.borderRadius = '50%';
       imgProfile.style.height = '40px';
       imgProfile.style.width = '40px';
+      //  Si no hay foto de perfil, se establece una imagen predeterminada
       if (photo === null || photo === undefined) {
         imgProfile.src = ProfileButton;
       }
+      // texto del botón para ir a perfil
       textButton.textContent = auth.currentUser.displayName;
       name = user.displayName;
+      //  espera a que se muestren las publicaciones llamando a la función showPosts
       await showPosts(name, postsSection);
+      // Si el usuario no está autenticado, se redirige a la página '/noFeed'.
     } else {
       navigateTo('/noFeed');
     }
   });
+  // Botón deshabilitado
   if (textArea.value === '') {
     sendPostButton.disabled = true;
   }
-
+  // Evento que escucha cambios en textarea
   textArea.addEventListener('input', () => {
     if (textArea.value !== '') {
       sendPostButton.disabled = false;
@@ -105,7 +110,10 @@ function feed(navigateTo) {
   sendPostButton.addEventListener('click', () => {
     const post = textArea.value;
     if (post !== '') {
+      // si textarea no está vacío, se llama a la función addPost
       addPost(post).then(() => {
+        // cuando la función addPost se resuelve exitosamente, se llama a la función showPosts
+        // y se borra el contenido del área de texto.
         showPosts();
         textArea.value = '';
       });

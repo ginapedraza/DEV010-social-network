@@ -2,17 +2,13 @@
   font-family: Roboto;
   src: url('../Fonts/Roboto-Medium.ttf');
 }
-
 body {
     margin: 0;
     padding: 0;
     height: 100%;
     background-color:white;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
-  
 }
-
 .registerButton {
     border-radius: 10px;
     background: #F26938;
@@ -33,16 +29,13 @@ body {
   border: 4px solid  #F2F2F2;
   background:  #ed3d16;
 }
-
 .logo-section {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0px;
     flex-direction: column;
-
 }
-
 .logoImg {
    width: 250px;
    height: 100px;
@@ -69,13 +62,11 @@ body {
     background-size: cover;
   }
 }
-
 .slogan-style {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
     color: white;
 }
-
 .general {
     background-color: white;
     height: auto;
@@ -92,7 +83,6 @@ body {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.9rem;
 }
-
 .loginButton {
     border-radius: 10px;
     background: #011640;
@@ -115,7 +105,6 @@ body {
   border: 4px solid  #F2F2F2;
   background: #010b1e;
 }
-
 .googleButton {
   height: 40px;
     display: flex;
@@ -140,7 +129,6 @@ body {
 height: 18px ;
 width: 18px ;
 }
-
 .google-text {
   font-family: Roboto;
   font-size: 14px;
@@ -167,7 +155,6 @@ width: 18px ;
     background-size: cover;
   }
 }
-
 .login-button, .sendEmail, .resetpass-button {
     border-radius: 10px;
     background: #F26938;
@@ -185,14 +172,12 @@ width: 18px ;
 .login-button:hover, .sendEmail:hover, .resetpass-button:hover {
   background: #ed3d16;
 }
-
 .error {
     color: white;
     text-align: center;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 0.8rem;
 }
-
 .generalLogin, .generalRegister, .input-section{
     background-color: #011640;
     height: auto;
@@ -240,7 +225,6 @@ width: 18px ;
   box-shadow: none;
   border-radius: 0px 6px 6px 0px;
   border: none;
-
 }
 .confirmpass-button {
   height: 30.8px;
@@ -251,7 +235,6 @@ width: 18px ;
   box-shadow: none;
   border-radius: 0px 6px 6px 0px;
   border: none;
-
 }
 .input-login, .input-register, .input-resetpass {
     margin: 15px;
@@ -260,7 +243,6 @@ width: 18px ;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 0.9rem;
     padding: 7px;
-
 }
 .input-register-pass {
     margin-right: 0px;
@@ -275,7 +257,6 @@ width: 18px ;
 .input-resetpass {
   width: 185px;
 }
-
 .button-return {
     border-radius: 8px;
     text-align: center;
@@ -325,6 +306,7 @@ width: 18px ;
   display:flex;
   flex-direction: column;
 }
+
 /* Feed */
 
 .headerClass {
@@ -341,8 +323,7 @@ width: 18px ;
 }
 .section-logout {
   display: flex;
-  justify-content: space-between;
-  /* background-repeat: no-repeat;*/ 
+  justify-content: space-between; 
   box-sizing: border-box;
   padding-left: 5%;
   padding-right: 5%;
@@ -351,8 +332,7 @@ width: 18px ;
 @media (min-width: 700px) {
 .section-logout {
   display: flex;
-  justify-content: space-between;
-  /* background-repeat: no-repeat;*/ 
+  justify-content: space-between; 
   box-sizing: border-box;
 }
 }
@@ -371,7 +351,6 @@ width: 18px ;
     flex-direction:row;
     margin:0 0%;
 }
-
 @media (min-width: 700px) {
 .button-logout {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -409,7 +388,6 @@ width: 18px ;
 }
 .button-profile:hover, .button-home:hover {
   opacity: 0.5;
-
 }
 @media (min-width: 700px) {
   .button-home, .button-profile {
@@ -495,7 +473,6 @@ width: 18px ;
   box-sizing: border-box;
   cursor: pointer;
 }
-
 }
 .button-size-img {
   content: '';
@@ -504,7 +481,6 @@ width: 18px ;
   background-size: 30px 30px;
   cursor: pointer;
 }
-
 @media (max-width: 700px) {
   .button-size-img {
     content: '';
@@ -516,8 +492,6 @@ width: 18px ;
 .button-size:hover {
   opacity: 0.5;
 }
-
-
 .textAreaSection {
   display: flex;
   flex-direction: column;
@@ -525,12 +499,10 @@ width: 18px ;
   padding: 0px 40px;
   margin: 0px auto;
   background-color: white;
-   
 }
 @media (min-width: 700px) {
 .textAreaSection {
-    width: 80%;
-    
+    width: 80%;  
 }
 }
 .sendPost-button{
@@ -566,7 +538,6 @@ width: 18px ;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   white-space: pre-line;
 }
-
 #post-section {
     display: flex;
   flex-direction: column;
@@ -577,14 +548,12 @@ width: 18px ;
 @media (min-width: 700px) {
     #post-section {
         width: 80%;
-
     }
     }
 .individual-post {
     background: none;
     color: #151618;
     border-top: 1px solid #151618;
-    /* border-radius: 10px; */
     box-shadow: 0px -7px 7px 0px rgba(0, 0, 0, 0.1);
     text-align: left;
     width: 100%;
@@ -593,23 +562,17 @@ width: 18px ;
     padding-top: 10px;
     margin: 10px 10px 5px 10px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
     transition: 0.5px;
-
 }
-
 h4 {
     font-size: 1rem;
     margin: 10px 20px 10px 20px
-
 }
-
 p {
     font-size: 0.9rem;
   margin: 10px 20px 10px 20px
 }
-
 .date {
 font-size: 12px;
 margin: 10px 20px 0px 20px;
@@ -617,32 +580,24 @@ color: #F26938;
 font-weight: bold;
 font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
 .section-like {
     display: flex;
-    /* background-repeat: no-repeat;*/ 
     padding: auto;
     flex-direction: row;
-    /* background-position: center center; */
     justify-content: space-between;
 }
 @media (min-width: 850px) {
 .section-like {
   display: flex;
-  /* background-repeat: no-repeat;*/ 
   padding: auto;
   flex-direction: row;
   background-position: center center;
   justify-content: space-between;
 }
 }
-
 .subsection {
   display: flex;
-  
-  
 }
-
 .counter {
   font-weight: bold;
 }
@@ -659,11 +614,9 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
 .likeImgFeed:hover {
   opacity: 0.5;
 }
-
 .section-buttons-post {
   display: flex;
-  margin: 0% 0% 0% 76%;
-  /* background-repeat: no-repeat;*/ 
+  margin: 0% 0% 0% 76%; 
   box-sizing: border-box;
   background-position: center center;
 }
@@ -671,17 +624,14 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
   .section-buttons-post {
     display: flex;
     margin: 0% 0% 0% 89%;
-    /* background-repeat: no-repeat;*/ 
     padding: auto;
     box-sizing: border-box;
     background-position: center center;
   }
   }
-
 .close-icon {
   display: flex;
-  margin: 0% 0% 0% 90%;
-  /* background-repeat: no-repeat;*/ 
+  margin: 0% 0% 0% 90%; 
   box-sizing: border-box;
   background-position: center center;
 }
@@ -690,8 +640,6 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
   box-shadow: none;
   border: none;
 }
-
-
 .edit-button, .close-edit, .delete-button {
   width: 25px;
   height: 25px;
@@ -718,20 +666,14 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
       justify-content: center;
       display: flex;
       flex-direction: column;
-      padding: 20px 30px 0px 30px;
-      
-     
+      padding: 20px 30px 0px 30px;    
   }
-
-
   @media (min-width: 700px) {
     .popUp-edit{ 
       height: 300px;
       width: 500px;
     }
-
   }
-
   .popUp-edit::-webkit-scrollbar {
     display: none;
 }
@@ -746,19 +688,16 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
     width: 90%;
     height: auto;
     resize: none;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
   }
   .textarea-edit::-webkit-scrollbar {
     display: none;
 }
   .edit-description {
-  
       font-size: 18px;
       margin: 5px 20px 20px 20px;
       color: black;
       font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
   }
   .line {
     border-top: 1px solid black;
@@ -767,9 +706,7 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
     padding: 0;
     margin: 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   
   }
-
   .save-button {
     border-radius: 10px;
     background: #F2522E;
@@ -788,7 +725,6 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
     flex-direction: row;
     display: flex;
     justify-content: space-evenly;
-
   }
   .popUp-delete {
     border: 1px solid #ccc;
@@ -843,6 +779,7 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
   }
 
 /* noFeed */
+
 .message-section{
   display: flex;
   flex-direction: column;
@@ -851,13 +788,11 @@ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans 
   padding: auto;
   margin: 30px;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
 }
 h5 {
   text-align: center;
   font-size: 20px;
 }
-
 .button-home-nofeed {
   border-radius: 10px;
     background: #F26938;
@@ -872,25 +807,19 @@ h5 {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     cursor: pointer;
 }
-
 .button-home:hover {
   background: #ed3d16;
 }
-
 .sloganstyle {
   color: #011640;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   font-size: 15px;
   font-weight: bold;
-
 }
-
 .logoWarning {
   width: 100px;
   height: 100px;
-
 }
-
 .headerNoFeed {
   background-color: #011640;
   height: 20vh;
@@ -908,9 +837,7 @@ h5 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
 }
-
 header {
     position: sticky;
     position: -webkit-sticky; /* Safari */
@@ -925,11 +852,9 @@ header {
 body::-webkit-scrollbar {
   width: 12px;              
 }
-
 body::-webkit-scrollbar-track {
   background:  #011640;       
 }
-
 body::-webkit-scrollbar-thumb {
   background-color: #F2F2F2;    
   border-radius: 20px;       
@@ -938,12 +863,8 @@ body::-webkit-scrollbar-thumb {
 .user-name {
  margin: 12px;
 }
-/* profile*/
-/* .background-Section{
-  background:#ccc */
-/*   background-attachment: fixed;
-  background-size: 100%;; */
 
+/* profile*/
 
 .name-user {
   font-size: 1.1rem;
@@ -966,7 +887,6 @@ body::-webkit-scrollbar-thumb {
   display: flex;
   flex-direction: row;
   margin: 8px;
-
 }
 .user-post {
   white-space: pre-line;

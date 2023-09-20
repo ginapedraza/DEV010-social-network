@@ -44,18 +44,20 @@ function login(navigateTo) {
   resetPass.classList.add('restorePassA');
   inputEmail.placeholder = 'Correo electrónico';
   inputPass.placeholder = 'Contraseña';
-
   resetPass.textContent = '¿Olvidaste tu contraseña?';
   restorePass.textContent = 'Recupérala aquí';
   title.textContent = 'Inicia sesión';
   buttonLogin.textContent = 'Ingresar';
-
   slogan.textContent = '¡Juntos podemos lograr grandes resultados!';
   buttonReturn.textContent = 'Volver atrás';
 
   let click = false;
   passButton.addEventListener('click', (e) => {
     e.preventDefault();
+    // verifica si la variable "click" es falsa. Si es así, cambia el tipo de entrada
+    //  de "inputPass" a "text" y establece la variable "click" en verdadera.
+    // Si la variable "click" es verdadera, cambia el tipo de entrada de "inputPass"
+    // a "password" y establece la variable "click" en falsa.
     if (!click) {
       inputPass.type = 'text';
       click = true;
@@ -74,19 +76,21 @@ function login(navigateTo) {
     e.preventDefault();
     const getEmail = inputEmail.value;
     const getPass = inputPass.value;
+    // se intenta iniciar sesión con esos datos utilizando la función "signIn"
     try {
       const userCredential = await signIn(getEmail, getPass);
-
+      // Si el correo del usuario está verificado, se redirige al usuario a la página "/feed".
       if (userCredential.user.emailVerified) {
         // El usuario está autenticado y su correo está verificado.
         navigateTo('/feed');
       }
+      // Si el correo no está verificado, se muestra un mensaje de error.
       if (userCredential.user.emailVerified === false) {
         errorAlert.textContent = 'Aun no verificas tu email';
       }
+      // Captura un error
     } catch (error) {
       const errorCode = error.code;
-      // Manejar el error de autenticación o verificación de correo aquí.
       if (errorCode === 'auth/user-not-found') {
         errorAlert.textContent = 'Usuario no encontrado. Verifica tus credenciales.';
       }

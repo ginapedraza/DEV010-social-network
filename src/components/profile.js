@@ -86,9 +86,11 @@ function profile(navigateTo) {
   buttonHome.addEventListener('click', () => {
     navigateTo('/feed');
   });
+  // verifica si hay un usuario autenticado.
   onAuthStateChanged(auth, async (user) => {
     if (user) {
-      // Mostrar los posts del usuario autenticado
+      // Si hay un usuario, obtiene la foto y el nombre del
+      // usuario autenticado y los muestra en la interfaz de usuario
       const photo = auth.currentUser.photoURL;
       nameUser.textContent = auth.currentUser.displayName;
       imgProfile.src = photo;
@@ -97,6 +99,7 @@ function profile(navigateTo) {
         imgProfile.src = azul;
       }
       await showPostsProfile(name, postsSection);
+      // Si no hay un usuario autenticado, redirige al usuario a la página "/noFeed".
     } else {
       navigateTo('/noFeed');
     }
@@ -115,9 +118,12 @@ function profile(navigateTo) {
     const post = textArea.value;
     name = auth.currentUser.displayName;
     const date = Timestamp.now();
-
+    // Si el textarea NO está vacio
     if (post !== '') {
+      // llama a la función addPost
       addPost(name, post, date).then(() => {
+        // Después de agregar el post, llama a la función
+        // showPostsProfile y vacía el contenido del área de texto.
         showPostsProfile();
         textArea.value = '';
       });

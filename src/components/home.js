@@ -31,27 +31,30 @@ function home(navigateTo) {
   const googleText = document.createElement('p');
   googleText.classList.add('google-text');
   googleText.textContent = 'Acceder con Google';
-
   slogan.textContent = '¡Comparte tus éxitos, inspira tu Fitness!';
   emailButton.textContent = 'Correo electrónico';
   titleLogin.textContent = 'Inicia sesión';
   titleRegister.textContent = 'Si no tienes cuenta';
   registerButton.textContent = 'Regístrate';
-
+  // Iniciar sesión con correo electrónico
   emailButton.addEventListener('click', () => {
     navigateTo('/login');
   });
-
+  // Registrarse
   registerButton.addEventListener('click', () => {
     navigateTo('/register');
   });
-
+  // Iniciar sesión con google
   googleButton.addEventListener('click', () => {
+    // se llama a la función loginWithGoogle(), que devuelve una promesa.
     loginWithGoogle().then(() => {
+      // Cuando esa promesa se resuelve, se llama a la función navigateTo('/feed')
       navigateTo('/feed');
     });
   });
+  // escuchar cambios en el estado de autenticación del usuario.
   onAuthStateChanged(auth, async (user) => {
+    // Cuando se produce un cambio y el usuario está autenticado, navega a feed
     if (user) {
       navigateTo('/feed');
     }

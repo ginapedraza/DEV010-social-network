@@ -56,14 +56,12 @@ function register(navigateTo) {
   buttonReturn.classList.add('button-return');
   const errorAlert = document.createElement('p');
   errorAlert.classList.add('error');
-
   titleRegister.textContent = 'Regístrate';
   inputEmail.placeholder = 'Correo electrónico';
   inputUser.placeholder = 'Nombre de usuario';
   inputPass.placeholder = 'Contraseña';
   inputConfirmPass.placeholder = 'Repetir contraseña';
   buttonReturn.textContent = 'Volver atrás';
-
   slogan.textContent = '¡Bienvenido a la aventura fit!';
   sendEmailButton.textContent = 'Enviar';
 
@@ -100,17 +98,23 @@ function register(navigateTo) {
     const name = inputUser.value;
     const password = inputPass.value;
     const confirmPass = inputConfirmPass.value;
+    // i la contraseña no coincide con la confirmación de contraseña,
+    // se restablece el formulario y se muestra un mensaje de error
+    // indicando que las contraseñas no coinciden.
     if (password !== confirmPass) {
       registerForm.reset();
       errorAlert.textContent = 'Las contraseñas no coinciden. Intenta nuevamente';
     }
     if (password === confirmPass) {
       try {
+        // Se crea un nuevo usuario utilizando el correo electrónico y la contraseña proporcionados.
         const result = await createUser(email, password);
+        // Se envía un correo electrónico de verificación al usuario actualmente autenticado.
         await sendEmailVerification(auth.currentUser);
-
+        // Se actualiza el perfil del usuario con el nombre proporcionado.
         await updateProfile(result.user, { displayName: name })
           .then(() => {
+            // se redirige al usuario a la página de verificación por correo electrónico.
             navigateTo('/mailVerification');
           });
       } catch (error) {

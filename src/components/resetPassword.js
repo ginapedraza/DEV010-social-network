@@ -37,6 +37,9 @@ function resetPassword(navigateTo) {
     e.preventDefault();
     sendPasswordResetEmail(auth, inputResetPass.value)
       .then(() => {
+        // Si la función se ejecuta correctamente, se actualiza el texto del elemento
+        // "errorAlert" y del botón "buttonResetPass", y se agrega otro evento de clic
+        // al botón que redirige al usuario a la página de inicio de sesión.
         errorAlert.textContent = 'Hemos enviado un link a tu correo para recuperar tu contraseña';
         buttonResetPass.textContent = 'Ir al inicio';
         buttonResetPass.addEventListener('click', () => {

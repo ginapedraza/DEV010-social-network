@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { spyOn } from 'jest-mock';
-import * as firebase from 'firebase/auth';
+// import { spyOn } from 'jest-mock';
+// import * as firebase from 'firebase/auth';
 import login from '../src/components/login.js';
 import { signIn } from '../src/lib/index.js';
 
